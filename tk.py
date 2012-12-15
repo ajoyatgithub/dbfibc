@@ -4,7 +4,7 @@ from Tkinter import *
 
 root = Tk()
 
-w = Label(root, text="Hello, world!")
+w = Label(root, text="Hello, world!\n hoe are u")
 w.pack()
 
 root.mainloop()
