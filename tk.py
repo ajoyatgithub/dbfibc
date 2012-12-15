@@ -1,32 +1,10 @@
-# File: dialog1.py
+# File: hello1.py
 
 from Tkinter import *
 
-class MyDialog:
-
-    def __init__(self, parent):
-
-        top = self.top = Toplevel(parent)
-
-        Label(top, text="Value").pack()
-
-        self.e = Entry(top)
-        self.e.pack(padx=5)
-
-        b = Button(top, text="OK", command=self.ok)
-        b.pack(pady=5)
-
-    def ok(self):
-
-        print "value is", self.e.get()
-
-        self.top.destroy()
-
-
 root = Tk()
-Button(root, text="Hello!").pack()
-root.update()
 
-d = MyDialog(root)
+w = Label(root, text="Hello, world!")
+w.pack()
 
-root.wait_window(d.top)
+root.mainloop()
