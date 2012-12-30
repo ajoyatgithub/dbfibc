@@ -1,0 +1,10 @@
+./node_8_0 8901 certs/1.pem certs/1-key.pem contlist 0 0 0
+./node_8_0 8902 certs/2.pem certs/2-key.pem contlist 0 0 0
+./node_8_0 8903 certs/3.pem certs/3-key.pem contlist 0 0 0
+./node_8_0 8904 certs/4.pem certs/4-key.pem contlist 0 0 0
+./node_8_0 8905 certs/5.pem certs/5-key.pem contlist 0 0 0
+./node_8_0 8906 certs/6.pem certs/6-key.pem contlist 0 0 0
+./node_8_0 8907 certs/7.pem certs/7-key.pem contlist 0 0 0
+./node_8_0 8908 certs/8.pem certs/8-key.pem contlist 0 0 0
+./node_8_0 8909 certs/9.pem certs/9-key.pem contlist 0 0 0
+./node_8_0 8910 certs/10.pem certs/10-key.pem contlist 0 0 0
