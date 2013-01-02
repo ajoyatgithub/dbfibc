@@ -9,25 +9,37 @@ def auth(username, password):
   parse = re.search("([\w\.]*[\w])[@]([\w.]*[\w])", username)
   uname = parse.group(1)
   domain_name = parse.group(2)
+  result = "false"
   if domain_name == "gmail.com":
-    print ("Authenticating " + username + "..............")
+    result = "true"
   else:
     print("Sorry, " + domain_name + " is not supported. Currently only Gmail authentication is available\n")
-  print ("Hello " + uname + ", your email address has been authnticated\n")
+    return
+  return result, uname
   
+def dkg():
+  share = random.random()
+  return share
+  
+def ibc(uname, share, master_share):
+  public_key = uname
+  private_key = random.random()
+  return public_key
+
 def main():
   print "**************WELCOME****************\n"
   print "This is the interface for the program\n"
   print "Please enter the email address and the password that you want to use as your identity : "
   iden = raw_input("Email address : ")
   hashp = md5.new(raw_input("Password : ")).digest()
-  auth(iden, hashp)
-  rand = random.random()
-  print("DKG has started.........\nDKG has finished. Your share is ")
-  print(rand)
-  print("\n")
-  print("Public key is " + iden)
+  auth_result, uname = auth(iden, hashp)
+  if  auth_result is "true":
+    print("Hello, " + uname + ". Authentication has been successful")
+  else:
+    print("Authentication failed. Either username or you password has been entered incorrectly. Try again")
+    return
   
+  print("Your public key is " + ibc(uname, dkg(), dkg()))
   
 if __name__ == "__main__":
   main()
