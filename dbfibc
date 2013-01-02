@@ -48,7 +48,7 @@ def main():
     print("Authentication failed. Either username or you password has been entered incorrectly. Try again")
     return
   
-  print("Your public key is " + ibc(uname, dkg(), dkg()))
+  print("Your public key is now" + ibc(uname, dkg(), dkg()))
   
 if __name__ == "__main__":
   main()
