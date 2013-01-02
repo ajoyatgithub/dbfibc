@@ -31,16 +31,19 @@ int main(int argc, char **argv)
 	SSL_load_error_strings();
 
 	/***initialize the message which is going to be signed***/
-	fd = open("/dev/urandom",O_RDONLY);
-	read(fd, m, 80); 
-	close(fd);   
+    printf("Please enter the message to be signed : ");
+    scanf("%s", m);
+//    m = "this is the string to be encrypted";
+//	fd = open("/home/ajoy/Desktop/urandom",O_RDONLY);
+//	read(fd, m, 80); 
+//	close(fd);   
 
 	/***
 	pairing function initalization from the input file which contains the pairing parameters
 	***/
 	pbc_demo_pairing_init(pairing, argc, argv);
   	if (!pairing_is_symmetric(pairing)) pbc_die("pairing must be symmetric");
-
+    printf("Initialized ")
 	/***
 	initialization of G1 elements
 	***/
