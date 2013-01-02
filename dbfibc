@@ -5,8 +5,15 @@ import md5
 import re
 import random
 
-def auth():
-  pass
+def auth(username, password):
+  parse = re.search("([\w\.]*[\w])[@]([\w.]*[\w])", username)
+  uname = parse.group(1)
+  domain_name = parse.group(2)
+  if domain_name == "gmail.com":
+    print ("Authenticating " + username + "..............")
+  else:
+    print("Sorry, " + domain_name + " is not supported. Currently only Gmail authentication is available\n")
+  print ("Hello " + uname + ", your email address has been authnticated\n")
   
 def main():
   print "**************WELCOME****************\n"
@@ -14,14 +21,7 @@ def main():
   print "Please enter the email address and the password that you want to use as your identity : "
   iden = raw_input("Email address : ")
   hashp = md5.new(raw_input("Password : ")).digest()
-  domain = re.search("@[\w.]+", iden)
-  srvr = domain.group()
-  srvr = string.lstrip(srvr, '@')
-  if srvr == "gmail.com":
-    print ("smtp.gmail.com")
-  else:
-    print("Sorry, " + srvr + " is not supported. Currently only Gmail authentication is available\n")
-  print ("Ok, your email address has been authnticated")
+  auth(iden, hashp)
   rand = random.random()
   print("DKG has started.........\nDKG has finished. Your share is ")
   print(rand)
