@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
 	/***initialize the message which is going to be signed***/
     printf("Please enter the message to be signed : ");
-    scanf("%s", m);
+    gets(m);
 //    m = "this is the string to be encrypted";
 //	fd = open("/home/ajoy/Desktop/urandom",O_RDONLY);
 //	read(fd, m, 80); 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 	***/
 	pbc_demo_pairing_init(pairing, argc, argv);
   	if (!pairing_is_symmetric(pairing)) pbc_die("pairing must be symmetric");
-    printf("Initialized ")
+
 	/***
 	initialization of G1 elements
 	***/
@@ -113,8 +113,11 @@ int main(int argc, char **argv)
 	
 	element_printf("++r: %B\n",r);
 	element_printf("++U: %B\n",U);
-	element_printf("++gid: %B\n",gid);	
-	
+	element_printf("++gid: %B\n",gid);
+	printf("\nThis is the encryption :\n\t");
+	for(i=0;i<80;i++)
+  	printf("%d",c[i]);
+  printf("\nEncrption over\n");
 	/***
 	decryption
 	***/
@@ -135,9 +138,11 @@ int main(int argc, char **argv)
 	}
 	
 	element_printf("e(Did,U):%B\n",xt);
+  printf("\nThis is the message, decrypted : ");
 	for(i=0;i<80;i++)
 	{
-		printf(":%d %d %d\n",i,m[i],mv[i]);
+//		printf(":%d %d %d\n",i,m[i],mv[i]);
+    printf("%c",mv[i]);
 	}
 	
 	printf("\n%d\n",strncmp(m,mv,80));
@@ -158,3 +163,10 @@ int main(int argc, char **argv)
 
   return 0;
   }
+  
+int anomain()
+{
+char *ptest[] = {
+"a.out", "pairing", NULL};
+main(sizeof ptest/sizeof ptest[0], ptest);
+}  
