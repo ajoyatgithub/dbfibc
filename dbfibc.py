@@ -12,8 +12,8 @@ from ctypes import cdll
 def main():
   print "**************WELCOME****************\n"
   print "This is the interface for the program\n"
-  libnode = cdll.LoadLibrary('../dkkg/libnode.so.1.0')
-  print libnode.main(8, "./node 6401 ../src/certs/1.pem ../src/certs/1-key.pem contlist 0 0 0")
+  #libnode = cdll.LoadLibrary('../dkkg/libnode.so.1.0')
+  #print libnode.main(8, "./node 6401 ../src/certs/1.pem ../src/certs/1-key.pem contlist 0 0 0")
   auth_type = raw_input("Please select the type of authentication(Enter the number and press enter) \n\t1. Email\n\t2. LDAP\n\t\t:")
   if auth_type == '1':
     auth_str = "Email address"
