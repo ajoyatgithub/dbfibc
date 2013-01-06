@@ -7,13 +7,12 @@ import dkg
 import ibc
 import app
 import sys
-from ctypes import cdll
 
 def main():
   print "**************WELCOME****************\n"
   print "This is the interface for the program\n"
-  #libnode = cdll.LoadLibrary('../dkkg/libnode.so.1.0')
-  #print libnode.main(8, "./node 6401 ../src/certs/1.pem ../src/certs/1-key.pem contlist 0 0 0")
+  #Phase 1 - Authenticating the identity. The following code will retreive the username and password and send it to the module auth.py
+  
   auth_type = raw_input("Please select the type of authentication(Enter the number and press enter) \n\t1. Email\n\t2. LDAP\n\t\t:")
   if auth_type == '1':
     auth_str = "Email address"
@@ -30,7 +29,27 @@ def main():
     print("Authentication failed : " + auth_result)
     return
   
-  print("Your public key is now" + ibc.ibc(username, dkg.dkg(), dkg.dkg()))
+  #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is returned
+  print("Please wait while the system initializes")
+  dkg.dkg()
+  share = dkg.share()
+  print("DKG completed. Your share is " + share)
+  
+  #Phase 3 - Generate the keys using username and the share
+  ibc.generatekeys(username, share)
+  print("Successfully created both public as well as the private keys")
+  
+  #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages
+  option = raw_input("Select what you would like to do : \n1. Encrypt\t2. Decrypt\n\t: ")
+  if option == '1':
+  	ibc.encrypt()
+  elif option == '2':
+  	ibc.decrypt()
+  else:
+    print("Incorrect option")
+    return
+  print("Exiting................")
+  return
 
 class NullWriter:
     def write(self, s):

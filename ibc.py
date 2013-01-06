@@ -1,7 +1,12 @@
 import random
-import ctypes
 
-def ibc(uname, share, master_share):
+def generatekeys(uname, share):
   public_key = uname
   private_key = random.random()
   return public_key
+  
+def encrypt():
+	pass
+	
+def decrypt():
+  pass
