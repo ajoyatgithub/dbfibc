@@ -1,0 +1,39 @@
+-Run node 1 starting at 1357585926.669403 with version 8.0
+-Function node 1 starting at 1357585926.669509
+LEADER_CHANGE 1 for * SENT from 1 to 1 at 1357585926.670325 standard 1
+COMPUTE_BI * for * RS from 1 to * at 1357585926.670688
+COMPUTE_CM * for * RS from 1 to * at 1357585926.671688
+VSS_SEND 3 for * SENT from 1 to 1 at 1357585926.932699 standard 1
+VSS_SEND 4 for * SENT from 1 to 2 at 1357585926.932838 standard 1
+VSS_SEND 5 for * SENT from 1 to 3 at 1357585926.932955 standard 1
+VSS_SEND 6 for * SENT from 1 to 4 at 1357585926.933129 standard 1
+VSS_SEND 7 for * SENT from 1 to 5 at 1357585926.933317 standard 1
+VSS_SEND 8 for * SENT from 1 to 6 at 1357585926.933406 standard 1
+VSS_SEND 9 for * SENT from 1 to 7 at 1357585926.933531 standard 1
+VSS_SEND 10 for * SENT from 1 to 8 at 1357585926.933621 standard 1
+VSS_SEND 11 for * SENT from 1 to 9 at 1357585926.933730 standard 1
+VSS_SEND 12 for * SENT from 1 to 10 at 1357585926.933818 standard 1
+* I am ready to receive at 1357585926.933836
+VSS_HELP 13 for * SENT from 1 to 2 at 1357585926.933844
+VSS_HELP 14 for * SENT from 1 to 3 at 1357585926.933849
+VSS_HELP 15 for * SENT from 1 to 4 at 1357585926.933853
+VSS_HELP 16 for * SENT from 1 to 5 at 1357585926.933858
+VSS_HELP 17 for * SENT from 1 to 6 at 1357585926.933862
+VSS_HELP 18 for * SENT from 1 to 7 at 1357585926.933866
+VSS_HELP 19 for * SENT from 1 to 8 at 1357585926.933870
+VSS_HELP 20 for * SENT from 1 to 9 at 1357585926.933875
+VSS_HELP 21 for * SENT from 1 to 10 at 1357585926.933879
+* I started to receive at 1357585926.933884
+LEADER_CHANGE 1 for 1 RECEIVED from 1 to 1 at 1357585926.935014
+VSS_SEND 3 for * RECEIVED from 1 to 1 at 1357585926.935724
+VSS_ECHO 35 for 1 SENT from 1 to 1 at 1357585926.940021 standard 1
+VSS_ECHO 36 for 1 SENT from 1 to 2 at 1357585926.940057 standard 1
+VSS_ECHO 37 for 1 SENT from 1 to 3 at 1357585926.940085 standard 1
+VSS_ECHO 38 for 1 SENT from 1 to 4 at 1357585926.940111 standard 1
+VSS_ECHO 39 for 1 SENT from 1 to 5 at 1357585926.940136 standard 1
+VSS_ECHO 40 for 1 SENT from 1 to 6 at 1357585926.940161 standard 1
+VSS_ECHO 41 for 1 SENT from 1 to 7 at 1357585926.940187 standard 1
+VSS_ECHO 42 for 1 SENT from 1 to 8 at 1357585926.940212 standard 1
+VSS_ECHO 43 for 1 SENT from 1 to 9 at 1357585926.940237 standard 1
+VSS_ECHO 44 for 1 SENT from 1 to 10 at 1357585926.940263 standard 1
+VSS_ECHO 35 for 1 RECEIVED from 1 to 1 at 1357585926.940928

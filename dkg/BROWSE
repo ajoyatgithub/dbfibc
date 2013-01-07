@@ -1,0 +1,1099 @@
+[ebrowse-hs "ebrowse 5.0" " -x" () ()][ebrowse-ts [ebrowse-cs "get_buddyset" "Buddy" 0"buddy.h" "    const class BuddySet &get_buddyset(){" 1806() ]
+()([ebrowse-ms "buddyset" () 0 () " class BuddySet &get_buddyset(){return buddyset;" 1822 2  () () 0]
+)
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "tv" () 0"timer.cc" "meval *Timer::time_to_next(struct timeval *tv)
+{" 2357() ]
+()([ebrowse-ms "NULL" () 0 () "    if (first == NULL) return NULL;" 2393 0  () () 0]
+[ebrowse-ms "tv_sec" () 0 () "	tv->tv_sec = 0;" 2618 0  () () 0]
+[ebrowse-ms "tv_usec" () 0 () "	tv->tv_usec = 0;" 2636 0  () () 0]
+)
+([ebrowse-ms "diff_ms" () 0 () "    int diffms = diff_ms(&" 2477 0  () () 0]
+[ebrowse-ms "gettimeofday" () 0 () "    gettimeofday(&" 2438 0  () () 0]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "CommitmentVector" () 0"commitmentvector.h" "class CommitmentVector{" 1020"commitmentvector.h" ]
+()([ebrowse-ms "hashes" () 0 () "  vector <string> hashes;" 1342 2  () () 0]
+[ebrowse-ms "indices" () 0 () "  vector <NodeID> indices;" 1217 2  () () 0]
+[ebrowse-ms "shares" () 0 () "  vector <G1> shares;" 1239 2  () () 0]
+[ebrowse-ms "subshares" () 0 () "  vector <G1> subshares;" 1288 2  () () 0]
+)
+([ebrowse-ms "CommitmentVector" () 0 () "m& sys, const unsigned char *&buf, size_t& len);" 1783 0  "commitmentvector.cc" "m& sys, const unsigned char *&buf, size_t& len){" 4016]
+[ebrowse-ms "CommitmentVector" () 0 () "  CommitmentVector(const CommitmentVector &vec);" 1669 0  "commitmentvector.cc" "::CommitmentVector(const CommitmentVector &vec):" 2706]
+[ebrowse-ms "CommitmentVector" () 0 () "<NodeID>& activeNodes, const BiPolynomial& fxy);" 1539 0  "commitmentvector.cc" "<NodeID>& activeNodes, const BiPolynomial& fxy){" 1294]
+[ebrowse-ms "CommitmentVector" () 0 () "Param& sys, const vector <NodeID>& activeNodes);" 1422 0  "commitmentvector.cc" "Param& sys, const vector <NodeID>& activeNodes){" 955]
+[ebrowse-ms "CommitmentVector" () 0 () "  CommitmentVector(){" 1391 0  () "  CommitmentVector(){" 1391]
+[ebrowse-ms "checkPoly" () 4 () "  	bool checkPoly(NodeID" 3303 2  "commitmentvector.cc" "bool CommitmentVector::checkPoly(NodeID" 7508]
+[ebrowse-ms "dump" () 4 () "  	void dump(FILE" 3225 0  "commitmentvector.cc" "void CommitmentVector::dump(FILE" 9151]
+[ebrowse-ms "getHash" () 4 () "	string getHash(unsigned" 2265 0  () "	string getHash(unsigned" 2265]
+[ebrowse-ms "getHashes" () 4 () "	const vector <string> getHashes()" 2451 0  () "	const vector <string> getHashes()" 2451]
+[ebrowse-ms "getIndices" () 4 () "	const vector <NodeID> getIndices()" 2337 0  () "	const vector <NodeID> getIndices()" 2337]
+[ebrowse-ms "getShare" () 4 () "	const G1 getShare(unsigned" 2136 0  () "	const G1 getShare(unsigned" 2136]
+[ebrowse-ms "getShares" () 4 () "	const vector <G1> getShares()" 2393 0  () "	const vector <G1> getShares()" 2393]
+[ebrowse-ms "getSubshare" () 4 () "	const G1 getSubshare(unsigned" 2202 0  () "	const G1 getSubshare(unsigned" 2202]
+[ebrowse-ms "getSubshares" () 4 () "	const vector <G1> getSubshares()" 2508 0  () "	const vector <G1> getSubshares()" 2508]
+[ebrowse-ms "operator *" () 4 () "	const CommitmentVector operator*(const" 2923 0  () "	const CommitmentVector operator*(const" 2923]
+[ebrowse-ms "operator *=" () 0 () "	CommitmentVector& operator*=(const" 2747 0  "commitmentvector.cc" "itmentVector& CommitmentVector::operator*=(const" 7129]
+[ebrowse-ms "operator =" () 0 () "  CommitmentVector& operator=(const" 1729 0  "commitmentvector.cc" "mitmentVector& CommitmentVector::operator=(const" 3295]
+[ebrowse-ms "operator ==" () 4 () "	bool operator==(const" 2679 0  "commitmentvector.cc" "bool CommitmentVector::operator==(const" 6074]
+[ebrowse-ms "setSubshares" () 0 () "	void setSubshares(const" 2611 0  "commitmentvector.cc" "void CommitmentVector::setSubshares(const" 6809]
+[ebrowse-ms "setSubshares" () 0 () "	void setSubshares(const" 2561 0  "commitmentvector.cc" "void CommitmentVector::setSubshares(const" 6545]
+[ebrowse-ms "toString" () 4 () "  string toString(bool" 1908 0  "commitmentvector.cc" "string CommitmentVector:: toString(bool" 5156]
+[ebrowse-ms "verifyPoint" () 4 () "	bool verifyPoint(const" 3121 0  "commitmentvector.cc" "bool CommitmentVector::verifyPoint(const" 8613]
+[ebrowse-ms "verifyPoly" () 0 () "	bool verifyPoly(const" 3027 0  "commitmentvector.cc" "bool CommitmentVector::verifyPoly(const" 8160]
+[ebrowse-ms "~CommitmentVector" () 0 () "  ~CommitmentVector()" 1882 0  () "  ~CommitmentVector()" 1882]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "CommitmentMatrix" () 0"commitmentmatrix.h" "class CommitmentMatrix{" 1020"commitmentmatrix.h" ]
+()([ebrowse-ms "entries" () 0 () "  vector < vector<G1> > entries;" 1223 2  () () 0]
+)
+([ebrowse-ms "CommitmentMatrix" () 0 () "m& sys, const unsigned char *&buf, size_t& len);" 1792 0  "commitmentmatrix.cc" "				 size_t& len){" 2249]
+[ebrowse-ms "CommitmentMatrix" () 0 () "onst SystemParam& sys, const BiPolynomial& fxy);" 1585 0  "commitmentmatrix.cc" "								  const BiPolynomial& fxy){" 1150]
+[ebrowse-ms "CommitmentMatrix" () 0 () "	CommitmentMatrix(const CommitmentMatrix &mat);" 1679 0  "commitmentmatrix.cc" "::CommitmentMatrix(const CommitmentMatrix &mat){" 1513]
+[ebrowse-ms "CommitmentMatrix" () 0 () "  CommitmentMatrix(){" 1449 0  () "  CommitmentMatrix(){" 1449]
+[ebrowse-ms "dump" () 4 () "  void dump(FILE" 3409 0  "commitmentmatrix.cc" "void CommitmentMatrix::dump(FILE" 5742]
+[ebrowse-ms "getEntry" () 4 () "	const G1 getEntry(unsigned" 2554 0  "commitmentmatrix.cc" "const G1 CommitmentMatrix::getEntry(unsigned" 3244]
+[ebrowse-ms "getRowCnt" () 4 () "  unsigned short getRowCnt()" 2364 0  () "  unsigned short getRowCnt()" 2364]
+[ebrowse-ms "getRowWidth" () 4 () "  unsigned short getRowWidth(unsigned" 2449 0  () "  unsigned short getRowWidth(unsigned" 2449]
+[ebrowse-ms "interpolate" () 4 () "	const vector<Zr> interpolate(const" 3303 0  () () 0]
+[ebrowse-ms "operator *" () 4 () "	const CommitmentMatrix operator*(const" 2854 0  () "	const CommitmentMatrix operator*(const" 2854]
+[ebrowse-ms "operator *=" () 0 () "	CommitmentMatrix& operator*=(const" 2680 0  "commitmentmatrix.cc" "itmentMatrix& CommitmentMatrix::operator*=(const" 3736]
+[ebrowse-ms "operator =" () 0 () "	CommitmentMatrix& operator=(const" 1738 0  "commitmentmatrix.cc" "mitmentMatrix& CommitmentMatrix::operator=(const" 1847]
+[ebrowse-ms "operator ==" () 4 () "	bool operator==(const" 2612 0  "commitmentmatrix.cc" "bool CommitmentMatrix::operator==(const" 3465]
+[ebrowse-ms "publicKeyShare" () 4 () "	const G1 publicKeyShare(const" 3176 0  "commitmentmatrix.cc" "const G1 CommitmentMatrix::publicKeyShare(const" 5233]
+[ebrowse-ms "toString" () 4 () "  string toString()" 1914 0  "commitmentmatrix.cc" "string CommitmentMatrix:: toString()" 2741]
+[ebrowse-ms "verifyPoint" () 4 () "	bool verifyPoint(const" 3051 0  "commitmentmatrix.cc" "bool CommitmentMatrix::verifyPoint(const" 4622]
+[ebrowse-ms "verifyPoly" () 4 () "	bool verifyPoly(const" 2958 0  "commitmentmatrix.cc" "bool CommitmentMatrix::verifyPoly(const" 4151]
+[ebrowse-ms "~CommitmentMatrix" () 0 () "  ~CommitmentMatrix()" 1891 0  () "  ~CommitmentMatrix()" 1891]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Commitment" () 0"commitment.h" "class Commitment{" 1073"commitment.h" ]
+()([ebrowse-ms "A_Echo" () 0 () "	map <NodeID, Zr> A_Echo;" 1192 2  () () 0]
+[ebrowse-ms "A_Ready" () 0 () "	map <NodeID, Zr> A_Ready;" 1278 2  () () 0]
+[ebrowse-ms "hashedVector" () 0 () "	CommitmentVector hashedVector;" 1115 2  () () 0]
+[ebrowse-ms "matrix" () 0 () "	CommitmentMatrix matrix;" 1141 2  () () 0]
+[ebrowse-ms "type" () 0 () "	CommitmentType type;" 1163 2  () () 0]
+)
+([ebrowse-ms "Commitment" () 0 () "m& sys, const unsigned char *&buf, size_t& len);" 1760 0  "commitment.cc" "m& sys, const unsigned char *&buf, size_t& len){" 1835]
+[ebrowse-ms "Commitment" () 0 () "	Commitment(const Commitment &vec);" 1671 0  "commitment.cc" "Commitment::Commitment(const Commitment &rhs)
+:" 1460]
+[ebrowse-ms "Commitment" () 0 () "		const BiPolynomial& fxy, CommitmentType type);" 1522 0  "commitment.cc" "s,const BiPolynomial& fxy,CommitmentType type)
+:" 1103]
+[ebrowse-ms "Commitment" () 0 () "or <NodeID> & activeNodes, CommitmentType type);" 1387 0  "commitment.cc" "or <NodeID>& activeNodes, CommitmentType type)
+:" 938]
+[ebrowse-ms "Commitment" () 0 () "	Commitment(){" 1363 0  () "	Commitment(){" 1363]
+[ebrowse-ms "addEchoMsg" () 0 () "	bool addEchoMsg(NodeID" 1987 0  () "	bool addEchoMsg(NodeID" 1987]
+[ebrowse-ms "addReadyMsg" () 0 () "	bool addReadyMsg(NodeID" 2236 0  () "	bool addReadyMsg(NodeID" 2236]
+[ebrowse-ms "dump" () 4 () "	void dump(FILE" 3669 0  "commitment.cc" "void Commitment::dump(FILE" 4662]
+[ebrowse-ms "getEchoMsgCnt" () 4 () "	unsigned short getEchoMsgCnt()" 2500 0  () "	unsigned short getEchoMsgCnt()" 2500]
+[ebrowse-ms "getReadyMsgCnt" () 4 () "	unsigned short getReadyMsgCnt()" 2579 0  () "	unsigned short getReadyMsgCnt()" 2579]
+[ebrowse-ms "get_Matrix" () 4 () "	const CommitmentMatrix get_Matrix()" 2764 0  () "	const CommitmentMatrix get_Matrix()" 2764]
+[ebrowse-ms "get_Type" () 4 () "	CommitmentType get_Type()" 2706 0  () "	CommitmentType get_Type()" 2706]
+[ebrowse-ms "get_Vector" () 4 () "	const CommitmentVector get_Vector()" 2824 0  () "	const CommitmentVector get_Vector()" 2824]
+[ebrowse-ms "interpolate" () 4 () "	const vector<Zr> interpolate(const" 3573 0  "commitment.cc" "interpolate(const" 3545]
+[ebrowse-ms "operator *" () 4 () "	const Commitment operator*(const" 3162 0  () "	const Commitment operator*(const" 3162]
+[ebrowse-ms "operator *=" () 0 () "	Commitment& operator*=(const" 3000 0  "commitment.cc" "Commitment& Commitment::operator*=(const" 2631]
+[ebrowse-ms "operator =" () 0 () "	Commitment& operator=(const" 1718 0  "commitment.cc" "Commitment& Commitment:: operator=(const" 1644]
+[ebrowse-ms "operator ==" () 4 () "	bool operator==(const" 2653 0  "commitment.cc" "bool Commitment::operator==(const" 2397]
+[ebrowse-ms "publicKeyShare" () 4 () "	const G1 publicKeyShare(const" 3451 0  "commitment.cc" "const G1 Commitment::publicKeyShare(const" 3051]
+[ebrowse-ms "setSubshares" () 0 () "	void setSubshares(const" 2880 0  () "	void setSubshares(const" 2880]
+[ebrowse-ms "toString" () 4 () "	string toString(bool" 1881 0  "commitment.cc" "string Commitment::toString(bool" 2160]
+[ebrowse-ms "verifyPoint" () 4 () "	bool verifyPoint(const" 3342 0  "commitment.cc" "bool Commitment::verifyPoint(const" 3248]
+[ebrowse-ms "verifyPoly" () 0 () "	bool verifyPoly(const" 3254 0  "commitment.cc" "bool Commitment::verifyPoly(const" 2803]
+[ebrowse-ms "~Commitment" () 0 () "   ~Commitment()" 1855 0  () "   ~Commitment()" 1855]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "BiPolynomial" () 0"bipolynomial.h" "class BiPolynomial {" 969"bipolynomial.h" ]
+()([ebrowse-ms "coeffs" () 0 () "	vector< vector<Zr> > coeffs;" 3031 2  () () 0]
+)
+([ebrowse-ms "BiPolynomial" () 0 () "	BiPolynomial(const BiPolynomial &p);" 1529 0  "bipolynomial.cc" "olynomial::BiPolynomial(const BiPolynomial &p)
+{" 2485]
+[ebrowse-ms "BiPolynomial" () 0 () "stemParam &sys, unsigned int t, const Zr& term);" 1233 0  "bipolynomial.cc" "temParam &sys, unsigned int t, const Zr& term)
+{" 1493]
+[ebrowse-ms "BiPolynomial" () 0 () "ynomial(const SystemParam &sys, unsigned int t);" 1101 0  "bipolynomial.cc" "nomial(const SystemParam &sys, unsigned int t)
+{" 973]
+[ebrowse-ms "BiPolynomial" () 0 () "	BiPolynomial() {" 1028 0  () "	BiPolynomial() {" 1028]
+[ebrowse-ms "apply" () 4 () "	const Polynomial apply(const" 2373 0  "bipolynomial.cc" "const Polynomial BiPolynomial::apply(const" 5040]
+[ebrowse-ms "degree" () 4 () "	int degree()" 2631 0  () "	int degree()" 2631]
+[ebrowse-ms "dump" () 4 () "	void dump(FILE" 2719 0  "bipolynomial.cc" "void BiPolynomial::dump(FILE" 5314]
+[ebrowse-ms "getCoeff" () 4 () "	const Zr getCoeff(unsigned" 2252 0  "bipolynomial.cc" "const Zr BiPolynomial::getCoeff(unsigned" 4765]
+[ebrowse-ms "merge" () 0 () "	BiPolynomial& merge(const" 2861 2  "bipolynomial.cc" "BiPolynomial& BiPolynomial::merge(const" 3169]
+[ebrowse-ms "operator ()" () 4 () "	const Polynomial operator()(const" 2422 0  () "	const Polynomial operator()(const" 2422]
+[ebrowse-ms "operator +" () 4 () "	const BiPolynomial operator+(const" 1959 0  () "	const BiPolynomial operator+(const" 1959]
+[ebrowse-ms "operator +=" () 0 () "	BiPolynomial& operator+=(const" 1821 0  "bipolynomial.cc" "BiPolynomial& BiPolynomial::operator+=(const" 4483]
+[ebrowse-ms "operator -" () 4 () "	const BiPolynomial operator-(const" 2065 0  () "	const BiPolynomial operator-(const" 2065]
+[ebrowse-ms "operator -=" () 0 () "	BiPolynomial& operator-=(const" 1873 0  "bipolynomial.cc" "BiPolynomial& BiPolynomial::operator-=(const" 4584]
+[ebrowse-ms "operator =" () 0 () "	BiPolynomial& operator=(const" 1769 0  "bipolynomial.cc" "BiPolynomial& BiPolynomial::operator=(const" 4333]
+[ebrowse-ms "zero" () 0 () "	void zero()" 1624 0  "bipolynomial.cc" "void BiPolynomial::zero()" 2958]
+[ebrowse-ms "~BiPolynomial" () 0 () "	~BiPolynomial()" 1580 0  "bipolynomial.cc" "BiPolynomial::~BiPolynomial()" 2889]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Testcase" () 0"monitor.cc" "struct Testcase {" 1205() ]
+()([ebrowse-ms "f" () 0 () "	int f;" 1229 0  () () 0]
+[ebrowse-ms "n" () 0 () "	int n;" 1213 0  () () 0]
+[ebrowse-ms "non_responsive_server_num" () 0 () "	int non_responsive_server_num;" 1273 0  () () 0]
+[ebrowse-ms "t" () 0 () "	int t;" 1221 0  () () 0]
+[ebrowse-ms "times" () 0 () "	int times;" 1241 0  () () 0]
+)
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGEchoOrReadyMessageCmp" () 0"networkmessage.h" "struct DKGEchoOrReadyMessageCmp {" 5905"networkmessage.h" ]
+()()
+([ebrowse-ms "operator ()" () 4 () "    bool operator()(DKGEchoOrReadyMessage" 5947 0  () "    bool operator()(DKGEchoOrReadyMessage" 5947]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "BuddySet" () 0"buddyset.h" "class BuddySet {" 1192"buddyset.h" ]
+()([ebrowse-ms "contactlist" () 0 () "	map<BuddyID, ContactEntry> contactlist;" 2833 2  () () 0]
+[ebrowse-ms "fdmap" () 0 () "	map<int, Buddy*> fdmap;" 2763 2  () () 0]
+[ebrowse-ms "first_msg_type" () 0 () "	map<BuddyID, int> first_msg_type;" 2868 2  () () 0]
+[ebrowse-ms "idmap" () 0 () "	map<BuddyID, Buddy*> idmap;" 2792 2  () () 0]
+[ebrowse-ms "last_fd_found" () 0 () "	int last_fd_found;" 2966 2  () () 0]
+[ebrowse-ms "leader" () 0 () "	BuddyID leader;" 2885 2  () () 0]
+[ebrowse-ms "my_cert" () 0 () "	string my_cert;" 2902 2  () () 0]
+[ebrowse-ms "my_dsa_privkey" () 0 () "	gcry_sexp_t my_dsa_privkey;" 2931 2  () () 0]
+[ebrowse-ms "my_id" () 0 () "	NodeID my_id;" 2946 2  () () 0]
+[ebrowse-ms "notifyfds" () 0 () "	int notifyfds[2];" 2985 2  () () 0]
+[ebrowse-ms "notifyids" () 0 () "	int notifyids[2];" 3004 2  () () 0]
+[ebrowse-ms "sysparams" () 0 () "	const SystemParam &sysparams;" 2738 2  () () 0]
+)
+([ebrowse-ms "BuddySet" () 0 () "ams, const char *certfile, const char *keyfile);" 1220 0  "buddyset.cc" "	const char *keyfilename):" 1027]
+[ebrowse-ms "add_buddy_fd" () 0 () "	Buddy *add_buddy_fd(int" 1528 0  "buddyset.cc" "Buddy *BuddySet::add_buddy_fd(int" 9781]
+[ebrowse-ms "add_buddy_fd" () 0 () "	Buddy *add_buddy_fd(int" 1498 0  "buddyset.cc" "Buddy *BuddySet::add_buddy_fd(int" 7672]
+[ebrowse-ms "add_buddy_id" () 0 () "	void add_buddy_id(Buddy" 1658 0  "buddyset.cc" "void BuddySet::add_buddy_id(Buddy" 8249]
+[ebrowse-ms "close_buddy" () 0 () "	void close_buddy(Buddy" 1732 0  "buddyset.cc" "void BuddySet::close_buddy(Buddy" 10363]
+[ebrowse-ms "del_buddy" () 0 () "	void del_buddy(Buddy" 1763 0  "buddyset.cc" "void BuddySet::del_buddy(Buddy" 10481]
+[ebrowse-ms "del_first_msg_type" () 0 () "	void del_first_msg_type(BuddyID" 2376 0  () "	void del_first_msg_type(BuddyID" 2376]
+[ebrowse-ms "find_buddy" () 0 () "	Buddy *find_buddy(BuddyID" 3032 2  "buddyset.cc" "Buddy *BuddySet::find_buddy(BuddyID" 10695]
+[ebrowse-ms "find_buddy_id" () 4 () "	Buddy *find_buddy_id(BuddyID" 1697 0  "buddyset.cc" "Buddy *BuddySet::find_buddy_id(BuddyID" 8986]
+[ebrowse-ms "find_set_fd" () 0 () "	Buddy *find_set_fd(fd_set" 1465 0  "buddyset.cc" "Buddy *BuddySet::find_set_fd(fd_set" 6288]
+[ebrowse-ms "get_buddy_list" () 4 () "st map<BuddyID, ContactEntry>& get_buddy_list ()" 2065 0  () "st map<BuddyID, ContactEntry>& get_buddy_list ()" 2065]
+[ebrowse-ms "get_cert" () 4 () "	const string &get_cert()" 1867 0  () "	const string &get_cert()" 1867]
+[ebrowse-ms "get_first_msg_type" () 0 () "	int get_first_msg_type(BuddyID" 2310 0  () "	int get_first_msg_type(BuddyID" 2310]
+[ebrowse-ms "get_leader" () 4 () "	BuddyID get_leader()" 2157 0  () "	BuddyID get_leader()" 2157]
+[ebrowse-ms "get_my_id" () 4 () "	BuddyID get_my_id()" 2113 0  () "	BuddyID get_my_id()" 2113]
+[ebrowse-ms "get_next_leader" () 0 () "	BuddyID get_next_leader()" 2245 0  "buddyset.cc" "BuddyID BuddySet::get_next_leader()" 5279]
+[ebrowse-ms "get_param" () 4 () "	const SystemParam &get_param()" 1335 0  () "	const SystemParam &get_param()" 1335]
+[ebrowse-ms "get_previous_leader" () 0 () "	BuddyID get_previous_leader()" 2277 0  "buddyset.cc" "BuddyID BuddySet::get_previous_leader()" 5531]
+[ebrowse-ms "init_contact_list" () 0 () "	void init_contact_list(const" 1393 0  "buddyset.cc" "void BuddySet::init_contact_list(const" 3636]
+[ebrowse-ms "notify_add_buddy_fd" () 0 () "	void notify_add_buddy_fd(int" 1575 0  "buddyset.cc" "void BuddySet::notify_add_buddy_fd(int" 9407]
+[ebrowse-ms "notify_add_buddy_id" () 0 () "	void notify_add_buddy_id(Buddy" 1624 0  "buddyset.cc" "void BuddySet::notify_add_buddy_id(Buddy" 9187]
+[ebrowse-ms "send_message" () 0 () () 0 0  "buddyset.cc" "void BuddySet::send_message(BuddyID" 10916]
+[ebrowse-ms "send_message" () 0 () "	void send_message(BuddyID" 1799 0  () () 0]
+[ebrowse-ms "set_fds" () 0 () "	int set_fds(fd_set" 1430 0  "buddyset.cc" "int BuddySet::set_fds(fd_set" 5775]
+[ebrowse-ms "set_first_msg_type" () 0 () "	bool set_first_msg_type(BuddyID" 2452 0  () "	bool set_first_msg_type(BuddyID" 2452]
+[ebrowse-ms "set_leader" () 0 () "	void set_leader(BuddyID" 2205 0  "buddyset.cc" "void BuddySet::set_leader(BuddyID" 5130]
+[ebrowse-ms "sig_size" () 4 () "	size_t sig_size()" 1912 0  () "	size_t sig_size()" 1912]
+[ebrowse-ms "sign" () 4 () "	void sign(const" 1950 0  "buddyset.cc" "void BuddySet::sign(const" 11143]
+[ebrowse-ms "~BuddySet" () 0 () "	~BuddySet()" 1301 0  "buddyset.cc" "BuddySet::~BuddySet()" 3553]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "runtime_error" () 0() () 0() ]
+([ebrowse-ts [ebrowse-cs "Exception" () 0"exceptions.h" "class Exception:" 958"exceptions.h" ]
+([ebrowse-ts [ebrowse-cs "InvalidMessageException" () 0"exceptions.h" "class InvalidMessageException:" 1100() ]
+([ebrowse-ts [ebrowse-cs "InvalidSignatureException" () 0"exceptions.h" "class InvalidSignatureException:" 1156() ]
+()()
+()
+()
+()
+()
+()
+()()
+])()
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "InvalidSystemParamFileException" () 0"exceptions.h" "class InvalidSystemParamFileException:" 1232"exceptions.h" ]
+()()
+([ebrowse-ms "InvalidSystemParamFileException" () 0 () "  InvalidSystemParamFileException(string str):" 1302 0  () "  InvalidSystemParamFileException(string str):" 1302]
+)
+()
+()
+()
+()
+()()
+])()
+([ebrowse-ms "Exception" () 0 () "    public: Exception(string str = \"\"):" 1010 0  () "    public: Exception(string str = \"\"):" 1010]
+)
+()
+()
+()
+()
+()()
+])()
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Application" () 0"application.h" "class Application {" 1159"application.cc" ]
+([ebrowse-ts [ebrowse-cs "BLSClient" () 0"blsclient.cc" "class BLSClient :" 983"blsclient.cc" ]
+()([ebrowse-ms "DKGPublicKey" () 0 () "  G1 DKGPublicKey;" 1629 2  () () 0]
+[ebrowse-ms "clientPrivateKey" () 0 () "  Zr clientPrivateKey;" 1566 2  () () 0]
+[ebrowse-ms "clientPublicKey" () 0 () "  G1 clientPublicKey;" 1588 2  () () 0]
+[ebrowse-ms "msg" () 0 () "  string msg;" 1718 2  () () 0]
+[ebrowse-ms "msgHashG1" () 0 () "  G1 msgHashG1;" 1754 2  () () 0]
+[ebrowse-ms "msgLog" () 0 () "  	fstream msgLog;" 1866 2  () () 0]
+[ebrowse-ms "quorumPublicKey" () 0 () "  G1 quorumPublicKey;" 1610 2  () () 0]
+[ebrowse-ms "signature" () 0 () "  G1 signature;" 1681 2  () () 0]
+[ebrowse-ms "signatureShares" () 0 () "  map <NodeID, G1> signatureShares;" 1665 2  () () 0]
+[ebrowse-ms "strID" () 0 () "  string strID;" 1543 2  () () 0]
+[ebrowse-ms "validSignature" () 0 () "  bool validSignature;" 1704 2  () () 0]
+)
+([ebrowse-ms "BLSClient" () 0 () "keyfile, const char *contactlistfile, Phase ph):" 1032 0  () "keyfile, const char *contactlistfile, Phase ph):" 1032]
+[ebrowse-ms "run" () 0 () "    int run()" 1517 0  () "int BLSClient::run()" 1891]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Node" () 0"node.cc" "class Node :" 1343"node.cc" ]
+()([ebrowse-ms "C" () 0 () "	multimap <NodeID, Commitment> C;" 2678 2  () () 0]
+[ebrowse-ms "C_final" () 0 () "	map <NodeID, CommitmentAndShare> C_final;" 2744 2  () () 0]
+[ebrowse-ms "DecidedVSSs" () 0 () "	set <NodeID> DecidedVSSs;" 2815 2  () () 0]
+[ebrowse-ms "SendReceived" () 0 () "	set <NodeID> SendReceived;" 2555 2  () () 0]
+[ebrowse-ms "clientPublicKeys" () 0 () "	map <NodeID, G1> clientPublicKeys;" 3881 2  () () 0]
+[ebrowse-ms "commType" () 0 () "	CommitmentType commType;" 2644 2  () () 0]
+[ebrowse-ms "dkgEchoOrReadyMsgReceived" () 0 () "choOrReadyMessageCmp> dkgEchoOrReadyMsgReceived;" 3554 2  () () 0]
+[ebrowse-ms "dkgReadyValidityMsg" () 0 () "	DKGEchoOrReadyMessage dkgReadyValidityMsg;" 3655 2  () () 0]
+[ebrowse-ms "dkgReadyValidityMsgDSAs" () 0 () "	map <NodeID, string> dkgReadyValidityMsgDSAs;" 3702 2  () () 0]
+[ebrowse-ms "incremental_change" () 0 () "	int incremental_change;" 3943 2  () () 0]
+[ebrowse-ms "leaderChangeMsg" () 0 () "ring>, LeaderChangeMessageCmp > leaderChangeMsg;" 3092 2  () () 0]
+[ebrowse-ms "leaderChangeTimerID" () 0 () "	TimerID leaderChangeTimerID;" 3766 2  () () 0]
+[ebrowse-ms "msgLog" () 0 () "	fstream msgLog;" 3785 2  () () 0]
+[ebrowse-ms "nextSmallestLeader" () 0 () "	NodeID nextSmallestLeader;" 2971 2  () () 0]
+[ebrowse-ms "nodeState" () 0 () "	NodeState nodeState;" 2527 2  () () 0]
+[ebrowse-ms "non_responsive_leader_number" () 0 () "	int non_responsive_leader_number;" 3918 2  () () 0]
+[ebrowse-ms "result" () 0 () "	CommitmentAndShare result;" 2911 2  () () 0]
+[ebrowse-ms "selfID" () 0 () "	NodeID selfID;" 2505 2  () () 0]
+[ebrowse-ms "shsecret" () 0 () "	ofstream shsecret;" 3805 2  () () 0]
+[ebrowse-ms "timeoutLog" () 0 () "	fstream timeoutLog;" 3826 2  () () 0]
+[ebrowse-ms "timer_set" () 0 () "	bool timer_set;" 3843 2  () () 0]
+[ebrowse-ms "validLeaderChangeMsgCnt" () 0 () "	size_t validLeaderChangeMsgCnt;" 3157 2  () () 0]
+[ebrowse-ms "vssReadyMsg" () 0 () "odeID, string>, VSSReadyMessageCmp> vssReadyMsg;" 3236 2  () () 0]
+[ebrowse-ms "vssReadyMsgSelected" () 0 () "tring>, VSSReadyMessageCmp> vssReadyMsgSelected;" 3340 2  () () 0]
+)
+([ebrowse-ms "Node" () 0 () "tType commType =  Feldman_Matrix, int nrln = 0):" 1385 0  () "tType commType =  Feldman_Matrix, int nrln = 0):" 1385]
+[ebrowse-ms "changePhase" () 0 () "	void changePhase()" 4221 2  () "void Node::changePhase()" 61057]
+[ebrowse-ms "completeDKG" () 0 () "	void completeDKG()" 4103 2  () "void Node::completeDKG()" 57574]
+[ebrowse-ms "hybridVSSInit" () 0 () "	void hybridVSSInit(const" 3971 2  () "void Node::hybridVSSInit(const" 52749]
+[ebrowse-ms "run" () 0 () "  int run()" 2476 0  () "int Node::run()" 4242]
+[ebrowse-ms "sendLeaderChangeMessage" () 0 () "	void sendLeaderChangeMessage(NodeID" 4188 2  () "void Node::sendLeaderChangeMessage(NodeID" 59710]
+[ebrowse-ms "startAgreement" () 0 () "	void startAgreement()" 4042 2  () "void Node::startAgreement()" 53970]
+)
+()
+()
+()
+()
+()()
+])([ebrowse-ms "activeNodes" () 0 () "    	vector<NodeID> activeNodes;" 1275 1  () () 0]
+[ebrowse-ms "buddyset" () 0 () "	BuddySet buddyset;" 1242 1  () () 0]
+[ebrowse-ms "first_timeout" () 0 () "	int first_timeout;" 1827 2  () () 0]
+[ebrowse-ms "last_timeout" () 0 () "	int last_timeout;" 1846 2  () () 0]
+[ebrowse-ms "listenfd" () 0 () "	int userfd, listenfd;" 1310 1  () () 0]
+[ebrowse-ms "ph" () 0 () "	Phase ph;" 1286 1  () () 0]
+[ebrowse-ms "sysparams" () 0 () "	SystemParam sysparams;" 1222 1  () () 0]
+[ebrowse-ms "systemtype" () 0 () "	SystemType systemtype;" 1198 1  () () 0]
+[ebrowse-ms "timeout_times" () 0 () "	int timeout_times;" 1807 2  () () 0]
+)
+([ebrowse-ms "Application" () 0 () "				Phase phase);" 1465 1  () "			Phase ph):" 1247]
+[ebrowse-ms "get_next_message" () 0 () "	Message *get_next_message(BuddyID" 1346 1  () "Message *Application::get_next_message(BuddyID" 3294]
+[ebrowse-ms "get_time_diff" () 0 () "	unsigned long get_time_diff(int" 1721 1  () "unsigned long Application::get_time_diff(int" 6790]
+[ebrowse-ms "measure_init" () 0 () "	void measure_init()" 1880 0  () "void Application::measure_init()" 5755]
+[ebrowse-ms "measure_now" () 0 () "	void measure_now()" 1901 0  () "void Application::measure_now()" 5829]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSReadyMessageCmp" () 0"networkmessage.h" "struct VSSReadyMessageCmp {" 3893"networkmessage.h" ]
+()()
+([ebrowse-ms "operator ()" () 4 () "    bool operator()(VSSReadyMessage" 3929 0  () "    bool operator()(VSSReadyMessage" 3929]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "LeaderChangeMessageCmp" () 0"networkmessage.h" "struct LeaderChangeMessageCmp {" 7646"networkmessage.h" ]
+()()
+([ebrowse-ms "operator ()" () 4 () "    bool operator()(LeaderChangeMessage" 7686 0  () "    bool operator()(LeaderChangeMessage" 7686]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Buddy" () 0"buddy.h" "class Buddy{" 1108"buddy.h" ]
+()([ebrowse-ms "buddy_dsa_pubkey" () 0 () "     gcry_sexp_t buddy_dsa_pubkey;" 2240 2  () () 0]
+[ebrowse-ms "buddyset" () 0 () "     BuddySet &buddyset;" 2107 2  () () 0]
+[ebrowse-ms "fd" () 0 () "     int fd;" 2120 2  () () 0]
+[ebrowse-ms "has_cert" () 0 () "     int has_cert;" 2205 2  () () 0]
+[ebrowse-ms "id" () 0 () "     BuddyID id;" 2166 2  () () 0]
+[ebrowse-ms "is_server" () 0 () "     int is_server;" 2186 2  () () 0]
+[ebrowse-ms "msgqueue" () 0 () "     queue<string> msgqueue;" 2008 0  () () 0]
+[ebrowse-ms "mutex" () 0 () "     pthread_mutex_t mutex;" 2066 0  () () 0]
+[ebrowse-ms "sentqueue" () 0 () "     queue<string> sentqueue;" 2038 0  () () 0]
+[ebrowse-ms "thread_is_running" () 0 () "     bool thread_is_running;" 2149 2  () () 0]
+)
+([ebrowse-ms "Buddy" () 0 () () 0 0  "buddy.cc" "::Buddy(BuddySet &buddyset, int fd, NodeID id) :" 1356]
+[ebrowse-ms "Buddy" () 0 () () 0 0  "buddy.cc" "Buddy::Buddy(BuddySet &buddyset, int fd) :" 1090]
+[ebrowse-ms "Buddy" () 0 () "dy(class BuddySet &buddyset, int fd, NodeID id);" 1178 0  () () 0]
+[ebrowse-ms "Buddy" () 0 () "    Buddy(class BuddySet &buddyset, int fd);" 1133 0  () () 0]
+[ebrowse-ms "close_fd" () 0 () "    void close_fd()" 1295 0  "buddy.cc" "void Buddy::close_fd()" 5785]
+[ebrowse-ms "destroy_mutex" () 0 () "     void destroy_mutex()" 2352 2  "buddy.cc" "void Buddy::destroy_mutex()" 3447]
+[ebrowse-ms "find_other_buddy" () 4 () "    Buddy *find_other_buddy(BuddyID" 1458 0  "buddy.cc" "Buddy *Buddy::find_other_buddy(BuddyID" 13099]
+[ebrowse-ms "get_cert" () 0 () "     void get_cert()" 2325 2  "buddy.cc" "void Buddy::get_cert()" 3507]
+[ebrowse-ms "get_fd" () 4 () "    int get_fd()" 1313 0  () "    int get_fd()" 1313]
+[ebrowse-ms "get_id" () 4 () "    BuddyID get_id()" 1401 0  () "    BuddyID get_id()" 1401]
+[ebrowse-ms "get_param" () 4 () "    const SystemParam &get_param()" 1268 0  "buddy.cc" "const SystemParam &Buddy::get_param()" 1814]
+[ebrowse-ms "got_cert" () 4 () "    int got_cert()" 1353 0  () "    int got_cert()" 1353]
+[ebrowse-ms "help" () 0 () "     void help(fstream" 1969 0  "buddy.cc" "void Buddy::help(fstream" 9176]
+[ebrowse-ms "read_cert" () 0 () "    void read_cert()" 1748 0  () "    void read_cert()" 1748]
+[ebrowse-ms "read_messagestr" () 4 () "    int read_messagestr(string" 1500 0  "buddy.cc" "int Buddy::read_messagestr(string" 6176]
+[ebrowse-ms "read_record" () 4 () "     int read_record(unsigned" 2271 2  "buddy.cc" "int Buddy::read_record(unsigned" 5874]
+[ebrowse-ms "send_cert" () 4 () "     void send_cert(int" 1927 0  "buddy.cc" "void Buddy::send_cert(int" 1884]
+[ebrowse-ms "set_cert" () 0 () "     void set_cert(string" 1896 0  "buddy.cc" "void Buddy::set_cert(string" 2216]
+[ebrowse-ms "set_fd" () 0 () "    void set_fd (int" 1849 0  () "    void set_fd (int" 1849]
+[ebrowse-ms "sig_size" () 4 () "    int sig_size()" 1614 0  () "    int sig_size()" 1614]
+[ebrowse-ms "verify" () 4 () "    int verify(const" 1656 0  "buddy.cc" "int Buddy::verify(const" 12078]
+[ebrowse-ms "write_messagestr" () 0 () "    void write_messagestr(const" 1548 0  "buddy.cc" "void Buddy::write_messagestr(const" 11481]
+[ebrowse-ms "writer_thread" () 0 () "    void writer_thread(void" 1593 0  "buddy.cc" "void Buddy::writer_thread(void" 7395]
+[ebrowse-ms "~Buddy" () 0 () "    ~Buddy()" 1231 0  "buddy.cc" "Buddy::~Buddy()" 5663]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Message" () 0"message.h" "class Message{" 1077"message.h" ]
+([ebrowse-ts [ebrowse-cs "NetworkMessage" () 0"networkmessage.h" "class NetworkMessage:" 1418"networkmessage.h" ]
+([ebrowse-ts [ebrowse-cs "BLSSignatureRequestMessage" () 0"networkmessage.h" "class BLSSignatureRequestMessage :" 10746"networkmessage.cc" ]
+()([ebrowse-ms "msg" () 0 () "   string msg;" 11003 0  () () 0]
+[ebrowse-ms "ph" () 0 () "   Phase ph;" 10984 0  () () 0]
+[ebrowse-ms "signature" () 0 () "   G1 signature;" 11020 0  () () 0]
+)
+([ebrowse-ms "BLSSignatureRequestMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 10919 0  () "ddy *buddy, const string &str, int g_recv_ID)
+	:" 29947]
+[ebrowse-ms "BLSSignatureRequestMessage" () 0 () "ase ph, const string& msg, const G1& signature);" 10813 0  () "const G1& signature)
+	:" 29565]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "BLSSignatureResponseMessage" () 0"networkmessage.h" "class BLSSignatureResponseMessage :" 11098"networkmessage.cc" ]
+()([ebrowse-ms "msgHash" () 0 () "  G1 msgHash;" 11359 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 11342 0  () () 0]
+[ebrowse-ms "signatureShare" () 0 () "  G1 signatureShare;" 11405 0  () () 0]
+)
+([ebrowse-ms "BLSSignatureResponseMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 11278 0  () "Buddy *buddy, const string &str, int g_recv_ID):" 30872]
+[ebrowse-ms "BLSSignatureResponseMessage" () 0 () "h, const G1& msgHash, const G1& signatureShare);" 11166 0  () "const G1& signatureShare):" 30483]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGEchoOrReadyMessage" () 0"networkmessage.h" "class DKGEchoOrReadyMessage :" 5228"networkmessage.h" ]
+([ebrowse-ts [ebrowse-cs "DKGEchoMessage" () 0"networkmessage.h" "class DKGEchoMessage :" 9208"networkmessage.h" ]
+()()
+([ebrowse-ms "DKGEchoMessage" () 0 () "  		:" 9498 0  () "  		:" 9498]
+[ebrowse-ms "DKGEchoMessage" () 0 () " &DecidedVSSs, bool includeSignature = true)
+		:" 9270 0  () " &DecidedVSSs, bool includeSignature = true)
+		:" 9270]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGReadyMessage" () 0"networkmessage.h" "class DKGReadyMessage :" 9638"networkmessage.h" ]
+()()
+([ebrowse-ms "DKGReadyMessage" () 0 () "  		:" 9931 0  () "  		:" 9931]
+[ebrowse-ms "DKGReadyMessage" () 0 () "& DecidedVSSs, bool includeSignature = true)
+		:" 9701 0  () "& DecidedVSSs, bool includeSignature = true)
+		:" 9701]
+)
+()
+()
+()
+()
+()()
+])([ebrowse-ms "DSA" () 0 () "  string DSA;" 5845 0  () () 0]
+[ebrowse-ms "DecidedVSSs" () 0 () "  set <NodeID> DecidedVSSs;" 5814 0  () () 0]
+[ebrowse-ms "leader" () 0 () "  NodeID leader;" 5665 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 5865 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 5677 0  () () 0]
+[ebrowse-ms "strMsg" () 0 () "  string strMsg;" 5831 0  () () 0]
+)
+([ebrowse-ms "DKGEchoOrReadyMessage" () 0 () "ype type, const string &str, int g_recv_ID = 0);" 5488 0  "networkmessage.cc" "Type type, const string &str, int g_recv_ID)
+  :" 20328]
+[ebrowse-ms "DKGEchoOrReadyMessage" () 0 () "D> & DecidedVSSs, bool includeSignature = true);" 5318 0  "networkmessage.cc" "NodeID> &DecidedVSSs, bool includeSignature)
+  :" 19480]
+[ebrowse-ms "DKGEchoOrReadyMessage" () 0 () "  DKGEchoOrReadyMessage(){" 5286 0  () "  DKGEchoOrReadyMessage(){" 5286]
+[ebrowse-ms "toString" () 4 () "  string toString(NetworkMessageType" 5603 0  "networkmessage.cc" "GEchoOrReadyMessage::toString(NetworkMessageType" 21413]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGHelpMessage" () 0"networkmessage.h" "class DKGHelpMessage :" 10071"networkmessage.cc" ]
+()([ebrowse-ms "leader" () 0 () "  NodeID leader;" 10263 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 10275 0  () () 0]
+)
+([ebrowse-ms "DKGHelpMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 10194 0  () "uddy *buddy, const string &str, int g_recv_ID)
+:" 22038]
+[ebrowse-ms "DKGHelpMessage" () 0 () "nst BuddySet &buddyset,NodeID leader, Phase ph);" 10126 0  () "t BuddySet &buddyset, NodeID leader, Phase ph)
+:" 21784]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGSendMessage" () 0"networkmessage.h" "class DKGSendMessage :" 7947"networkmessage.cc" ]
+()([ebrowse-ms "dkgEchoOrReadyMsg" () 0 () "  DKGEchoOrReadyMessage dkgEchoOrReadyMsg;" 9019 0  () () 0]
+[ebrowse-ms "dkgEchoOrReadyMsgDSAs" () 0 () "  map <NodeID, string> dkgEchoOrReadyMsgDSAs;" 9106 0  () () 0]
+[ebrowse-ms "leadChgMsg" () 0 () "  LeaderChangeMessage leadChgMsg;" 8664 0  () () 0]
+[ebrowse-ms "leadChgMsgDSAs" () 0 () "  map <NodeID, string> leadChgMsgDSAs;" 8703 0  () () 0]
+[ebrowse-ms "msgType" () 0 () "  NetworkMessageType msgType;" 8790 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 9181 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 8630 0  () () 0]
+[ebrowse-ms "vssReadyMsg" () 0 () "odeID, string>, VSSReadyMessageCmp> vssReadyMsg;" 8870 0  () () 0]
+)
+([ebrowse-ms "DKGSendMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 8568 0  () "dy *buddy, const string &str, int g_recv_ID)
+  :" 14825]
+[ebrowse-ms "DKGSendMessage" () 0 () "st map <NodeID, string> &dkgEchoOrReadyMsgDSAs);" 8321 0  () "  	:" 13001]
+[ebrowse-ms "DKGSendMessage" () 0 () "eID, string>, VSSReadyMessageCmp>& vssReadyMsg);" 8117 0  () "  	:" 11310]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "LeaderChangeMessage" () 0"networkmessage.h" "class LeaderChangeMessage :" 6390"networkmessage.h" ]
+()([ebrowse-ms "DSA" () 0 () "  string DSA;" 7575 0  () () 0]
+[ebrowse-ms "dkgEchoOrReadyMsg" () 0 () "  DKGEchoOrReadyMessage dkgEchoOrReadyMsg;" 7425 0  () () 0]
+[ebrowse-ms "dkgEchoOrReadyMsgDSAs" () 0 () "  map <NodeID, string> dkgEchoOrReadyMsgDSAs;" 7507 0  () () 0]
+[ebrowse-ms "msgType" () 0 () "  NetworkMessageType msgType;" 7201 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 7592 0  () () 0]
+[ebrowse-ms "nextLeader" () 0 () "  NodeID nextLeader;" 7171 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 7150 0  () () 0]
+[ebrowse-ms "strMsg" () 0 () "  string strMsg;" 7609 0  () () 0]
+[ebrowse-ms "vssReadyMsg" () 0 () "odeID, string>, VSSReadyMessageCmp> vssReadyMsg;" 7281 0  () () 0]
+)
+([ebrowse-ms "LeaderChangeMessage" () 0 () "y *buddy, const string &str, int g_recv_ID = 0);" 7052 0  "networkmessage.cc" "dy *buddy, const string &str, int g_recv_ID)
+  :" 25394]
+[ebrowse-ms "LeaderChangeMessage" () 0 () "odeID nextLeader, bool includeSignature = true);" 6926 0  "networkmessage.cc" "*/ NodeID nextLeader, bool includeSignature)
+  :" 24724]
+[ebrowse-ms "LeaderChangeMessage" () 0 () "hoOrReadyMsgDSAs, bool includeSignature = true);" 6675 0  "networkmessage.cc" "  					bool includeSignature)
+  :" 23631]
+[ebrowse-ms "LeaderChangeMessage" () 0 () "p> & vssReadyMsg, bool includeSignature = true);" 6476 0  "networkmessage.cc" "sageCmp> &vssReadyMsg, bool includeSignature)
+	:" 22381]
+[ebrowse-ms "LeaderChangeMessage" () 0 () "  LeaderChangeMessage(){" 6446 0  () "  LeaderChangeMessage(){" 6446]
+[ebrowse-ms "toString" () 4 () "  string toString()" 7125 0  "networkmessage.cc" "string LeaderChangeMessage::toString()" 28763]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "PingNetworkMessage" () 0"networkmessage.h" "class PingNetworkMessage :" 2609"networkmessage.cc" ]
+()([ebrowse-ms "DSA" () 0 () "  string DSA;" 2840 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 2874 0  () () 0]
+[ebrowse-ms "strMsg" () 0 () "  string strMsg;" 2857 0  () () 0]
+[ebrowse-ms "t" () 0 () "  unsigned int t;" 2826 0  () () 0]
+)
+([ebrowse-ms "PingNetworkMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 2732 0  () "Buddy *buddy, const string &str, int g_recv_ID):" 3633]
+[ebrowse-ms "PingNetworkMessage" () 0 () "ssage(const BuddySet &buddyset, unsigned int t);" 2668 0  () "ssage(const BuddySet &buddyset, unsigned int t):" 3264]
+[ebrowse-ms "toString" () 4 () "  string toString()" 2801 0  () "string PingNetworkMessage::toString()" 4300]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "PublicKeyExchangeMessage" () 0"networkmessage.h" "class PublicKeyExchangeMessage:" 10311"networkmessage.cc" ]
+()([ebrowse-ms "publicKey" () 0 () "  G1 publicKey;" 10706 0  () () 0]
+)
+([ebrowse-ms "PublicKeyExchangeMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 10638 0  () "uddy *buddy, const string &str, int g_recv_ID)
+:" 29204]
+[ebrowse-ms "PublicKeyExchangeMessage" () 0 () "(const BuddySet &buddyset, const G1& publicKey);" 10563 0  () "const BuddySet &buddyset, const G1& publicKey)
+:" 28945]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "ReconstructShareMessage" () 0"networkmessage.h" "class ReconstructShareMessage :" 4990() ]
+()([ebrowse-ms "C" () 0 () "  Commitment C;" 5180 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 5164 0  () () 0]
+[ebrowse-ms "share" () 0 () "  Zr share;" 5192 0  () () 0]
+)
+([ebrowse-ms "ReconstructShareMessage" () 0 () "eMessage(const Buddy *buddy, const string &str);" 5117 0  () () 0]
+[ebrowse-ms "ReconstructShareMessage" () 0 () "hareMessage(const BuddySet &buddyset, Phase ph);" 5054 0  () () 0]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSEchoMessage" () 0"networkmessage.h" "class VSSEchoMessage :" 3156"networkmessage.cc" ]
+()([ebrowse-ms "C" () 0 () "  Commitment C;" 3396 0  () () 0]
+[ebrowse-ms "alpha" () 0 () "  Zr alpha;" 3408 0  () () 0]
+[ebrowse-ms "dealer" () 0 () "  NodeID dealer;" 3368 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 3380 0  () () 0]
+)
+([ebrowse-ms "VSSEchoMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 3301 0  () "y *buddy, const string &str, int g_recv_ID) 
+  :" 5475]
+[ebrowse-ms "VSSEchoMessage" () 0 () " const Commitment& commitment, const Zr& alpha);" 3212 0  () "se ph,	const Commitment& C, const Zr& alpha)
+  :" 5138]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSHelpMessage" () 0"networkmessage.h" "class VSSHelpMessage :" 4782"networkmessage.cc" ]
+()([ebrowse-ms "ph" () 0 () "  Phase ph;" 4953 0  () () 0]
+)
+([ebrowse-ms "VSSHelpMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 4891 0  () "dy *buddy, const string &str, int g_recv_ID)
+  :" 8227]
+[ebrowse-ms "VSSHelpMessage" () 0 () "HelpMessage(const BuddySet &buddyset, Phase ph);" 4837 0  () "lpMessage(const BuddySet &buddyset, Phase ph)
+	:" 8029]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSReadyMessage" () 0"networkmessage.h" "class VSSReadyMessage :" 3436"networkmessage.h" ]
+()([ebrowse-ms "C" () 0 () "  Commitment C;" 3801 0  () () 0]
+[ebrowse-ms "DSA" () 0 () "  string DSA;" 3827 0  () () 0]
+[ebrowse-ms "alpha" () 0 () "  Zr alpha;" 3813 0  () () 0]
+[ebrowse-ms "dealer" () 0 () "  NodeID dealer;" 3773 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 3844 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 3785 0  () () 0]
+[ebrowse-ms "strMsg" () 0 () "  string strMsg;" 3861 0  () () 0]
+)
+([ebrowse-ms "VSSReadyMessage" () 0 () "y *buddy, const string &str, int g_recv_ID = 0);" 3674 0  "networkmessage.cc" "y *buddy, const string &str, int g_recv_ID) 
+  :" 6653]
+[ebrowse-ms "VSSReadyMessage" () 0 () "				  bool includeSignature = true);" 3514 0  "networkmessage.cc" "& C, const Zr& alpha, bool includeSignature)
+		:" 5938]
+[ebrowse-ms "VSSReadyMessage" () 0 () "  VSSReadyMessage(){" 3488 0  () "  VSSReadyMessage(){" 3488]
+[ebrowse-ms "toString" () 4 () "  string toString()" 3748 0  "networkmessage.cc" "string VSSReadyMessage::toString()" 7826]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSSendMessage" () 0"networkmessage.h" "class VSSSendMessage :" 2901"networkmessage.cc" ]
+()([ebrowse-ms "C" () 0 () "  Commitment C;" 3113 0  () () 0]
+[ebrowse-ms "a" () 0 () "  Polynomial a;" 3129 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 3097 0  () () 0]
+)
+([ebrowse-ms "VSSSendMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 3035 0  () "dy *buddy, const string &str, int g_recv_ID)
+  :" 4716]
+[ebrowse-ms "VSSSendMessage" () 0 () "st Commitment& commitment, const Polynomial& a);" 2956 0  () "ph, const Commitment &C, const Polynomial &a)
+	:" 4440]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VSSSharedMessage" () 0"networkmessage.h" "class VSSSharedMessage :" 4288"networkmessage.cc" ]
+()([ebrowse-ms "dealer" () 0 () "    NodeID dealer;" 4594 0  () () 0]
+[ebrowse-ms "msgDSAs" () 0 () "  	map <NodeID, string> msgDSAs;" 4683 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  	bool msgValid;" 4755 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  	Phase ph;" 4575 0  () () 0]
+[ebrowse-ms "readyMsg" () 0 () "  	VSSReadyMessage readyMsg;" 4626 0  () () 0]
+)
+([ebrowse-ms "VSSSharedMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 4462 0  () "    :" 9153]
+[ebrowse-ms "VSSSharedMessage" () 0 () "&readyMsg, const map <NodeID, string> &msgDSAs);" 4344 0  () "								const map <NodeID, string>& msgDSAs)
+	:" 8529]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "VerifiedBLSSignaturesMessage" () 0"networkmessage.h" "class VerifiedBLSSignaturesMessage :" 11797"networkmessage.cc" ]
+()([ebrowse-ms "msgHash" () 0 () "  G1 msgHash;" 12072 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 12120 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 12053 0  () () 0]
+[ebrowse-ms "signatures" () 0 () "  map <NodeID, G1> signatures;" 12103 0  () () 0]
+)
+([ebrowse-ms "VerifiedBLSSignaturesMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 11989 0  () "uddy *buddy, const string &str, int g_recv_ID)
+:" 33336]
+[ebrowse-ms "VerifiedBLSSignaturesMessage" () 0 () "1& msgHash, const map <NodeID, G1>& signatures);" 11866 0  () "const map <NodeID, G1>& signatures):" 32728]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "WrongBLSSignaturesMessage" () 0"networkmessage.h" "class WrongBLSSignaturesMessage :" 11443"networkmessage.cc" ]
+()([ebrowse-ms "msgHash" () 0 () "  G1 msgHash;" 11707 0  () () 0]
+[ebrowse-ms "msgValid" () 0 () "  bool msgValid;" 11756 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 11693 0  () () 0]
+[ebrowse-ms "signatures" () 0 () "  map <NodeID, G1> signatures;" 11738 0  () () 0]
+)
+([ebrowse-ms "WrongBLSSignaturesMessage" () 0 () "Buddy *buddy, const string &str, int g_recv_ID);" 11629 0  () "uddy *buddy, const string &str, int g_recv_ID)
+:" 31916]
+[ebrowse-ms "WrongBLSSignaturesMessage" () 0 () "1& msgHash, const map <NodeID, G1>& signatures);" 11509 0  () "const map <NodeID, G1>& signatures):" 31316]
+)
+()
+()
+()
+()
+()()
+])([ebrowse-ms "netMsgStr" () 0 () "	string netMsgStr;" 2221 2  () () 0]
+)
+([ebrowse-ms "NetworkMessage" () 0 () "orkMessage(/*const Buddy *buddy,*/  string str):" 2309 1  () "orkMessage(/*const Buddy *buddy,*/  string str):" 2309]
+[ebrowse-ms "NetworkMessage" () 0 () "	NetworkMessage(const NetworkMessage& msg):" 1517 0  () "	NetworkMessage(const NetworkMessage& msg):" 1517]
+[ebrowse-ms "NetworkMessage" () 0 () "	NetworkMessage() {" 1465 0  () "	NetworkMessage() {" 1465]
+[ebrowse-ms "get_message_type" () 4 () "	NetworkMessageType get_message_type()" 1777 0  () "	NetworkMessageType get_message_type()" 1777]
+[ebrowse-ms "get_netMsgStr" () 4 () "    const string& get_netMsgStr()" 1949 0  () "    const string& get_netMsgStr()" 1949]
+[ebrowse-ms "operator =" () 0 () "	NetworkMessage& operator=(const" 2072 0  "networkmessage.cc" "NetworkMessage& NetworkMessage::operator=(const" 939]
+[ebrowse-ms "set_netMsgStr" () 0 () "	void set_netMsgStr(const" 2414 1  () "	void set_netMsgStr(const" 2414]
+)
+([ebrowse-ms "g_recv_ID" () 0 () "	static int g_recv_ID;" 2261 1  () () 0]
+[ebrowse-ms "headerLength" () 0 () "	static const unsigned short headerLength = 5;" 2141 0  () () 0]
+[ebrowse-ms "msgIDLength" () 0 () "	static const unsigned short msgIDLength = 4;" 2187 0  () () 0]
+)
+([ebrowse-ms "read_message" () 0 () "	static NetworkMessage* read_message(SystemType" 1646 0  "networkmessage.cc" "Message *NetworkMessage::read_message(SystemType" 1198]
+)
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "TimerMessage" () 0"timermessage.h" "class TimerMessage:" 1151"timermessage.h" ]
+([ebrowse-ts [ebrowse-cs "LeaderChangeTimerMessage" () 0"timermessage.h" "class LeaderChangeTimerMessage:" 1492"timermessage.h" ]
+()([ebrowse-ms "leader" () 0 () "  NodeID leader;" 1661 0  () () 0]
+[ebrowse-ms "ph" () 0 () "  Phase ph;" 1673 0  () () 0]
+)
+([ebrowse-ms "LeaderChangeTimerMessage" () 0 () "derChangeTimerMessage(NodeID leader, Phase ph) :" 1556 0  () "derChangeTimerMessage(NodeID leader, Phase ph) :" 1556]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "PhaseChangeTimerMessage" () 0"timermessage.h" "class PhaseChangeTimerMessage:" 1708"timermessage.h" ]
+()([ebrowse-ms "nextPh" () 0 () "  Phase nextPh;" 1856 0  () () 0]
+)
+([ebrowse-ms "PhaseChangeTimerMessage" () 0 () "  PhaseChangeTimerMessage(Phase nextPh) :" 1770 0  () "  PhaseChangeTimerMessage(Phase nextPh) :" 1770]
+)
+()
+()
+()
+()
+()()
+])([ebrowse-ms "id" () 0 () "    TimerID id;" 1377 1  () () 0]
+[ebrowse-ms "type" () 0 () "    TimerMessageType type;" 1361 1  () () 0]
+)
+([ebrowse-ms "TimerMessage" () 0 () "    TimerMessage(TimerMessageType type):" 1411 1  () "    TimerMessage(TimerMessageType type):" 1411]
+[ebrowse-ms "get_id" () 4 () "    TimerID get_id()" 1198 0  () "    TimerID get_id()" 1198]
+[ebrowse-ms "get_type" () 4 () "    TimerMessageType get_type()" 1298 0  () "    TimerMessageType get_type()" 1298]
+[ebrowse-ms "set_id" () 0 () "    void set_id(TimerID" 1243 0  () "    void set_id(TimerID" 1243]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "UserMessage" () 0"usermessage.h" "class UserMessage:" 1233"usermessage.h" ]
+([ebrowse-ts [ebrowse-cs "BLSSignatureRequestUserMessage" () 0"usermessage.h" "class BLSSignatureRequestUserMessage:" 4102"usermessage.h" ]
+()([ebrowse-ms "msg" () 0 () "	string msg;" 4278 0  () () 0]
+)
+([ebrowse-ms "BLSSignatureRequestUserMessage" () 0 () "SSignatureRequestUserMessage(const string& str){" 4221 0  () "SSignatureRequestUserMessage(const string& str){" 4221]
+[ebrowse-ms "BLSSignatureRequestUserMessage" () 0 () "	BLSSignatureRequestUserMessage() {" 4165 0  () "	BLSSignatureRequestUserMessage() {" 4165]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "ConfirmLeaderMessage" () 0"usermessage.h" "class ConfirmLeaderMessage :" 1982"usermessage.h" ]
+()()
+([ebrowse-ms "ConfirmLeaderMessage" () 0 () "  ConfirmLeaderMessage(){" 2036 0  () "  ConfirmLeaderMessage(){" 2036]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "DKGCompleteMessage" () 0"usermessage.h" "class DKGCompleteMessage :" 2623"usermessage.h" ]
+()([ebrowse-ms "C" () 0 () "    Commitment C;" 3195 2  () () 0]
+[ebrowse-ms "DecidedVSSs" () 0 () "  	set <NodeID> DecidedVSSs;" 3177 2  () () 0]
+[ebrowse-ms "leader" () 0 () "  	NodeID leader;" 3148 2  () () 0]
+[ebrowse-ms "ph" () 0 () "  	Phase ph;" 3130 2  () () 0]
+[ebrowse-ms "share" () 0 () "   	Zr share;" 3209 2  () () 0]
+)
+([ebrowse-ms "DKGCompleteMessage" () 0 () "VSSs, const Commitment& C, const Zr& share) 
+		:" 2681 0  () "VSSs, const Commitment& C, const Zr& share) 
+		:" 2681]
+[ebrowse-ms "dump" () 4 () "  	void dump(FILE" 3065 0  "usermessage.cc" "void DKGCompleteMessage::dump(FILE" 2344]
+[ebrowse-ms "getCommitment" () 4 () " 	const Commitment getCommitment()" 2984 0  () " 	const Commitment getCommitment()" 2984]
+[ebrowse-ms "getLeader" () 4 () "  	NodeID getLeader()" 2926 0  () "  	NodeID getLeader()" 2926]
+[ebrowse-ms "getPhase" () 4 () "  	Phase getPhase()" 2885 0  () "  	Phase getPhase()" 2885]
+[ebrowse-ms "getShare" () 4 () "  	const Zr getShare()" 3025 0  () "  	const Zr getShare()" 3025]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "PingUserMessage" () 0"usermessage.h" "class PingUserMessage :" 1486"usermessage.h" ]
+()([ebrowse-ms "who" () 0 () "  int who;" 1640 2  () () 0]
+)
+([ebrowse-ms "PingUserMessage" () 0 () "  PingUserMessage(int who) :" 1537 0  () "  PingUserMessage(int who) :" 1537]
+[ebrowse-ms "get_who" () 4 () "  int get_who()" 1598 0  () "  int get_who()" 1598]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "ReconstructMessage" () 0"usermessage.h" "class ReconstructMessage :" 3525"usermessage.h" ]
+()()
+([ebrowse-ms "ReconstructMessage" () 0 () "  ReconstructMessage(){" 3577 0  () "  ReconstructMessage(){" 3577]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "RecoverMessage" () 0"usermessage.h" "class RecoverMessage :" 3236"usermessage.h" ]
+()([ebrowse-ms "ph" () 0 () "  Phase ph;" 3494 0  () () 0]
+)
+([ebrowse-ms "RecoverMessage" () 0 () "  RecoverMessage(const string& str) {" 3288 0  () "  RecoverMessage(const string& str) {" 3288]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "ShareMessage" () 0"usermessage.h" "class ShareMessage :" 1666"usermessage.h" ]
+()()
+([ebrowse-ms "ShareMessage" () 0 () "  ShareMessage(){" 1712 0  () "  ShareMessage(){" 1712]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "StateInformationMessage" () 0"usermessage.h" "class StateInformationMessage:" 3846"usermessage.h" ]
+()([ebrowse-ms "type" () 0 () "  StateInformationType type;" 4038 0  () () 0]
+)
+([ebrowse-ms "StateInformationMessage" () 0 () "  StateInformationMessage(const string& str);" 3984 0  "usermessage.cc" "age::StateInformationMessage(const string& str){" 2780]
+[ebrowse-ms "StateInformationMessage" () 0 () "  StateInformationMessage(){" 3903 0  () "  StateInformationMessage(){" 3903]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "UserSharedMessage" () 0"usermessage.h" "class UserSharedMessage :" 2094"usermessage.h" ]
+()([ebrowse-ms "C" () 0 () "    Commitment C;" 2578 2  () () 0]
+[ebrowse-ms "dealer" () 0 () "  	NodeID dealer;" 2560 2  () () 0]
+[ebrowse-ms "ph" () 0 () "  	Phase ph;" 2542 2  () () 0]
+[ebrowse-ms "share" () 0 () "   	Zr share;" 2592 2  () () 0]
+)
+([ebrowse-ms "UserSharedMessage" () 0 () "aler, const Commitment& C, const Zr& share) 
+		:" 2151 0  () "aler, const Commitment& C, const Zr& share) 
+		:" 2151]
+[ebrowse-ms "dump" () 4 () "  	void dump(FILE" 2477 0  "usermessage.cc" "void UserSharedMessage::dump(FILE" 2139]
+[ebrowse-ms "getCommitment" () 4 () " 	const Commitment getCommitment()" 2396 0  () " 	const Commitment getCommitment()" 2396]
+[ebrowse-ms "getDealer" () 4 () "  	NodeID getDealer()" 2338 0  () "  	NodeID getDealer()" 2338]
+[ebrowse-ms "getPhase" () 4 () "  	Phase getPhase()" 2296 0  () "  	Phase getPhase()" 2296]
+[ebrowse-ms "getShare" () 4 () "  	const Zr getShare()" 2437 0  () "  	const Zr getShare()" 2437]
+)
+()
+()
+()
+()
+()()
+])([ebrowse-ms "msgtype" () 0 () "  UserMessageType msgtype;" 1458 1  () () 0]
+)
+([ebrowse-ms "UserMessage" () 0 () "  UserMessage() {" 1313 0  () "  UserMessage() {" 1313]
+[ebrowse-ms "get_type" () 4 () "  UserMessageType get_type()" 1393 0  () "  UserMessageType get_type()" 1393]
+)
+()
+([ebrowse-ms "read_message" () 0 () "  static UserMessage* read_message()" 1296 0  "usermessage.cc" "UserMessage *UserMessage::read_message()" 1020]
+)
+()
+()
+()()
+])([ebrowse-ms "message_class" () 0 () "	int message_class;" 1138 1  () () 0]
+[ebrowse-ms "msg_ID" () 0 () "	int msg_ID;" 1151 1  () () 0]
+)
+([ebrowse-ms "Message" () 0 () "	Message(){" 1171 0  () "	Message(){" 1171]
+[ebrowse-ms "get_ID" () 4 () "	int get_ID()" 1279 0  () "	int get_ID()" 1279]
+[ebrowse-ms "get_class" () 4 () "	int get_class()" 1234 0  () "	int get_class()" 1234]
+)
+([ebrowse-ms "msgctr" () 0 () "	static int msgctr;" 1106 2  "message.cc" "int Message::msgctr;" 889]
+)
+([ebrowse-ms "init_ctr" () 0 () "	static void init_ctr()" 1328 0  "message.cc" "void Message::init_ctr()" 978]
+[ebrowse-ms "next_ID" () 0 () "	static int next_ID ()" 1352 0  "message.cc" "int Message::next_ID ()" 914]
+)
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Timer" () 0"timer.h" "class Timer {" 968"timer.cc" ]
+()([ebrowse-ms "id" () 0 () "	TimerID id;" 1535 2  () () 0]
+[ebrowse-ms "msg" () 0 () "	TimerMessage *msg;" 1577 2  () () 0]
+[ebrowse-ms "next" () 0 () "	Timer *next;" 1591 2  () () 0]
+)
+([ebrowse-ms "Timer" () 0 () "const struct timeval *whenp, TimerMessage *msg);" 1478 2  () "onst struct timeval *whenp, TimerMessage *msg) :" 1326]
+)
+()
+([ebrowse-ms "cancel" () 0 () "	static void cancel(const" 1164 0  () "void Timer::cancel(const" 1981]
+[ebrowse-ms "get_next" () 0 () "	static TimerMessage *get_next()" 1450 0  () "TimerMessage *Timer::get_next()" 2693]
+[ebrowse-ms "new_timer" () 0 () "	static TimerID new_timer(TimerMessage" 1078 0  () "TimerID Timer::new_timer(TimerMessage" 1505]
+)
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "ContactEntry" () 0"buddyset.h" "struct ContactEntry {" 1131() ]
+()([ebrowse-ms "addr" () 0 () "    in_addr_t addr;" 1151 0  () () 0]
+[ebrowse-ms "port" () 0 () "    in_port_t port;" 1171 0  () () 0]
+)
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "commitmentandshare" () 0"node.cc" "struct commitmentandshare{" 1245() ]
+()([ebrowse-ms "C" () 0 () "	Commitment C;" 1260 0  () () 0]
+[ebrowse-ms "share" () 0 () "	Zr share;" 1271 0  () () 0]
+)
+()
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "Polynomial" () 0"polynomial.h" "class Polynomial {" 982"polynomial.h" ]
+()([ebrowse-ms "coeffs" () 0 () "	vector<Zr> coeffs;" 3271 2  () () 0]
+)
+([ebrowse-ms "Polynomial" () 0 () "	Polynomial(const Polynomial &p);" 1705 0  "polynomial.cc" "Polynomial::Polynomial(const Polynomial &p)
+{" 2115]
+[ebrowse-ms "Polynomial" () 0 () "    Polynomial(const vector<Zr> coeffs);" 1531 0  "polynomial.cc" "olynomial::Polynomial(const vector<Zr> coeffs)
+{" 1872]
+[ebrowse-ms "Polynomial" () 0 () "			   const Zr& term);" 1377 0  "polynomial.cc" "					   const Zr& term)
+{" 1524]
+[ebrowse-ms "Polynomial" () 0 () "stemParam &sys, unsigned int t, const Zr& term);" 1240 0  "polynomial.cc" "temParam &sys, unsigned int t, const Zr& term)
+{" 1208]
+[ebrowse-ms "Polynomial" () 0 () "ynomial(const SystemParam &sys, unsigned int t);" 1110 0  "polynomial.cc" "nomial(const SystemParam &sys, unsigned int t)
+{" 947]
+[ebrowse-ms "Polynomial" () 0 () "	Polynomial() {" 1039 0  () "	Polynomial() {" 1039]
+[ebrowse-ms "degree" () 4 () "	int degree()" 2917 0  () "	int degree()" 2917]
+[ebrowse-ms "dump" () 4 () "	void dump(FILE" 3005 0  "polynomial.cc" "void Polynomial::dump(FILE" 4962]
+[ebrowse-ms "getCoeff" () 4 () "	const Zr getCoeff(unsigned" 2592 0  "polynomial.cc" "const Zr Polynomial::getCoeff(unsigned" 4433]
+[ebrowse-ms "getCoeffs" () 4 () "    const vector<Zr> getCoeffs()" 2673 0  () "    const vector<Zr> getCoeffs()" 2673]
+[ebrowse-ms "merge" () 0 () "	Polynomial& merge(const" 3145 2  "polynomial.cc" "Polynomial& Polynomial::merge(const" 2615]
+[ebrowse-ms "operator ()" () 4 () "    const Zr operator()(const" 2822 0  "polynomial.cc" "const Zr Polynomial::operator()(const" 4670]
+[ebrowse-ms "operator *" () 4 () "	const Polynomial operator*(const" 2412 0  () "	const Polynomial operator*(const" 2412]
+[ebrowse-ms "operator *=" () 0 () "	Polynomial& operator*=(const" 2130 0  "polynomial.cc" "Polynomial& Polynomial::operator*=(const" 3622]
+[ebrowse-ms "operator +" () 4 () "	const Polynomial operator+(const" 2212 0  () "	const Polynomial operator+(const" 2212]
+[ebrowse-ms "operator +=" () 0 () "	Polynomial& operator+=(const" 2034 0  "polynomial.cc" "Polynomial& Polynomial::operator+=(const" 3432]
+[ebrowse-ms "operator -" () 4 () "	const Polynomial operator-(const" 2312 0  () "	const Polynomial operator-(const" 2312]
+[ebrowse-ms "operator -=" () 0 () "	Polynomial& operator-=(const" 2082 0  "polynomial.cc" "Polynomial& Polynomial::operator-=(const" 3527]
+[ebrowse-ms "operator =" () 0 () "	Polynomial& operator=(const" 1986 0  "polynomial.cc" "Polynomial& Polynomial::operator=(const" 3288]
+[ebrowse-ms "zero" () 0 () "	void zero()" 1796 0  "polynomial.cc" "void Polynomial::zero()" 2408]
+[ebrowse-ms "~Polynomial" () 0 () "	~Polynomial()" 1752 0  "polynomial.cc" "Polynomial::~Polynomial()" 2341]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "SystemParam" () 0"systemparam.h" "class SystemParam{" 1169"systemparam.h" ]
+()([ebrowse-ms "U" () 0 () "  G1 U;" 1935 2  () () 0]
+[ebrowse-ms "e" () 0 () "  const Pairing e;" 1927 2  () () 0]
+[ebrowse-ms "f" () 0 () "  NodeID f;" 2027 2  () () 0]
+[ebrowse-ms "n" () 0 () "  NodeID n;" 1963 2  () () 0]
+[ebrowse-ms "phaseDuration" () 0 () "  float phaseDuration;" 2095 2  () () 0]
+[ebrowse-ms "t" () 0 () "  NodeID t;" 1993 2  () () 0]
+)
+([ebrowse-ms "SystemParam" () 0 () "  SystemParam(const SystemParam &s);" 1840 2  () () 0]
+[ebrowse-ms "SystemParam" () 0 () "const char* sysParamFileStr = \"system.param\");" 1197 0  "systemparam.cc" "						 const char *sysParamFileStr)
+  :" 1764]
+[ebrowse-ms "get_Pairing" () 4 () "  const Pairing& get_Pairing ()" 1768 0  () "  const Pairing& get_Pairing ()" 1768]
+[ebrowse-ms "get_U" () 4 () "  const G1& get_U ()" 1719 0  () "  const G1& get_U ()" 1719]
+[ebrowse-ms "get_f" () 4 () "  NodeID get_f ()" 1630 0  () "  NodeID get_f ()" 1630]
+[ebrowse-ms "get_n" () 4 () "  NodeID get_n ()" 1459 0  () "  NodeID get_n ()" 1459]
+[ebrowse-ms "get_t" () 4 () "  NodeID get_t ()" 1544 0  () "  NodeID get_t ()" 1544]
+[ebrowse-ms "operator =" () 0 () "  SystemParam &operator=(const" 1888 2  () () 0]
+[ebrowse-ms "set_f" () 0 () "  void set_f(NodeID" 1669 0  () "  void set_f(NodeID" 1669]
+[ebrowse-ms "set_n" () 0 () "  void set_n(NodeID" 1498 0  () "  void set_n(NodeID" 1498]
+[ebrowse-ms "set_t" () 0 () "  void set_t(NodeID" 1583 0  () "  void set_t(NodeID" 1583]
+[ebrowse-ms "~SystemParam" () 0 () "  ~SystemParam()" 1438 0  () "  ~SystemParam()" 1438]
+)
+()
+()
+()
+()
+()()
+][ebrowse-ts [ebrowse-cs "*Globals*" () 0() () 0"application.h" ]
+()([ebrowse-ms "CommitmentType" () 0 () () 0 0  "commitment.h" "{Feldman_Matrix, Feldman_Vector} CommitmentType;" 1054]
+[ebrowse-ms "IOType" () 0 () () 0 0  "usermessage.h" "typedef enum {IN, OUT} IOType;" 1007]
+[ebrowse-ms "NetworkMessageType" () 0 () () 0 0  "networkmessage.h" "    } NetworkMessageType;" 1351]
+[ebrowse-ms "NodeState" () 0 () () 0 0  "node.cc" "LEADER_CHANGE_STARTED, DKG_COMPLETED} NodeState;" 1217]
+[ebrowse-ms "StateInformationType" () 0 () () 0 0  "usermessage.h" "  ACTIVE_NODES} StateInformationType;" 3814]
+[ebrowse-ms "SystemType" () 0 () () 0 0  "message.h" "typedef enum {NODE, BLS_CLIENT} SystemType;" 997]
+[ebrowse-ms "TimerMessageType" () 0 () () 0 0  "timermessage.h" "} TimerMessageType;" 1089]
+[ebrowse-ms "UserMessageType" () 0 () () 0 0  "usermessage.h" "} UserMessageType;" 1170]
+[ebrowse-ms "commitmenttype" () 0 () () 0 0  "monitor.cc" "int commitmenttype = 0;" 1841]
+[ebrowse-ms "std" () 0 () () 0 0  "usermessage.cc" "using namespace std;" 944]
+[ebrowse-ms "system_param_part2" () 0 () () 0 0  "monitor.cc" "tring system_param_part2 = \"phaseDuration 15\";" 1325]
+[ebrowse-ms "system_param_part3" () 0 () () 0 0  "monitor.cc" "57814028743651030702748906271871797495725636]\";" 1669]
+[ebrowse-ms "target_dir" () 0 () () 0 0  "monitor.cc" "string target_dir = \"datadir_matrices\";" 1740]
+[ebrowse-ms "testcase_file" () 0 () () 0 0  "monitor.cc" "string testcase_file = \"testcases\";" 1776]
+[ebrowse-ms "testcases" () 0 () () 0 0  "monitor.cc" "vector<Testcase> testcases;" 2067]
+[ebrowse-ms "tv" () 0 () () 0 0  "timer.cc" "    return tv;" 2658]
+[ebrowse-ms "used_nodes" () 0 () () 0 0  "monitor.cc" "string used_nodes[MAX_N+1];" 2039]
+[ebrowse-ms "used_nodes_file" () 0 () () 0 0  "monitor.cc" "string used_nodes_file = \"used100.txt\";" 1816]
+[ebrowse-ms "version_chars" () 0 () () 0 0  "monitor.cc" "char* version_chars = \"_7_1\";" 1700]
+)
+([ebrowse-ms "addMsgHeader" () 0 "io.h" "void addMsgHeader(NetworkMessageType" 1405 0  "io.cc" "void addMsgHeader(NetworkMessageType" 4650]
+[ebrowse-ms "addMsgID" () 0 "io.h" "void addMsgID(int" 1445 0  "io.cc" "void addMsgID(int" 4320]
+[ebrowse-ms "hash_id" () 0 "io.h" "void hash_id(G1" 2102 0  "io.cc" "void hash_id(G1" 6049]
+[ebrowse-ms "hash_msg" () 0 "io.h" "void hash_msg(G1" 2156 0  "io.cc" "void hash_msg(G1" 5766]
+[ebrowse-ms "hexdump" () 0 "io.h" "void hexdump(FILE" 959 0  "io.cc" "void hexdump(FILE" 905]
+[ebrowse-ms "lagrange_apply" () 0 "lagrange.h" "const G1 lagrange_apply(const" 2054 0  "lagrange.cc" "const Zr lagrange_apply(const" 1614]
+[ebrowse-ms "lagrange_coeffs" () 0 "lagrange.h" "const vector <Zr> lagrange_coeffs(const" 1493 0  "lagrange.cc" "const vector <Zr> lagrange_coeffs(const" 909]
+[ebrowse-ms "main" () 0 "monitor.cc" "int main ()" 2081 0  "recovery.cc" "int main()" 949]
+[ebrowse-ms "main" () 0 "blsclient.cc" "int main(int" 8039 0  "node.cc" "int main(int" 61076]
+[ebrowse-ms "read_G1" () 0 "io.h" "void read_G1(const" 1750 0  "io.cc" "void read_G1(const" 2324]
+[ebrowse-ms "read_Poly" () 0 "io.h" "void read_Poly(const" 2239 0  "io.cc" "void read_Poly(const" 3333]
+[ebrowse-ms "read_Zr" () 0 "io.h" "void read_Zr(const" 1877 0  "io.cc" "void read_Zr(const" 2910]
+[ebrowse-ms "read_byte" () 0 "io.h" "void read_byte(const" 1291 0  "io.cc" "void read_byte(const" 1994]
+[ebrowse-ms "read_sig" () 0 "io.h" "bool read_sig(const" 1564 0  "io.cc" "bool read_sig(const" 5293]
+[ebrowse-ms "read_str" () 0 "io.h" "void read_str(const" 2023 0  "io.cc" "void read_str(const" 4115]
+[ebrowse-ms "read_ui" () 0 "io.h" "void read_ui(const" 1047 0  "io.cc" "void read_ui(const" 1285]
+[ebrowse-ms "read_us" () 0 "io.h" "void read_us(const" 1167 0  "io.cc" "void read_us(const" 1669]
+[ebrowse-ms "write_G1" () 0 "io.h" "void write_G1(string" 1707 0  "io.cc" "void write_G1(string" 2167]
+[ebrowse-ms "write_Poly" () 0 "io.h" "void write_Poly(string" 2339 0  "io.cc" "void write_Poly(string" 3630]
+[ebrowse-ms "write_Zr" () 0 "io.h" "void write_Zr(string" 1834 0  "io.cc" "void write_Zr(string" 2789]
+[ebrowse-ms "write_byte" () 0 "io.h" "void write_byte(string" 1244 0  "io.cc" "void write_byte(string" 1860]
+[ebrowse-ms "write_fully" () 0 "buddy.cc" "ssize_t write_fully(int" 7071 0  "buddy.cc" "ssize_t write_fully(int" 7071]
+[ebrowse-ms "write_sig" () 0 "io.h" "void write_sig(const" 1486 0  "io.cc" "void write_sig(const" 5021]
+[ebrowse-ms "write_str" () 0 "io.h" "void write_str(string" 1962 0  "io.cc" "void write_str(string" 3822]
+[ebrowse-ms "write_ui" () 0 "io.h" "void write_ui(string" 1003 0  "io.cc" "void write_ui(string" 1062]
+[ebrowse-ms "write_us" () 0 "io.h" "void write_us(string" 1121 0  "io.cc" "void write_us(string" 1506]
+)
+([ebrowse-ms "first" () 0 () () 0 0  "timer.cc" "static Timer *first = NULL;" 894]
+[ebrowse-ms "nextid" () 0 () () 0 0  "timer.cc" "static TimerID nextid = 0;" 921]
+)
+([ebrowse-ms "add_elt" () 0 "bipolynomial.cc" "static void add_elt(Zr" 3053 0  "polynomial.cc" "static void add_elt(Zr" 2503]
+[ebrowse-ms "add_ms" () 0 "timer.cc" "static void add_ms(struct" 948 0  "timer.cc" "static void add_ms(struct" 948]
+[ebrowse-ms "copy_elt" () 0 "bipolynomial.cc" "static void copy_elt(Zr" 3005 0  "polynomial.cc" "static void copy_elt(Zr" 2455]
+[ebrowse-ms "diff_ms" () 0 "timer.cc" "static int diff_ms(struct" 1193 0  "timer.cc" "static int diff_ms(struct" 1193]
+[ebrowse-ms "launch_writer_thread" () 0 "buddy.cc" "static void *launch_writer_thread(void" 6949 0  "buddy.cc" "static void *launch_writer_thread(void" 6949]
+[ebrowse-ms "sub_elt" () 0 "bipolynomial.cc" "static void sub_elt(Zr" 3102 0  "polynomial.cc" "static void sub_elt(Zr" 2552]
+)
+([ebrowse-ms "BUFF" () 512 () () 0 0  "monitor.cc" "#define BUFF " 1952]
+[ebrowse-ms "COLL_DELAY" () 512 () () 0 0  "monitor.cc" "#define COLL_DELAY " 1895]
+[ebrowse-ms "CONF_DELAY" () 512 () () 0 0  "monitor.cc" "#define CONF_DELAY " 1874]
+[ebrowse-ms "HashSize" () 512 () () 0 0  "commitmentvector.cc" "#define HashSize " 911]
+[ebrowse-ms "ID_BULLETIN" () 512 () () 0 0  () "#define ID_BULLETIN " 1106]
+[ebrowse-ms "MAX_F" () 512 () () 0 0  "monitor.cc" "#define MAX_F " 2008]
+[ebrowse-ms "MAX_N" () 512 () () 0 0  "monitor.cc" "#define MAX_N " 1972]
+[ebrowse-ms "MAX_T" () 512 () () 0 0  "monitor.cc" "#define MAX_T " 1991]
+[ebrowse-ms "NODEID_NONE" () 512 () () 0 0  "systemparam.h" "#define NODEID_NONE " 1114]
+[ebrowse-ms "PHASE_DURATION" () 512 () () 0 0  () "#define PHASE_DURATION " 1131]
+[ebrowse-ms "PORT" () 512 () () 0 0  "monitor.cc" "#define PORT " 1934]
+[ebrowse-ms "REMO_DELAY" () 512 () () 0 0  "monitor.cc" "#define REMO_DELAY " 1917]
+[ebrowse-ms "__APPLICATION_H__" () 512 () () 0 0  () "#define __APPLICATION_H__
+" 899]
+[ebrowse-ms "__BIPOLYNOMIAL_H__" () 512 () () 0 0  "bipolynomial.h" "#define __BIPOLYNOMIAL_H__
+" 901]
+[ebrowse-ms "__BUDDYSET_H__" () 512 () () 0 0  "buddyset.h" "#define __BUDDYSET_H__
+" 893]
+[ebrowse-ms "__BUDDY_H__" () 512 () () 0 0  "buddy.h" "#define __BUDDY_H__
+" 924]
+[ebrowse-ms "__COMMITMENT_H__" () 512 () () 0 0  "commitment.h" "#define __COMMITMENT_H__
+" 897]
+[ebrowse-ms "__COMMITMENT_MATRIX_H__" () 512 () () 0 0  "commitmentmatrix.h" "#define __COMMITMENT_MATRIX_H__
+" 911]
+[ebrowse-ms "__COMMITMENT_VECTOR_H__" () 512 () () 0 0  "commitmentvector.h" "#define __COMMITMENT_VECTOR_H__
+" 911]
+[ebrowse-ms "__EXCEPTIONS_H__" () 512 () () 0 0  "exceptions.h" "#define __EXCEPTIONS_H__
+" 897]
+[ebrowse-ms "__IO_H__" () 512 () () 0 0  "io.h" "#define __IO_H__
+" 881]
+[ebrowse-ms "__LAGRANGE_H__" () 512 () () 0 0  "lagrange.h" "#define __LAGRANGE_H__
+" 893]
+[ebrowse-ms "__MESSAGE_H__" () 512 () () 0 0  "message.h" "#define __MESSAGE_H__
+" 891]
+[ebrowse-ms "__NETWORK_MESSAGE_H__" () 512 () () 0 0  "networkmessage.h" "#define __NETWORK_MESSAGE_H__
+" 907]
+[ebrowse-ms "__POLYNOMIAL_H__" () 512 () () 0 0  "polynomial.h" "#define __POLYNOMIAL_H__
+" 897]
+[ebrowse-ms "__SYSTEM_PARAM_H__" () 512 () () 0 0  "systemparam.h" "#define __SYSTEM_PARAM_H__
+" 901]
+[ebrowse-ms "__TIMER_H__" () 512 () () 0 0  "timer.h" "#define __TIMER_H__
+" 887]
+[ebrowse-ms "__TIMER_MESSAGE_H__" () 512 () () 0 0  "timermessage.h" "#define __TIMER_MESSAGE_H__
+" 903]
+[ebrowse-ms "__USERMESSAGE_H__" () 512 () () 0 0  "usermessage.h" "#define __USERMESSAGE_H__
+" 899]
+)
+([ebrowse-ms "BuddyID" () 0 () () 0 0  "buddy.h" "typedef NodeID BuddyID;" 1075]
+[ebrowse-ms "NodeID" () 0 () () 0 0  "systemparam.h" "typedef unsigned short NodeID;" 1058]
+[ebrowse-ms "NodeIDSize" () 0 () () 0 0  "systemparam.h" "typedef unsigned short NodeIDSize;" 1093]
+[ebrowse-ms "Phase" () 0 () () 0 0  "systemparam.h" "typedef unsigned int Phase;" 1148]
+[ebrowse-ms "TimerID" () 0 () () 0 0  "timermessage.h" "typedef unsigned int TimerID;" 980]
+)
+()()
+]
