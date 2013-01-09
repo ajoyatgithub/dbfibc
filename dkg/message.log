@@ -1,39 +1,291 @@
--Run node 1 starting at 1357585926.669403 with version 8.0
--Function node 1 starting at 1357585926.669509
-LEADER_CHANGE 1 for * SENT from 1 to 1 at 1357585926.670325 standard 1
-COMPUTE_BI * for * RS from 1 to * at 1357585926.670688
-COMPUTE_CM * for * RS from 1 to * at 1357585926.671688
-VSS_SEND 3 for * SENT from 1 to 1 at 1357585926.932699 standard 1
-VSS_SEND 4 for * SENT from 1 to 2 at 1357585926.932838 standard 1
-VSS_SEND 5 for * SENT from 1 to 3 at 1357585926.932955 standard 1
-VSS_SEND 6 for * SENT from 1 to 4 at 1357585926.933129 standard 1
-VSS_SEND 7 for * SENT from 1 to 5 at 1357585926.933317 standard 1
-VSS_SEND 8 for * SENT from 1 to 6 at 1357585926.933406 standard 1
-VSS_SEND 9 for * SENT from 1 to 7 at 1357585926.933531 standard 1
-VSS_SEND 10 for * SENT from 1 to 8 at 1357585926.933621 standard 1
-VSS_SEND 11 for * SENT from 1 to 9 at 1357585926.933730 standard 1
-VSS_SEND 12 for * SENT from 1 to 10 at 1357585926.933818 standard 1
-* I am ready to receive at 1357585926.933836
-VSS_HELP 13 for * SENT from 1 to 2 at 1357585926.933844
-VSS_HELP 14 for * SENT from 1 to 3 at 1357585926.933849
-VSS_HELP 15 for * SENT from 1 to 4 at 1357585926.933853
-VSS_HELP 16 for * SENT from 1 to 5 at 1357585926.933858
-VSS_HELP 17 for * SENT from 1 to 6 at 1357585926.933862
-VSS_HELP 18 for * SENT from 1 to 7 at 1357585926.933866
-VSS_HELP 19 for * SENT from 1 to 8 at 1357585926.933870
-VSS_HELP 20 for * SENT from 1 to 9 at 1357585926.933875
-VSS_HELP 21 for * SENT from 1 to 10 at 1357585926.933879
-* I started to receive at 1357585926.933884
-LEADER_CHANGE 1 for 1 RECEIVED from 1 to 1 at 1357585926.935014
-VSS_SEND 3 for * RECEIVED from 1 to 1 at 1357585926.935724
-VSS_ECHO 35 for 1 SENT from 1 to 1 at 1357585926.940021 standard 1
-VSS_ECHO 36 for 1 SENT from 1 to 2 at 1357585926.940057 standard 1
-VSS_ECHO 37 for 1 SENT from 1 to 3 at 1357585926.940085 standard 1
-VSS_ECHO 38 for 1 SENT from 1 to 4 at 1357585926.940111 standard 1
-VSS_ECHO 39 for 1 SENT from 1 to 5 at 1357585926.940136 standard 1
-VSS_ECHO 40 for 1 SENT from 1 to 6 at 1357585926.940161 standard 1
-VSS_ECHO 41 for 1 SENT from 1 to 7 at 1357585926.940187 standard 1
-VSS_ECHO 42 for 1 SENT from 1 to 8 at 1357585926.940212 standard 1
-VSS_ECHO 43 for 1 SENT from 1 to 9 at 1357585926.940237 standard 1
-VSS_ECHO 44 for 1 SENT from 1 to 10 at 1357585926.940263 standard 1
-VSS_ECHO 35 for 1 RECEIVED from 1 to 1 at 1357585926.940928
+-Run node 3 starting at 1357730042.251569 with version 8.0
+-Function node 3 starting at 1357730042.251635
+LEADER_CHANGE 1 for * SENT from 3 to 1 at 1357730042.252392 standard 1
+COMPUTE_BI * for * RS from 3 to * at 1357730042.252749
+COMPUTE_CM * for * RS from 3 to * at 1357730042.253746
+VSS_SEND 3 for * SENT from 3 to 1 at 1357730042.515831 standard 1
+VSS_SEND 4 for * SENT from 3 to 2 at 1357730042.515994 standard 1
+VSS_SEND 5 for * SENT from 3 to 3 at 1357730042.516115 standard 1
+VSS_SEND 6 for * SENT from 3 to 4 at 1357730042.516248 standard 1
+VSS_SEND 7 for * SENT from 3 to 5 at 1357730042.516371 standard 1
+VSS_SEND 8 for * SENT from 3 to 6 at 1357730042.516506 standard 1
+VSS_SEND 9 for * SENT from 3 to 7 at 1357730042.516650 standard 1
+VSS_SEND 10 for * SENT from 3 to 8 at 1357730042.516776 standard 1
+VSS_SEND 11 for * SENT from 3 to 9 at 1357730042.516919 standard 1
+VSS_SEND 12 for * SENT from 3 to 10 at 1357730042.517057 standard 1
+VSS_HELP 13 for * SENT from 3 to 1 at 1357730042.517106
+VSS_HELP 14 for * SENT from 3 to 2 at 1357730042.517118
+VSS_HELP 15 for * SENT from 3 to 4 at 1357730042.517124
+VSS_HELP 16 for * SENT from 3 to 5 at 1357730042.517129
+VSS_HELP 17 for * SENT from 3 to 6 at 1357730042.517150
+VSS_HELP 18 for * SENT from 3 to 7 at 1357730042.517159
+VSS_HELP 19 for * SENT from 3 to 8 at 1357730042.517165
+VSS_HELP 20 for * SENT from 3 to 9 at 1357730042.517170
+VSS_HELP 21 for * SENT from 3 to 10 at 1357730042.517176
+VSS_SEND 5 for * RECEIVED from 3 to 3 at 1357730042.518653
+VSS_ECHO 23 for 3 SENT from 3 to 1 at 1357730042.526461 standard 1
+VSS_ECHO 24 for 3 SENT from 3 to 2 at 1357730042.526524 standard 1
+VSS_ECHO 25 for 3 SENT from 3 to 3 at 1357730042.526582 standard 1
+VSS_ECHO 26 for 3 SENT from 3 to 4 at 1357730042.526632 standard 1
+VSS_ECHO 27 for 3 SENT from 3 to 5 at 1357730042.526675 standard 1
+VSS_ECHO 28 for 3 SENT from 3 to 6 at 1357730042.526729 standard 1
+VSS_ECHO 29 for 3 SENT from 3 to 7 at 1357730042.526777 standard 1
+VSS_ECHO 30 for 3 SENT from 3 to 8 at 1357730042.526824 standard 1
+VSS_ECHO 31 for 3 SENT from 3 to 9 at 1357730042.526868 standard 1
+VSS_ECHO 32 for 3 SENT from 3 to 10 at 1357730042.526912 standard 1
+VSS_SEND 5 for * RECEIVED from 2 to 3 at 1357730042.528262
+VSS_ECHO 34 for 2 SENT from 3 to 1 at 1357730042.535321 standard 1
+VSS_ECHO 35 for 2 SENT from 3 to 2 at 1357730042.535369 standard 1
+VSS_ECHO 36 for 2 SENT from 3 to 3 at 1357730042.535419 standard 1
+VSS_ECHO 37 for 2 SENT from 3 to 4 at 1357730042.535463 standard 1
+VSS_ECHO 38 for 2 SENT from 3 to 5 at 1357730042.535500 standard 1
+VSS_ECHO 39 for 2 SENT from 3 to 6 at 1357730042.535551 standard 1
+VSS_ECHO 40 for 2 SENT from 3 to 7 at 1357730042.535678 standard 1
+VSS_ECHO 41 for 2 SENT from 3 to 8 at 1357730042.535724 standard 1
+VSS_ECHO 42 for 2 SENT from 3 to 9 at 1357730042.535763 standard 1
+VSS_ECHO 43 for 2 SENT from 3 to 10 at 1357730042.535802 standard 1
+VSS_SEND 5 for * RECEIVED from 1 to 3 at 1357730042.537058
+VSS_ECHO 45 for 1 SENT from 3 to 1 at 1357730042.544262 standard 1
+VSS_ECHO 46 for 1 SENT from 3 to 2 at 1357730042.544325 standard 1
+VSS_ECHO 47 for 1 SENT from 3 to 3 at 1357730042.544384 standard 1
+VSS_ECHO 48 for 1 SENT from 3 to 4 at 1357730042.544442 standard 1
+VSS_ECHO 49 for 1 SENT from 3 to 5 at 1357730042.544488 standard 1
+VSS_ECHO 50 for 1 SENT from 3 to 6 at 1357730042.544548 standard 1
+VSS_ECHO 51 for 1 SENT from 3 to 7 at 1357730042.544601 standard 1
+VSS_ECHO 52 for 1 SENT from 3 to 8 at 1357730042.544648 standard 1
+VSS_ECHO 53 for 1 SENT from 3 to 9 at 1357730042.544695 standard 1
+VSS_ECHO 54 for 1 SENT from 3 to 10 at 1357730042.544740 standard 1
+VSS_ECHO 25 for 3 RECEIVED from 3 to 3 at 1357730042.546026
+VSS_HELP * for * RECEIVED from 6 to 3 at 1357730042.549774
+VSS_SEND 8 for * SENT from * to 6 at 1357730042.549784 from help 
+VSS_ECHO 28 for * SENT from * to 6 at 1357730042.549793 from help 
+VSS_ECHO 39 for * SENT from * to 6 at 1357730042.549799 from help 
+VSS_ECHO 50 for * SENT from * to 6 at 1357730042.549803 from help 
+VSS_HELP * for * RECEIVED from 2 to 3 at 1357730042.549831
+VSS_SEND 4 for * SENT from * to 2 at 1357730042.549838 from help 
+VSS_ECHO 24 for * SENT from * to 2 at 1357730042.549844 from help 
+VSS_ECHO 35 for * SENT from * to 2 at 1357730042.549848 from help 
+VSS_HELP * for * RECEIVED from 1 to 3 at 1357730042.549860
+* 1 for * SENT from * to 1 at 1357730042.549865from help 
+VSS_SEND 3 for * SENT from * to 1 at 1357730042.549869 from help 
+VSS_ECHO 23 for * SENT from * to 1 at 1357730042.549873 from help 
+VSS_ECHO 34 for * SENT from * to 1 at 1357730042.549877 from help 
+VSS_ECHO 45 for * SENT from * to 1 at 1357730042.549881 from help 
+VSS_ECHO 36 for 2 RECEIVED from 3 to 3 at 1357730042.551063
+VSS_ECHO 15 for 1 RECEIVED from 6 to 3 at 1357730042.555884
+VSS_ECHO 25 for 2 RECEIVED from 2 to 3 at 1357730042.560731
+VSS_ECHO 37 for 1 RECEIVED from 1 to 3 at 1357730042.565666
+VSS_ECHO 47 for 1 RECEIVED from 3 to 3 at 1357730042.570522
+VSS_ECHO 31 for 2 RECEIVED from 6 to 3 at 1357730042.575351
+VSS_ECHO 36 for 1 RECEIVED from 2 to 3 at 1357730042.580320
+
+
+
+============================================
+*ENOUGH VSS_ECHO message for 1 at 1357730042.580320
+*Threshold : echo = 4
+*Received Echo Message Num = 4
+*Ready messages are sending out...
+============================================
+
+VSS_READY 66 for 1 SENT from 3 to 1 at 1357730042.585604 standard 1
+VSS_READY 67 for 1 SENT from 3 to 2 at 1357730042.586891 standard 1
+VSS_READY 68 for 1 SENT from 3 to 3 at 1357730042.588006 standard 1
+VSS_READY 69 for 1 SENT from 3 to 4 at 1357730042.589291 standard 1
+VSS_READY 70 for 1 SENT from 3 to 5 at 1357730042.590492 standard 1
+VSS_READY 71 for 1 SENT from 3 to 6 at 1357730042.591697 standard 1
+VSS_READY 72 for 1 SENT from 3 to 7 at 1357730042.592885 standard 1
+VSS_READY 73 for 1 SENT from 3 to 8 at 1357730042.594155 standard 1
+VSS_READY 74 for 1 SENT from 3 to 9 at 1357730042.595387 standard 1
+VSS_READY 75 for 1 SENT from 3 to 10 at 1357730042.596518 standard 1
+VSS_ECHO 88 for 2 RECEIVED from 1 to 3 at 1357730042.597740
+
+
+
+============================================
+*ENOUGH VSS_ECHO message for 2 at 1357730042.597740
+*Threshold : echo = 4
+*Received Echo Message Num = 4
+*Ready messages are sending out...
+============================================
+
+VSS_READY 77 for 2 SENT from 3 to 1 at 1357730042.603018 standard 1
+VSS_READY 78 for 2 SENT from 3 to 2 at 1357730042.604418 standard 1
+VSS_READY 79 for 2 SENT from 3 to 3 aVSS_ECHO 50 for 1 RECEIVED from 3 to 6 at 1357730042.607669
+
+
+
+============================================
+*ENOUGH VSS_ECHO message for 1 at 1357730042.607669
+*Threshold : echo = 4
+*Received Echo Message Num = 4
+*Ready messages are sending out...
+============================================
+
+VSS_READY 116 for 1 SENT from 6 to 1 at 1357730042.612893 standard 1
+VSS_READY 117 for 1 SENT from 6 to 2 at 1357730042.614254 standard 1
+VSS_READY 118 for 1 SENT from 6 to 3 at 1357730042.615540 standard 1
+VSS_REAVSS_READY 68 for 1 RECEIVED from 3 to 3 at 1357730042.617524
+VSS_ECHO 49 for 3 RECEIVED from 6 to 3 at 1357730042.623689
+VSS_ECHO 60 for 3 RECEIVED from 2 to 3 at 1357730042.628463
+VSS_ECHO 131 for 3 RECEIVED from 1 to 3 at 1357730042.633335
+
+
+
+============================================
+*ENOUGH VSS_ECHO message for 3 at 1357730042.633335
+*Threshold : echo = 4
+*Received Echo Message Num = 4
+*Ready messages are sending out...
+============================================
+
+VSS_READY 96 for 3 SENT from 3 to 1 at 1357730042.638440 standard 1
+VSS_READY 97 for 3 SENT from 3 to 2 at 1357730042.639620VSS_READY 148 for 1 RECEIVED from 2 to 6 at 1357730042.642045
+VSS_SEND 8 for * RECEIVED from 3 to 6 at 1357730042.648404
+VSS_READY 219 for 1 RECEIVED from 1 to 6 at 1357730042.658221
+VSS_READY 121 for 1 RECEIVED from 6 to 6 at 1357730042.666455
+VSS_ECHO 28 for 3 RECEIVED from 3 to 6 at 1357730042.672739
+VSS_ECHO 39 for 2 RECEIVED from 3 to 6 at 1357730042.677664
+VSS_ECHO 50 for 1 RECEIVED from 3 to 6 at 1357730042.682663
+VSS_READY 71 for 1 RECEIVED from 3 to 6 at 1357730042.689021
+
+
+
+*============================================
+*2ENOUGH VSS_READY message for 6 at 1357730042.689021
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+*VSS Share is complete for dealer 1
+============================================
+
+VSS_SHARED 193 for 1 SENT from 6 to 1 at 1357730042.694310 standard 1
+VSS_READY 82 for 2 RECEIVED from 3 to 6 at 1357730042.697053
+
+
+
+*============================================
+*2ENOUGH VSS_READY message for 6 at 1357730042.697053
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+*VSS Share is complete for dealer 2
+============================================
+
+VSS_SHVSS_ECHO 36 for 1 RECEIVED from 2 to 3 at 1357730042.707304
+VSS_ECHO 88 for 2 RECEIVED from 1 to 3 at 1357730042.712087
+VSS_READY 64 for 3 RECEIVED from 6 to 3 at 1357730042.718262
+VSS_ECHO 60 for 3 RECEIVED from 2 to 3 at 1357730042.724393
+VSS_ECHO 131 for 3 RECEIVED from 1 to 3 at 1357730042.729082
+VSS_READY 81 for 2 RECEIVED from 6 to 3 at 1357730042.735315
+VSS_READY 75 for 3 RECEIVED from 2 to 3 at 1357730042.742597
+VSS_READY 146 for 3 RECEIVED from 1 to 3 at 1357730042.749695
+
+
+
+*============================================
+*2ENOUGH VSS_READY message for 3 at 1357730042.749695
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+*VSS Share is complete for dealer 3
+============================================
+
+VSS_SHARED 186 for 3 SENT from 3 to 1 at 1357730042.753807 standard 1
+VSS_READY 118 for 1 RECEIVED from 6 to 3 at 1357730042.755351
+VSS_READY 104 for 2 RECEIVED from 2 to 3 at 1357730042.759824
+VSS_READY 175 for 2 RECEIVED from 1 to 3 at 1357730042.764318
+
+
+
+*============================================
+*2ENOUGH VSS_READY message for 3 at 1357730042.764318
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+*VSS Share is complete for dealer 2
+============================================
+
+VSS_SHARED 223 for 2 SENT from 3 to 1 at 1357730042.767557 standard 1
+DKG_ECHO 250 for 1 RECEIVED from 6 to 3 at 1357730042.768517
+VSS_READDKG_ECHO 294 for 1 RECEIVED from 3 to 6 at 1357730042.798025
+
+
+
+============================================
+*ENOUGH DKG_ECHO message for 6 at 1357730042.798025
+*Threshold : Echo = 4
+*Received Echo Message Num = 4
+*DKG_Readys are sent out...
+============================================
+
+DKG_READY 302 for 1 SENT from 6 to 1 at 1357730042.799188 standard 1
+DKG_READY 303 for 1 SENT from 6 to 2 at 1357730042.800342 standard 1
+DKG_READY 304 for 1 SENT from 6 to 3 at 1357730042.801947 standard 1
+DKG_READY 305 for 1 SENT from 6 to 4 at 1357730042.803068 standard 1
+DKG_READY 306 for 1 SENT from 6 to 5 at 1357730042.804262 standard 1
+DKG_READY 307 for 1 SENT from 6 to 6 at 1357730042.805343 standard 1
+DKG_READY 308 for 1 SENT from 6 to 7 at 1357730042.806394 standard 1
+DKG_READY 309 for 1 SENT from 6 to 8 at 1357730042.807210 standard 1
+DKG_READY 310 for 1 SENT from 6 to 9 at 1357730042.808280 standard 1
+DKG_READY 311 for 1 SENT from 6 to 10 at 1357730042.809264 standard 1
+DKG_READY 444 for 1 RECEIVED from 1 to 6 at 1357730042.810888
+DKG_READY 307 for 1 RECEIVED from 6 to 6 at 1357730042.811907
+DKG_READY 317 for 1 RECEIVED from 2 to 6 at 1357730042.812787
+DKG_READY 351 for 1 RECEIVED from 3 to 6 at 1357730042.813670
+
+
+
+============================================
+*2ENOUGH DKG_READY message for 6 at 1357730042.813670
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+============================================
+
+DKG_COMPLETE * for 1 RS from 6 to * at 1357730042.813886 :)
+3 at 1357730042.805765
+*Threshold : Echo = 4
+*Received Echo Message Num = 4
+*DKG_Readys are sent out...
+============================================
+
+DKG_READY 346 for 1 SENT from 3 to 1 at 1357730042.806896 standard 1
+DKG_READY 347 for 1 SENT from 3 to 2 at 1357730042.807993 standard 1
+DKG_READY 348 for 1 SENT from 3 to 3 at 1357730042.809205 standard 1
+DKG_READY 349 for 1 SENT from 3 to 4 at 1357730042.810865 standard 1
+DKG_READY 350 for 1 SENT from 3 to 5 at 1357730042.811634 standard 1
+DKG_READY 351 for 1 SENT from 3 to 6 at 1357730042.812419 standard 1
+DKG_READY 352 for 1 SENT from 3 to 7 at 1357730042.813196 standard 1
+DKG_READY 353 for 1 SENT from 3 to 8 at 1357730042.813921 standard 1
+DKG_READY 354 for 1 SENT from 3 to 9 at 1357730042.814670 standard 1
+DKG_READY 355 for 1 SENT from 3 to 10 at 1357730042.815369 standard 1
+DKG_READY 348 for 1 RECEIVED from 3 to 3 at 1357730042.816278
+DKG_READY 314 for 1 RECEIVED from 2 to 3 at 1357730042.817131
+DKG_READY 441 for 1 RECEIVED from 1 to 3 at 1357730042.818047
+
+
+
+============================================
+*2ENOUGH DKG_READY message for 3 at 1357730042.818047
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+============================================
+
+DKG_COMPLETE * for 1 RS from 3 to * at 1357730042.818257 :)
+from 1 to 4 at 1357730042.795442 standard 1
+DKG_READY 443 for 1 SENT from 1 to 5 at 1357730042.796191 standard 1
+DKG_READY 444 for 1 SENT from 1 to 6 at 1357730042.797183 standard 1
+DKG_READY 445 for 1 SENT from 1 to 7 at 1357730042.798271 standard 1
+DKG_READY 446 for 1 SENT from 1 to 8 at 1357730042.799404 standard 1
+DKG_READY 447 for 1 SENT from 1 to 9 at 1357730042.800514 standard 1
+DKG_READY 448 for 1 SENT from 1 to 10 at 1357730042.801557 standard 1
+DKG_READY 302 for 1 RECEIVED from 6 to 1 at 1357730042.803010
+DKG_READY 439 for 1 RECEIVED from 1 to 1 at 1357730042.804595
+DKG_READY 312 for 1 RECEIVED from 2 to 1 at 1357730042.805975
+DKG_READY 346 for 1 RECEIVED from 3 to 1 at 1357730042.808315
+
+
+
+============================================
+*2ENOUGH DKG_READY message for 1 at 1357730042.808315
+*Threshold : Ready = 4
+*Received Ready Message Num = 4
+============================================
+
+DKG_COMPLETE * for 1 RS from 1 to * at 1357730042.808656 :)

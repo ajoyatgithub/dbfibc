@@ -88,7 +88,6 @@ private:
 	TimerID leaderChangeTimerID;
 	
 	fstream msgLog;
-	fstream shsecret;
 	fstream timeoutLog;
 	bool timer_set;
 	
@@ -272,12 +271,14 @@ int Node::run()
 			cerr<< "Commitment is"<<endl;
 			result.C.dump(stderr);break;
 		case MYSHARE:
-				shsecret.open ("secrets", fstream::in | fstream::out | fstream::app);
+				FILE *fp;
+				fp = fopen("secrets","w");
 		  	result.share.dump(stderr,(char*)"Share is ",10);
-		  	result.share.dump2f(*shsecret,(char*)"Share is ",10); 
+		  	result.share.dump(fp,(char*)"Share is ",10); 
 		  	//shsecret << "Share of " << selfID << " is ";
 		  	//FILE* ajoy;
 		  	//result.share.dump(ajoy,0);
+		  	fclose(fp);
 		  break;
 		case ACTIVE_NODES:
 		  	cerr<<"Active Nodes are";
