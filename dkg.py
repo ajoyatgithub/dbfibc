@@ -11,19 +11,21 @@ def dkg():
   
   #main is the main function in node.cc. To prevent errors, the library was created without BLSclient.o
   
-  libnode.main()
+  #libnode.main()
   #libnode.main(5, "./node 6401 ../src/certs/1.pem ../src/certs/1-key.pem contlist")
   secretshare = random.random()
   
 def share():
+  f = open('dkg/secrets','r+')
+  line = f.readline()
   secretshare = random.random()
-  return secretshare
+  return line
   
 
 class MyThread ( threading.Thread ):
    def run ( self ):
       print 'Insert some thread stuff here.'
-      print 'It'll be executed...yeah....'
-      print 'There's not much to it.'
+      print "It'll be executed...yeah...."
+      print "There's not much to it."
 
-MyThread().start()
+#MyThread().start()

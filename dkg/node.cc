@@ -271,14 +271,7 @@ int Node::run()
 			cerr<< "Commitment is"<<endl;
 			result.C.dump(stderr);break;
 		case MYSHARE:
-				FILE *fp;
-				fp = fopen("secrets","w");
 		  	result.share.dump(stderr,(char*)"Share is ",10);
-		  	result.share.dump(fp,(char*)"Share is ",10); 
-		  	//shsecret << "Share of " << selfID << " is ";
-		  	//FILE* ajoy;
-		  	//result.share.dump(ajoy,0);
-		  	fclose(fp);
 		  break;
 		case ACTIVE_NODES:
 		  	cerr<<"Active Nodes are";
@@ -1227,6 +1220,10 @@ void Node::completeDKG(){
 			<< now.tv_sec << "." << setw(6) << now.tv_usec << " :)" <<endl;
 	cout<<"DKG_COMPLETE * for " <<buddyset.get_leader()<< " RS from " << selfID << " to * at "
 				<< now.tv_sec << "." << setw(6) << now.tv_usec << " :)" <<endl;
+	FILE *fp;
+	fp = fopen("secrets","w");
+	result.share.dump(fp,(char*)"Share is ",10);
+	fclose(fp);
 	//DecidedVSSs broadcast and decided VSSs are now completed
 	nodeState = DKG_COMPLETED;
 	//fstream logFStream("dkg.log",ios::out); logFStream <<selfID<<" "<<buddyset.get_leader()<<" ";logFStream.close();
