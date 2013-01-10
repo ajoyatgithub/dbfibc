@@ -1221,7 +1221,7 @@ void Node::completeDKG(){
 	cout<<"DKG_COMPLETE * for " <<buddyset.get_leader()<< " RS from " << selfID << " to * at "
 				<< now.tv_sec << "." << setw(6) << now.tv_usec << " :)" <<endl;
 	FILE *fp;
-	fp = fopen("secrets","w");
+	fp = fopen("../secrets","w");
 	result.share.dump(fp,(char*)"Share is ",10);
 	fclose(fp);
 	//DecidedVSSs broadcast and decided VSSs are now completed
