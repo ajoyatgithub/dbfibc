@@ -134,7 +134,7 @@ int Node::run()
   //if (selfID != buddyset.get_leader()) sleep (sysparams.get_n()/2);
   gettimeofday (&now, NULL);
   msgLog<< "-Function node " << selfID << " starting at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
-
+  cout << "-Function node " << selfID << " starting at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
   fstream timeoutValueStream ("timeout.value", ios::in); 
   string line_indicator;
   int t_n, t_t, t_f;
@@ -169,6 +169,10 @@ int Node::run()
 		msgLog << "LEADER_CHANGE " << leadChg.get_ID() << " for " << "* SENT from " << selfID <<
 				" to " << buddyset.get_leader() << " at " <<  now.tv_sec << "." << setw(6) <<
 				now.tv_usec << " standard 1" << endl;
+				
+		cout << "LEADER_CHANGE " << leadChg.get_ID() << " for " << "* SENT from " << selfID <<
+				" to " << buddyset.get_leader() << " at " <<  now.tv_sec << "." << setw(6) <<
+				now.tv_usec << " standard 1" << endl;
 
 		if(selfID <= 2*sysparams.get_t()+1){
 		//	if (selfID != buddyset.get_leader())
@@ -181,6 +185,8 @@ int Node::run()
 		if (selfID == buddyset.get_leader()) {
 			msgLog << "* I am ready to receive at " <<  now.tv_sec << "." << setw(6) <<
 				now.tv_usec << endl;
+			cout << "* I am ready to receive at " <<  now.tv_sec << "." << setw(6) <<
+				now.tv_usec << endl;
 		}
 
 		// upon starting, send VSS_HELP messages to everyone in the system
@@ -192,6 +198,7 @@ int Node::run()
 			buddyset.send_message(*iter,vssHelp);
 			gettimeofday (&now, NULL);
 			msgLog << "VSS_HELP " << vssHelp.get_ID() << " for " << "* SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_HELP " << vssHelp.get_ID() << " for " << "* SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 		}
 	}
    
@@ -202,6 +209,7 @@ int Node::run()
 	if (first_time == 1 && selfID == buddyset.get_leader()) {
 		gettimeofday (&now, NULL);
 		msgLog << "* I started to receive at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+		cout << "* I started to receive at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 		first_time = 0;
 	}
 	// cout << "ready for next message" << endl;
@@ -325,6 +333,7 @@ int Node::run()
 			VSSSendMessage *vssSend = static_cast<VSSSendMessage*>(nm);
 			gettimeofday(&now, NULL);
 			msgLog << "VSS_SEND " << vssSend -> get_ID() << " for " << "* RECEIVED from " << buddyID << " to " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_SEND " << vssSend -> get_ID() << " for " << "* RECEIVED from " << buddyID << " to " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			//if (selfID == buddyset.get_leader()) {
 			//}
 			if(ph > vssSend->ph) {
@@ -365,6 +374,7 @@ int Node::run()
 							buddyset.send_message(*iter, vssEcho);
 							gettimeofday (&now, NULL);
 							msgLog << "VSS_ECHO " << vssEcho.get_ID() << " for " << vssEcho.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+							cout << "VSS_ECHO " << vssEcho.get_ID() << " for " << vssEcho.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
   						}				
 					} else {
 						break;
@@ -379,6 +389,7 @@ int Node::run()
 
 			gettimeofday(&now, NULL);
 			msgLog << "VSS_ECHO " << vssEcho->get_ID() << " for " << vssEcho -> dealer << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_ECHO " << vssEcho->get_ID() << " for " << vssEcho -> dealer << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			//vssEcho->alpha.dump(stderr,"Alpha received is");
 
 			//if (selfID == buddyset.get_leader()) {
@@ -437,6 +448,14 @@ int Node::run()
 						msgLog << "*Received Echo Message Num = " << it->second.getEchoMsgCnt() << endl;
 						msgLog << "*Ready messages are sending out..." << endl;
 						msgLog << "============================================" << endl << endl;
+						
+						cout << endl << endl << endl;
+						cout << "============================================" << endl;
+						cout << "*ENOUGH VSS_ECHO message for " << vssEcho ->dealer << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+						cout << "*Threshold : echo = " << echo_threshold << endl;
+						cout << "*Received Echo Message Num = " << it->second.getEchoMsgCnt() << endl;
+						cout << "*Ready messages are sending out..." << endl;
+						cout << "============================================" << endl << endl;
 
 						vector<NodeID>::const_iterator iter;//For the active nodes list					
 						unsigned int index = 0;//Note that starting with zero as first the value is an evaluation at zero
@@ -447,6 +466,7 @@ int Node::run()
 							buddyset.send_message(*iter, vssReady);
 							gettimeofday (&now, NULL);
 							msgLog << "VSS_READY " << vssReady.get_ID() << " for " << vssReady.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+							cout << "VSS_READY " << vssReady.get_ID() << " for " << vssReady.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 						}
 					}
 				} else cerr<<"Error at "<<selfID<<" with the VSSEcho message received from "<<buddyID<<" for "<<vssEcho->dealer<<endl;
@@ -457,6 +477,8 @@ int Node::run()
 			VSSReadyMessage *vssReady = static_cast<VSSReadyMessage*>(nm);
 			gettimeofday(&now, NULL);
 			msgLog << "VSS_READY " << vssReady ->get_ID() << " for " << vssReady -> dealer << " RECEIVED from " << buddyID << " to " << selfID
+					<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_READY " << vssReady ->get_ID() << " for " << vssReady -> dealer << " RECEIVED from " << buddyID << " to " << selfID
 					<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 
 			//if (selfID == buddyset.get_leader()) {
@@ -520,6 +542,14 @@ int Node::run()
 						msgLog << "*Received Ready Message Num = " << it->second.getReadyMsgCnt() << endl;
 						msgLog << "*Ready messages are sending out..." << endl;
 						msgLog << "============================================" << endl << endl;
+						
+						cout << endl << endl << endl;
+						cout << "============================================" << endl;
+						cout << "*1ENOUGH VSS_READY message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+						cout << "*Threshold : Ready = " << sysparams.get_t() + 1 << endl;
+						cout << "*Received Ready Message Num = " << it->second.getReadyMsgCnt() << endl;
+						cout << "*Ready messages are sending out..." << endl;
+						cout << "============================================" << endl << endl;
 
 
 						vector<NodeID>::iterator iter;//For the active nodes list					
@@ -531,6 +561,7 @@ int Node::run()
 							buddyset.send_message(*iter, vssReady);
 							gettimeofday (&now, NULL);
 							msgLog << "VSS_READY " << vssReady.get_ID() << " for " << vssReady.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+							cout << "VSS_READY " << vssReady.get_ID() << " for " << vssReady.dealer << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 						}
 					} else if(it->second.getReadyMsgCnt() == sysparams.get_n() - sysparams.get_t() - sysparams.get_f()){
 						//2t+f+1 = n-t-f ready messages received -> VSS Share is complete
@@ -560,6 +591,14 @@ int Node::run()
 						msgLog << "*Received Ready Message Num = " << it->second.getReadyMsgCnt() << endl;
 						msgLog << "*VSS Share is complete for dealer " << it->first << endl;
 						msgLog << "============================================" << endl << endl;
+						
+						cout << endl << endl << endl;
+						cout << "*============================================" << endl;
+						cout << "*2ENOUGH VSS_READY message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+						cout << "*Threshold : Ready = " << sysparams.get_n() - sysparams.get_t() - sysparams.get_f() << endl;
+						cout << "*Received Ready Message Num = " << it->second.getReadyMsgCnt() << endl;
+						cout << "*VSS Share is complete for dealer " << it->first << endl;
+						cout << "============================================" << endl << endl;
 						//sharedMsg.dump(stdout,0);
 						
 						//Send Shared Message to the leader (Optimization: To make the leader fast)
@@ -571,6 +610,7 @@ int Node::run()
 							buddyset.send_message(buddyset.get_leader(), vssShared);
 							gettimeofday (&now, NULL);
 							msgLog << "VSS_SHARED " << vssShared.get_ID() << " for " << vssShared.dealer << " SENT from " << selfID << " to " << buddyset.get_leader() << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+							cout << "VSS_SHARED " << vssShared.get_ID() << " for " << vssShared.dealer << " SENT from " << selfID << " to " << buddyset.get_leader() << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 						}
 						//I am not erasing entries from C here to avoid false SEND messages for (it->first = vss->dealer) later
 						//C.erase(it->first); //delete all for the same dealer from C
@@ -585,6 +625,7 @@ int Node::run()
 				}
 				}else {
 				 msgLog<<"Invalid VSSReady Message received at "<<selfID<<" from "<<buddyID<<" for "<<vssReady->dealer<<endl;
+				 cout<<"Invalid VSSReady Message received at "<<selfID<<" from "<<buddyID<<" for "<<vssReady->dealer<<endl;
 				}
 			}
 		}
@@ -593,6 +634,7 @@ int Node::run()
 			//cerr << "VSS_HELP message from" << buddyID << " to " << selfID << endl;
 			gettimeofday(&now, NULL);
 			msgLog << "VSS_HELP * for * RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_HELP * for * RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			// TODO
 			buddy->help(msgLog);
 		}
@@ -602,6 +644,8 @@ int Node::run()
 			//cerr << "VSS_SHARED for " << vssShared->dealer << " RECEIVED from " << buddyID << " to " << selfID << endl;
 			gettimeofday(&now, NULL);
 			msgLog << "VSS_SHARED " << vssShared->get_ID() << " for " << vssShared -> dealer << " RECEIVED from " << buddyID << " to " << selfID
+					<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "VSS_SHARED " << vssShared->get_ID() << " for " << vssShared -> dealer << " RECEIVED from " << buddyID << " to " << selfID
 					<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			if (selfID == buddyset.get_leader()) {
 			}
@@ -641,6 +685,8 @@ int Node::run()
 			gettimeofday(&now, NULL);
 			msgLog << "DKG_SEND " << dkgSend->get_ID() << " for * RECEIVED from " << buddyID << " to " << selfID  << " at " <<
 									now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "DKG_SEND " << dkgSend->get_ID() << " for * RECEIVED from " << buddyID << " to " << selfID  << " at " <<
+									now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			//msgLog<<"DKGSend Message received from "<<buddyID<<endl;
 			if(ph > dkgSend->ph) {
 				//TODO: Actual system need not to display the following messages.
@@ -673,6 +719,7 @@ int Node::run()
 							buddyset.send_message(*iter, dkgEcho);
 							gettimeofday (&now, NULL);
 							msgLog << "DKG_ECHO " << dkgEcho.get_ID() << " for " << dkgEcho.leader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+							cout << "DKG_ECHO " << dkgEcho.get_ID() << " for " << dkgEcho.leader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 						}
 					}				
 				} //else //DKGsend is invalid, send LeaderChangeMessage
@@ -684,6 +731,7 @@ int Node::run()
 			DKGEchoMessage *dkgEcho = static_cast<DKGEchoMessage*>(nm);
 			gettimeofday(&now, NULL);
 			msgLog << "DKG_ECHO " << dkgEcho->get_ID() << " for " << dkgEcho ->leader << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "DKG_ECHO " << dkgEcho->get_ID() << " for " << dkgEcho ->leader << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			if(ph > dkgEcho->ph) {
 				//TODO: Actual system need not to display the following messages.
 			  cerr<<"Phase for DKGEcho "<<dkgEcho->ph<<" is older than the current phase "<<ph<<endl;				  
@@ -731,6 +779,14 @@ int Node::run()
 					msgLog << "*Received Echo Message Num = " << (NodeIDSize)echo_it->second.size() << endl;
 					msgLog << "*DKG_Readys are sent out..." << endl;
 					msgLog << "============================================" << endl << endl;
+					
+					cout << endl << endl << endl;
+					cout << "============================================" << endl;
+					cout << "*ENOUGH DKG_ECHO message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+					cout << "*Threshold : Echo = " << echo_threshold << endl;
+					cout << "*Received Echo Message Num = " << (NodeIDSize)echo_it->second.size() << endl;
+					cout << "*DKG_Readys are sent out..." << endl;
+					cout << "============================================" << endl << endl;
 
 										
 					vector<NodeID>::iterator iter;//For the active nodes list					
@@ -741,17 +797,22 @@ int Node::run()
 						//cerr<<"DKGReady message is sent to Node "<<*iter<<".\n";
 						gettimeofday (&now, NULL);
 						msgLog << "DKG_READY " << dkgReady.get_ID() << " for " << dkgReady.leader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+						
+						cout << "DKG_READY " << dkgReady.get_ID() << " for " << dkgReady.leader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 					}
 				}			
 			}else if (!dkgEcho->msgValid) {
 				gettimeofday(&now, NULL);
 				msgLog<<"Invalid DKGEcho for " << dkgEcho ->leader << " from "<<buddyID<<" to " <<selfID << " RECEIVED at " << now.tv_sec << "." << setw(6) << now.tv_usec <<"\n";
+				cout<<"Invalid DKGEcho for " << dkgEcho ->leader << " from "<<buddyID<<" to " <<selfID << " RECEIVED at " << now.tv_sec << "." << setw(6) << now.tv_usec <<"\n";
 			}
 		}break;
 		case DKG_READY:{
 			DKGReadyMessage *dkgReady = static_cast<DKGReadyMessage*>(nm);
 			gettimeofday(&now, NULL);
 			msgLog << "DKG_READY " << dkgReady->get_ID() << " for " << dkgReady ->leader << " RECEIVED from " << buddyID << " to " << selfID << " at " <<
+																	now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "DKG_READY " << dkgReady->get_ID() << " for " << dkgReady ->leader << " RECEIVED from " << buddyID << " to " << selfID << " at " <<
 																	now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			//cerr<<"DKGReady Message received from "<<buddyID<<endl;
 			if(ph > dkgReady->ph) {
@@ -799,6 +860,14 @@ int Node::run()
 					msgLog << "*Received Ready Message Num = " << (NodeIDSize)ready_it->second.size() << endl;
 					msgLog << "*DKG_Readys are sent out..." << endl;
 					msgLog << "============================================" << endl << endl;
+					
+					cout << endl << endl << endl;
+					cout << "============================================" << endl;
+					cout << "*1ENOUGH DKG_READY message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+					cout << "*Threshold : Ready = " << sysparams.get_t() + 1 << endl;
+					cout << "*Received Ready Message Num = " << (NodeIDSize)ready_it->second.size() << endl;
+					cout << "*DKG_Readys are sent out..." << endl;
+					cout << "============================================" << endl << endl;
 
 
 					vector<NodeID>::iterator iter;//For the active nodes list					
@@ -808,6 +877,10 @@ int Node::run()
 						buddyset.send_message(*iter, dkgReadySent);	
 						gettimeofday (&now, NULL);
 						msgLog << "DKG_READY " << dkgReadySent.get_ID() << " for " << dkgReadySent.leader << " SENT from " << selfID <<
+											" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
+											now.tv_usec << " standard 1" << endl;
+											
+						cout << "DKG_READY " << dkgReadySent.get_ID() << " for " << dkgReadySent.leader << " SENT from " << selfID <<
 											" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
 											now.tv_usec << " standard 1" << endl;
 					}									
@@ -824,6 +897,13 @@ int Node::run()
 					msgLog << "*Threshold : Ready = " << sysparams.get_n() - sysparams.get_t() - sysparams.get_f() << endl;
 					msgLog << "*Received Ready Message Num = " << (NodeIDSize)ready_it->second.size() << endl;
 					msgLog << "============================================" << endl << endl;
+					
+					cout << endl << endl << endl;
+					cout << "============================================" << endl;
+					cout << "*2ENOUGH DKG_READY message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+					cout << "*Threshold : Ready = " << sysparams.get_n() - sysparams.get_t() - sysparams.get_f() << endl;
+					cout << "*Received Ready Message Num = " << (NodeIDSize)ready_it->second.size() << endl;
+					cout << "============================================" << endl << endl;
 
 					//Proceed with VSS for only the agreed dealers and compute the share
 					DecidedVSSs = dkgReady->DecidedVSSs;
@@ -835,12 +915,16 @@ int Node::run()
 				gettimeofday(&now, NULL);
 				msgLog<<"Invalid DKGReady for " << dkgReady->leader << " from "<<buddyID<<" to "<<selfID
 				<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec <<"\n";
+				cout<<"Invalid DKGReady for " << dkgReady->leader << " from "<<buddyID<<" to "<<selfID
+				<< " at " << now.tv_sec << "." << setw(6) << now.tv_usec <<"\n";
 			}
 		}
 		break; 
 		case DKG_HELP:{
 			gettimeofday(&now, NULL);
 			msgLog << "DKG_HELP * for * RECEIVED from " << buddyID << " to " << selfID << " at " <<
+								now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "DKG_HELP * for * RECEIVED from " << buddyID << " to " << selfID << " at " <<
 								now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			//cerr << "DKG_HELP from" << buddyID << " to " << selfID << endl;
 		}
@@ -849,6 +933,7 @@ int Node::run()
 			LeaderChangeMessage *leaderChange = static_cast<LeaderChangeMessage*>(nm);
 			gettimeofday(&now, NULL);
 			msgLog << "LEADER_CHANGE " << leaderChange->get_ID() << " for " << leaderChange ->nextLeader << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+			cout << "LEADER_CHANGE " << leaderChange->get_ID() << " for " << leaderChange ->nextLeader << " RECEIVED from " << buddyID << " to " << selfID << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 			if(ph > leaderChange->ph) {
 				//TODO: Actual system need not to display the following messages.
 			  cerr<<"Phase for LeaderChange "<<leaderChange->ph<<" is older than the current phase "<<ph<<endl;				  
@@ -860,6 +945,7 @@ int Node::run()
 					if ((leaderChange->nextLeader + sysparams.get_n() - buddyset.get_leader()) 
 						% sysparams.get_n() > sysparams.get_t() + sysparams.get_f()) {
 						msgLog << "* LeaderChange index out of range" << endl;
+            cout << "* LeaderChange index out of range" << endl;
 						break;
 					}
 					++validLeaderChangeMsgCnt;	
@@ -925,6 +1011,7 @@ int Node::run()
 						buddyset.set_leader(leaderChange->nextLeader);//Set the received leader as new leader
 						gettimeofday (&now, NULL);
 						msgLog<<"NEW_LEADER * : "<<leaderChange->nextLeader<< " NL from * to * at " << now.tv_sec << "." << setw(6) << now.tv_usec <<endl;
+						cout<<"NEW_LEADER * : "<<leaderChange->nextLeader<< " NL from * to * at " << now.tv_sec << "." << setw(6) << now.tv_usec <<endl;
 						validLeaderChangeMsgCnt-= sysparams.get_n() - sysparams.get_t() - sysparams.get_f(); //remove count (n-t-f) for the next leader
 						nextSmallestLeader = buddyset.get_previous_leader();//Set new smallest Leader
 						nodeState = FUNCTIONAL; //nodeState is no longer Leader_Change_Started
@@ -948,6 +1035,8 @@ int Node::run()
 						nextSmallestLeader = buddyset.get_previous_leader();//Set new smallest Leader
 						gettimeofday (&now, NULL);
 						msgLog<<"E_LEADER_CONFIRM * for "<< selfID << " RS from * to * at " << now.tv_sec
+							<< "."	<< setw(6) << now.tv_usec << endl;
+						cout<<"E_LEADER_CONFIRM * for "<< selfID << " RS from * to * at " << now.tv_sec
 							<< "."	<< setw(6) << now.tv_usec << endl;
 						nodeState = FUNCTIONAL; //nodeState is no longer Leader_Change_Started
 						if (NodeIDSize(vssReadyMsgSelected.size()) == sysparams.get_t() + 1) {
@@ -1047,6 +1136,7 @@ int Node::run()
 			//if (leaderChangeTimerID == tm->get_ID()) {
 				gettimeofday(&now, NULL);
 				msgLog << "TIMEOUT " << tm->get_ID() << " for " << buddyset.get_leader() << " RECEIVED from " << selfID << " to " << buddyset.get_next_leader() << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+				cout << "TIMEOUT " << tm->get_ID() << " for " << buddyset.get_leader() << " RECEIVED from " << selfID << " to " << buddyset.get_next_leader() << " at " << now.tv_sec << "." << setw(6) << now.tv_usec << endl;
 				sendLeaderChangeMessage(buddyset.get_next_leader());
 			//}
 		}break;
@@ -1076,10 +1166,14 @@ void Node::hybridVSSInit(const Zr& secret){
   	gettimeofday (&now, NULL);
   	msgLog << "COMPUTE_BI * for * RS from " << selfID << " to * at " << now.tv_sec <<
   			"." << setw(6) << now.tv_usec << endl;
+  	cout << "COMPUTE_BI * for * RS from " << selfID << " to * at " << now.tv_sec <<
+  			"." << setw(6) << now.tv_usec << endl;
 	BiPolynomial fxy(sysparams, t, secret);
 
 	gettimeofday (&now, NULL);
 	msgLog << "COMPUTE_CM * for * RS from " << selfID << " to * at " << now.tv_sec <<
+	  			"." << setw(6) << now.tv_usec << endl;
+	cout << "COMPUTE_CM * for * RS from " << selfID << " to * at " << now.tv_sec <<
 	  			"." << setw(6) << now.tv_usec << endl;
 
   	Commitment C(sysparams,activeNodes, fxy, commType);
@@ -1097,6 +1191,9 @@ void Node::hybridVSSInit(const Zr& secret){
 
 	gettimeofday (&now, NULL);
 	msgLog << "VSS_SEND " << vssSend.get_ID() << " for " << "* SENT from " << selfID <<
+			" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec
+			<< " standard 1" << endl;
+	cout << "VSS_SEND " << vssSend.get_ID() << " for " << "* SENT from " << selfID <<
 			" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec
 			<< " standard 1" << endl;
 
@@ -1131,6 +1228,14 @@ void Node::startAgreement(){
 		//msgLog << "Received Ready Message Num = " << it->second.getReadyMsgCnt() << endl;
 		msgLog << "*Ready messages are sending out..." << endl;
 		msgLog << "============================================" << endl << endl;
+		
+		cout << endl << endl << endl;
+		cout << "============================================" << endl;
+		cout << "*Leader has started Agreement\n";
+		cout << "*ENOUGH VSS_READY message for " << selfID << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << endl;
+		cout << "*Threshold : Ready = " << sysparams.get_t() + 1 << endl;
+		cout << "*Ready messages are sending out..." << endl;
+		cout << "============================================" << endl << endl;
 
 		map <LeaderChangeMessage, map<NodeID, string> >::const_iterator it_leadchg;
 		for(it_leadchg = leaderChangeMsg.begin(); it_leadchg != leaderChangeMsg.end();++it_leadchg)
@@ -1149,6 +1254,10 @@ void Node::startAgreement(){
 				msgLog << "DKG_SEND " << dkgSend.get_ID() << " for " << "* SENT from " << selfID <<
 						" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
 						now.tv_usec << " standard 1" << endl;
+						
+				cout << "DKG_SEND " << dkgSend.get_ID() << " for " << "* SENT from " << selfID <<
+						" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
+						now.tv_usec << " standard 1" << endl;
 			}		 	
 		} else{//VSSReady are used
 		 	for(vector<NodeID>::iterator iter = activeNodes.begin();iter != activeNodes.end(); ++iter){
@@ -1157,6 +1266,10 @@ void Node::startAgreement(){
 				buddyset.send_message(*iter, dkgSend);
 				gettimeofday (&now, NULL);
 				msgLog << "DKG_SEND " << dkgSend.get_ID() <<  " for " << "* SENT from " << selfID <<
+						" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
+						now.tv_usec << " standard 1" << endl;
+						
+				cout << "DKG_SEND " << dkgSend.get_ID() <<  " for " << "* SENT from " << selfID <<
 						" to " << *iter << " at " <<  now.tv_sec << "." << setw(6) <<
 						now.tv_usec << " standard 1" << endl;
 			}
@@ -1245,6 +1358,8 @@ void Node::sendLeaderChangeMessage(NodeID nextLeader){
 				buddyset.send_message(*iter, leadChg);
 				gettimeofday (&now, NULL);
 				msgLog << "LEADER_CHANGE " << leadChg.get_ID() << " for " << nextLeader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+				
+				cout << "LEADER_CHANGE " << leadChg.get_ID() << " for " << nextLeader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
   			}		 	
 		 } else{ 
 			for(iter = activeNodes.begin();iter != activeNodes.end(); ++iter){
@@ -1253,6 +1368,8 @@ void Node::sendLeaderChangeMessage(NodeID nextLeader){
 				buddyset.send_message(*iter, leadChg);
 				gettimeofday (&now, NULL);
 				msgLog << "LEADER_CHANGE " << leadChg.get_ID() << " for " << nextLeader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
+				
+				cout << "LEADER_CHANGE " << leadChg.get_ID() << " for " << nextLeader << " SENT from " << selfID << " to " << *iter << " at " <<  now.tv_sec << "." << setw(6) << now.tv_usec << " standard 1" << endl;
 			}
   		}
   		nodeState = LEADER_CHANGE_STARTED;
