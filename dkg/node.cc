@@ -1336,6 +1336,7 @@ void Node::completeDKG(){
 	FILE *fp;
 	fp = fopen("../secrets","w");
 	result.share.dump(fp,(char*)"Share is ",10);
+	result.C.dump(fp);
 	fclose(fp);
 	//DecidedVSSs broadcast and decided VSSs are now completed
 	nodeState = DKG_COMPLETED;
