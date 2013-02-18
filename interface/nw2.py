@@ -1,0 +1,18 @@
+from Tkinter import *
+root=Tk()
+root.title("my window")
+root.geometry("500x500")
+app=Frame(root)
+app.grid()
+label1=Label(app,text="Email address:")
+label1.grid()
+t1=Entry(app)
+t1.grid()
+label2=Label(app,text="Password:")
+label2.grid()
+t2=Entry(app,show='*')
+t2.grid()
+button=Button(app,text="ok")
+button.grid()
+root.mainloop() 
+

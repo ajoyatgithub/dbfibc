@@ -7,7 +7,6 @@ import dkg
 import ibc
 import app
 import sys
-import getpass
 
 def main():
   print "**************WELCOME****************\n"
@@ -21,8 +20,7 @@ def main():
     auth_str = "LDAP username"
   print "Please enter the " + auth_str + " that you want to use as your identity : "
   username = raw_input(auth_str + " : ")
-  password = getpass.getpass("Please enter the password for your " + auth_str + " '" + username + "' : ")
-  #password = raw_input("Please enter the password for your " + auth_str + " '" + username + "' : ")
+  password = raw_input("Please enter the password for your " + auth_str + " '" + username + "' : ")
   hashp = md5.new(password).digest()
   auth_result = auth.auth(username, password, auth_type)
   if  auth_result is "S":
