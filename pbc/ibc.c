@@ -5,6 +5,7 @@
  *      Author: ajoy
  *
  *  To compile run gcc/cc ibc.c -lpbc -lgmp -lcrypto
+ *  To run : ./a.out pairing
  */
 #include<stdio.h>
 #include<pbc/pbc.h>
@@ -43,7 +44,9 @@ int main(int argc, char **argv) {
   element_random(g);
   element_random(secret_key);
   element_pow_zn(public_key, g, secret_key);
-  printf("The private key is : %s while the public key is %s\n",secret_key, public_key );
+
+  element_printf("The public key is %B\n", public_key);
+
   element_from_hash(h, hash, 30);
   element_pow_zn(sig, h, secret_key);
 
