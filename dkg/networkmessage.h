@@ -30,6 +30,7 @@ typedef enum {
   NET_MSG_NONE, NET_MSG_PING, NET_MSG_PONG,
   VSS_SEND, VSS_ECHO, VSS_READY, VSS_SHARED, VSS_HELP,
   DKG_SEND, DKG_ECHO, DKG_READY, DKG_HELP, LEADER_CHANGE, 
+  IBC_REQUEST, IBC_REPLY, 
   RECONSTRUCT_SHARE, PUBLIC_KEY_EXCHANGE, BLS_SIGNATURE_REQUEST, 
   BLS_SIGNATURE_RESPONSE, WRONG_BLS_SIGNATURES, VERIFIED_BLS_SIGNATURES
     } NetworkMessageType;
@@ -98,23 +99,23 @@ public:
   Polynomial a;
 };
 
-class IBCRequest : public NetworkMessage
+class IBCRequestMessage : public NetworkMessage
 {
 public:
-  IBCRequest(NodeID node, string &ID);
-  IBCRequest(const Buddy *buddy, const string &str, int g_recv_ID);
+  IBCRequestMessage(NodeID node, string &ID);
+  IBCRequestMessage(const Buddy *buddy, const string &str, int g_recv_ID);
   NodeID node;  
   string ID;
   FILE *file;
 };
 
-class IBCResponse : public NetworkMessage
+class IBCReplyMessage : public NetworkMessage
 {
 public:
-  IBCResponse(Zr Hidshare, NodeID selfID, NodeID Request);
-  IBCResponse(const Buddy *buddy, const string &str, int g_recv_ID);
+  IBCReplyMessage(Zr Hidshare, NodeID selfID, NodeID recpID);
+  IBCReplyMessage(const Buddy *buddy, const string &str, int g_recv_ID);
   NodeID selfID;
-  NodeID Request;
+  NodeID recpID;
   Zr share;
 };
 
