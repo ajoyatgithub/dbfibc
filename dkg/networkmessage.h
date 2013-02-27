@@ -98,6 +98,26 @@ public:
   Polynomial a;
 };
 
+class IBCRequest : public NetworkMessage
+{
+public:
+  IBCRequest(NodeID node, string &ID);
+  IBCRequest(const Buddy *buddy, const string &str, int g_recv_ID);
+  NodeID node;  
+  string ID;
+  FILE *file;
+}
+
+class IBCResponse : public NetworkMessage
+{
+public:
+  IBCResponse(Zr Hidshare, NodeID selfID, NodeID Request);
+  IBCResponse(const Buddy *buddy, const string &str, int g_recv_ID);
+  NodeID selfID;
+  NodeID Request;
+  Zr share;
+}
+
 class VSSEchoMessage : public NetworkMessage
 {
 public:
