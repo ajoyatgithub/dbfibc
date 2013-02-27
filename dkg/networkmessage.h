@@ -106,7 +106,7 @@ public:
   NodeID node;  
   string ID;
   FILE *file;
-}
+};
 
 class IBCResponse : public NetworkMessage
 {
@@ -116,7 +116,7 @@ public:
   NodeID selfID;
   NodeID Request;
   Zr share;
-}
+};
 
 class VSSEchoMessage : public NetworkMessage
 {
