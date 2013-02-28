@@ -70,6 +70,10 @@ NetworkMessage *NetworkMessage::read_message(SystemType systemtype, const Buddy 
 		return new DKGHelpMessage(buddy, msgStr, g_recv_ID);
   	case LEADER_CHANGE:
 		return new LeaderChangeMessage(buddy, msgStr, g_recv_ID);
+		case IBC_REQUEST:
+		return new IBCRequestMessage(buddy, msgStr, g_recv_ID);
+		case IBC_REPLY:
+		return new IBCReplyMessage(buddy, msgStr, g_recv_ID);
 	case PUBLIC_KEY_EXCHANGE:
 	 	return new PublicKeyExchangeMessage(buddy, msgStr, g_recv_ID);
 	case BLS_SIGNATURE_REQUEST: 	
@@ -881,4 +885,45 @@ VerifiedBLSSignaturesMessage::VerifiedBLSSignaturesMessage(const Buddy *buddy, c
 		signatures.insert(pair<NodeID,G1>(sender,signatureShare));
 	}
     msgValid = true;
+}
+
+IBCRequestMessage::IBCRequestMessage(NodeID node, string &ID)
+  :node(node),  ID(ID){
+  //TODO add string handling to pass id from file
+  string body;
+  write_us(body, node);
+  write_ui(body, ID);
+  addMsgHeader(IBC_REQUEST, body);
+  addMsgID(msg_ID, body);
+  set netMsgStr(body);
+}
+
+IBCRequestMessage::IBCRequestMessage(const Buddy *buddy, const string &str, int g_recv_ID)
+  :NetworkMessage(str){
+  const unsigned char *bodyptr = (const unsigned char *)str.data() + headerLength;
+  size_t bodylen = str.size() - headerLength;
+  read_us(bodyptr, bodylen, node);
+  read_ui(bodyptr, bodylen, ID);
+  msg_ID = g_recv_ID;
+}
+
+IBCReplyMessage::IBCReplyMessage(const Zr &Hidshare, NodeID selfID, NodeID recpID)
+  :Hidshare(Hidshare), selfID(selfID), recpID(recpID){
+  string body;
+  write_Zr(body, Hidshare);
+  write_us(body, selfID);
+  write_us(body, recpID);
+  addMsgHeader(IBC_REPLY, body);
+  addMsgID(msg_ID, body);
+  set netMsgStr(body);
+}
+
+IBCReplyMessage::IBCReplyMessage(const Buddy *buddy, const string &str, int g_recv_ID)
+  :NetworkMessage(str){
+  const unsigned char *bodyptr = (const unsigned char *)str.data() + headerLength;
+  size_t bodylen = str.size() - headerLength;
+  read_Zr(bodyptr, bodylen, Hidshare, buddy->get_param().get_Pairing());
+  read_us(bodyptr, bodylen, selfID);
+  read_us(bodyptr, bodylen, recpID);
+  msg_ID = g_recv_ID;
 }

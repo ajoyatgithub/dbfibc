@@ -1,26 +1,26 @@
--Run node 1 starting at 1361343440.193495 with version 8.0
--Function node 1 starting at 1361343440.193628
-LEADER_CHANGE 1 for * SENT from 1 to 1 at 1361343440.197834 standard 1
-COMPUTE_BI * for * RS from 1 to * at 1361343440.198390
-COMPUTE_CM * for * RS from 1 to * at 1361343440.199945
-VSS_SEND 3 for * SENT from 1 to 1 at 1361343440.464887 standard 1
-VSS_SEND 4 for * SENT from 1 to 2 at 1361343440.465092 standard 1
-VSS_SEND 5 for * SENT from 1 to 3 at 1361343440.465241 standard 1
-VSS_SEND 6 for * SENT from 1 to 4 at 1361343440.465391 standard 1
-VSS_SEND 7 for * SENT from 1 to 5 at 1361343440.465508 standard 1
-VSS_SEND 8 for * SENT from 1 to 6 at 1361343440.465609 standard 1
-VSS_SEND 9 for * SENT from 1 to 7 at 1361343440.465707 standard 1
-VSS_SEND 10 for * SENT from 1 to 8 at 1361343440.465807 standard 1
-VSS_SEND 11 for * SENT from 1 to 9 at 1361343440.465904 standard 1
-VSS_SEND 12 for * SENT from 1 to 10 at 1361343440.466010 standard 1
-* I am ready to receive at 1361343440.466041
-VSS_HELP 13 for * SENT from 1 to 2 at 1361343440.466058
-VSS_HELP 14 for * SENT from 1 to 3 at 1361343440.466071
-VSS_HELP 15 for * SENT from 1 to 4 at 1361343440.466087
-VSS_HELP 16 for * SENT from 1 to 5 at 1361343440.466099
-VSS_HELP 17 for * SENT from 1 to 6 at 1361343440.466111
-VSS_HELP 18 for * SENT from 1 to 7 at 1361343440.466125
-VSS_HELP 19 for * SENT from 1 to 8 at 1361343440.466138
-VSS_HELP 20 for * SENT from 1 to 9 at 1361343440.466150
-VSS_HELP 21 for * SENT from 1 to 10 at 1361343440.466164
-* I started to receive at 1361343440.466178
+-Run node 1 starting at 1362067471.286497 with version 8.0
+-Function node 1 starting at 1362067471.286622
+LEADER_CHANGE 1 for * SENT from 1 to 1 at 1362067471.290791 standard 1
+COMPUTE_BI * for * RS from 1 to * at 1362067471.291411
+COMPUTE_CM * for * RS from 1 to * at 1362067471.293075
+VSS_SEND 3 for * SENT from 1 to 1 at 1362067471.560843 standard 1
+VSS_SEND 4 for * SENT from 1 to 2 at 1362067471.561072 standard 1
+VSS_SEND 5 for * SENT from 1 to 3 at 1362067471.562247 standard 1
+VSS_SEND 6 for * SENT from 1 to 4 at 1362067471.562483 standard 1
+VSS_SEND 7 for * SENT from 1 to 5 at 1362067471.562694 standard 1
+VSS_SEND 8 for * SENT from 1 to 6 at 1362067471.562894 standard 1
+VSS_SEND 9 for * SENT from 1 to 7 at 1362067471.563090 standard 1
+VSS_SEND 10 for * SENT from 1 to 8 at 1362067471.563285 standard 1
+VSS_SEND 11 for * SENT from 1 to 9 at 1362067471.563481 standard 1
+VSS_SEND 12 for * SENT from 1 to 10 at 1362067471.563676 standard 1
+* I am ready to receive at 1362067471.563723
+VSS_HELP 13 for * SENT from 1 to 2 at 1362067471.563747
+VSS_HELP 14 for * SENT from 1 to 3 at 1362067471.563766
+VSS_HELP 15 for * SENT from 1 to 4 at 1362067471.563784
+VSS_HELP 16 for * SENT from 1 to 5 at 1362067471.563801
+VSS_HELP 17 for * SENT from 1 to 6 at 1362067471.563818
+VSS_HELP 18 for * SENT from 1 to 7 at 1362067471.563835
+VSS_HELP 19 for * SENT from 1 to 8 at 1362067471.563851
+VSS_HELP 20 for * SENT from 1 to 9 at 1362067471.563868
+VSS_HELP 21 for * SENT from 1 to 10 at 1362067471.563885
+* I started to receive at 1362067471.563902

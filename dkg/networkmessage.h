@@ -99,26 +99,6 @@ public:
   Polynomial a;
 };
 
-class IBCRequestMessage : public NetworkMessage
-{
-public:
-  IBCRequestMessage(NodeID node, string &ID);
-  IBCRequestMessage(const Buddy *buddy, const string &str, int g_recv_ID);
-  NodeID node;  
-  string ID;
-  FILE *file;
-};
-
-class IBCReplyMessage : public NetworkMessage
-{
-public:
-  IBCReplyMessage(Zr Hidshare, NodeID selfID, NodeID recpID);
-  IBCReplyMessage(const Buddy *buddy, const string &str, int g_recv_ID);
-  NodeID selfID;
-  NodeID recpID;
-  Zr share;
-};
-
 class VSSEchoMessage : public NetworkMessage
 {
 public:
@@ -389,4 +369,24 @@ public:
   bool msgValid;
 };
 
+class IBCRequestMessage : public NetworkMessage
+{
+public:
+  //TODO add string handling to pass id from file
+  IBCRequestMessage(NodeID node);
+  IBCRequestMessage(const Buddy *buddy, const string &str, int g_recv_ID);
+  NodeID node;  
+  //  string ID;
+  FILE *file;
+};
+
+class IBCReplyMessage : public NetworkMessage
+{
+public:
+  IBCReplyMessage(const Zr &Hidshare, NodeID selfID, NodeID recpID);
+  IBCReplyMessage(const Buddy *buddy, const string &str, int g_recv_ID);
+  NodeID selfID;
+  NodeID recpID;
+  Zr Hidshare;
+};
 #endif
