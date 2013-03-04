@@ -46,7 +46,7 @@ def listen():
   try:
     servsock.bind(('', int(port)))
   except Exception, e:
-    print "Error : ", e, " Host and port :", HOST, port
+    print "Error : ", e
   servsock.listen(5)
   while True:
     #print "Waiting for connection"
@@ -59,18 +59,28 @@ def listen():
   servsock.close()
   return
 
+def ibc_request_recv(stringid, nodeid):
+  ibc = cdll.LoadLibrary('./libibc.so.1.0.1')
+  hash_id = ibc.hash_id_G1
+  hash_id.restype = c_char_p
+  c_id = (c_char * 40)()
+  c_id.value = stringid
+  ibc.hash_id_G1(c_id)
+  #ibc.keyshare(parseid.group(1))  
+
+
 def parse_msg(msgstr):
   parse = re.search("([\w]+):(.*)", msgstr)
   if parse == None:
     print "Received invalid message : ", msgstr
   elif parse.group(1) == "IBC_REQUEST":
-    parseid = re.search("([\S]+)(:END)", parse.group(2))
+    parseid = re.search("([\S]+):([\S]+)(:END)", parse.group(2))
     if parseid == None:
       print "Invalid IBC request : ", parse.group(2)
     else:
-      print "Received : IBC request for the id ", parseid.group(1)
-      ibc = CDLL("./libibc.so.1.0.1")
-      #ibc.keyshare(parseid.group(1))
+      print "Received : IBC request for the id ", parseid.group(1) + " from " + parseid.group(2)
+      ibc_request_recv(parseid.group(1), parseid.group(2))
+
   elif parse.group(1) == "IBC_REPLY":
     print "Received : IBC reply message"
 
@@ -89,7 +99,7 @@ def sendRequest():
     except Exception, e:
       print "Unable to send : ", e, c_ip, c_port
       continue;
-    msg = "IBC_REQUEST:" + identity + ":END"
+    msg = "IBC_REQUEST:" + identity + ":" + nodeID + ":END"
     print "Sent : ", msg
     sock.sendall(msg)
     sock.close()

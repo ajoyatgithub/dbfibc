@@ -12,37 +12,40 @@
 #include<string.h>
 
 char ident[100], param[1024];
-unsigned char hash[20];
+char hash[20];
 element_t h;
 pairing_t pairing;
 
-void hash_id_G1(char *str){
+unsigned char* hash_id_G1(char *str){
   FILE *fp;
+  int k, lk;
+  unsigned char hsh[130];
   fp = fopen("pairing", "r");
   size_t count = fread(param, 1, 1024, fp);
+  fclose(fp);
+  size_t clen = fread();
   if(!count)pbc_die("input error\n");
   pairing_init_set_buf(pairing, param, count);
   element_init_G1(h, pairing);
   SHA1(str, sizeof(str), hash);
   element_from_hash(h , hash, 20);
-  element_printf("The hash is : %B\n", h);
-}
-
-int init_pbc(){
-  int i;
-  printf("Please enter some text : ");
-  gets(ident);
-  hash_id_G1(ident);
-  printf("%s\n", hash);
-  element_printf("%B\n", h);
+  k = element_length_in_bytes(h);
+  lk = element_to_bytes(hsh, h);
+  element_printf("The hashes is : %B and length is %d\n", h, k);
+  return hsh;
 }
 
 int main(){
-  init_pbc();
+  char strin[100];
+  char *hash;
+  printf("Enter some string to hash : ");
+  scanf("%s", strin);
+  hash = hash_id_G1(strin);
+  printf("sds : %s : \n", hash);
 }
 
 /*
-int mainw(int argc, char **argv){
+int main(int argc, char **argv){
   pairing_t pairing;
   pbc_demo_pairing_init(pairing, argc, argv);
   if(!pairing_is_symmetric(pairing)) pbc_die("Pairing must be symmetric\n");
@@ -83,25 +86,4 @@ int mainw(int argc, char **argv){
     printf("Successfully verified\n");
   else
     printf("Verification failed\n");
-}
-
-void hash_msg(G1& elt, string msg, const Pairing& e)
-{
-    unsigned char hashbuf[20];
-    //unsigned char idbuf[2];
-    //idbuf[0] = (id >> 8) & 0xff;
-    //idbuf[1] = (id) & 0xff;
-    gcry_md_hash_buffer(GCRY_MD_SHA1, hashbuf, msg.data(), 2);
-    elt = G1(e, (void*)hashbuf, 20);
-}
-
-void hash_id(G1& elt, NodeID id, const Pairing& e)
-{
-    unsigned char hashbuf[20];
-    unsigned char idbuf[2];
-    idbuf[0] = (id >> 8) & 0xff;
-    idbuf[1] = (id) & 0xff;
-    gcry_md_hash_buffer(GCRY_MD_SHA1, hashbuf, idbuf, 2);
-    elt = G1(e, (void*)hashbuf, 20);
-}
-*/
+}*/
