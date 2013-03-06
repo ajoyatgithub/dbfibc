@@ -12,27 +12,42 @@
 #include<string.h>
 
 char ident[100], param[1024];
+int a = 4;
 char hash[20];
-element_t h;
+unsigned char hid[130], share[150];
+element_t h, g;
 pairing_t pairing;
 
-unsigned char* hash_id_G1(char *str){
+int init_pairing(){
   FILE *fp;
   int k, lk;
-  unsigned char hsh[130];
   fp = fopen("pairing", "r");
   size_t count = fread(param, 1, 1024, fp);
   fclose(fp);
-  size_t clen = fread();
-  if(!count)pbc_die("input error\n");
+  if(!count){
+    pbc_die("input error\n");
+    return -1;
+  }
   pairing_init_set_buf(pairing, param, count);
-  element_init_G1(h, pairing);
+  return 0;
+}
+
+void hash_id_G1(char *str){
+  element_init_G2(h, pairing);
   SHA1(str, sizeof(str), hash);
   element_from_hash(h , hash, 20);
-  k = element_length_in_bytes(h);
-  lk = element_to_bytes(hsh, h);
-  element_printf("The hashes is : %B and length is %d\n", h, k);
-  return hsh;
+  FILE *fp;
+  fp = fopen("secrets", "r");
+  size_t count = fread(share, 1, 1024, fp);
+  fclose(fp);
+  element_from_bytes()
+}
+
+int add(){
+  int b, c;
+  b = 2;
+  a = a + b;
+  return a;
 }
 
 int main(){

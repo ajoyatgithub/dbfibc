@@ -1,4 +1,4 @@
-#ifndef __Zr_H__
+  #ifndef __Zr_H__
 #define __Zr_H__
 
 #include "Pairing.h"
@@ -102,7 +102,10 @@ public:
 
   // Dump the element to stdout
   void dump(FILE *f, const char *label = NULL, 
-			unsigned short base = 16) const;	
+			unsigned short base = 16) const;
+	
+	//write to a file		
+	void dumpfile(FILE *f) const;
 
 private:
   element_t r;
