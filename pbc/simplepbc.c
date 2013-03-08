@@ -12,13 +12,15 @@
 #include<string.h>
 
 char ident[100], param[1024];
-int a = 4;
+int nm, dm;
 char hash[20];
-unsigned char hid[130], share[150];
-element_t h, g;
+unsigned char hid[130];
+element_t h, g, share, pks, pk ,pk_temp;
+int n, t, f, ct = 0;
 pairing_t pairing;
 
 int init_pairing(){
+/*This function will open the pairing file and initialize the pairing.*/
   FILE *fp;
   int k, lk;
   fp = fopen("pairing", "r");
@@ -32,73 +34,77 @@ int init_pairing(){
   return 0;
 }
 
-void hash_id_G1(char *str){
+int read_share(){
+/*This function will open secrets and read the binary data into unsigned char
+and store it in element share*/
+  FILE *fp;
+  unsigned char str[20];
+  fp = fopen("../secrets","rb");
+  if(!fp)
+    return -1;
+  fread(str, 20, 1, fp);
+  fclose(fp);
+  element_init_Zr(share, pairing);
+  element_from_bytes(share, str);
+}
+
+void hash_id_s(char *str){
+/*This function will read the string, hash it and then map to an element in G2.
+It will then compute hash^share*/
   element_init_G2(h, pairing);
+  element_init_G2(pks, pairing);
   SHA1(str, sizeof(str), hash);
   element_from_hash(h , hash, 20);
-  FILE *fp;
-  fp = fopen("secrets", "r");
-  size_t count = fread(share, 1, 1024, fp);
-  fclose(fp);
-  element_from_bytes()
+  element_pow_zn(pks, h, share);
 }
 
-int add(){
-  int b, c;
-  b = 2;
-  a = a + b;
-  return a;
+void gen_privatekey(unsigned char *str, int nodeID, int senderID){
+/*This will compute the private key from all the IBC_REPLY's received
+*/
+  int i, j;
+  float l;
+  signed long int num, dnum;
+  
+  num = nm;
+  dnum = dm;
+  i = nodeID;
+  j = senderID;
+  lambda(i, 1, 10);
+  element_t b, c, ci, keyshare;
+  
+  element_init_G2(keyshare, pairing);
+  
+  element_init_Zr(b, pairing);
+  element_init_Zr(c, pairing);
+  element_init_Zr(ci, pairing);
+
+  element_set_si(b, num);
+  element_set_si(c, dnum);
+  element_from_bytes(keyshare, str);
+  //TODO: Need to correct the pow_zn function, might not work.....
+  element_pow_zn(pk_temp, keyshare, b);
+  element_invert(ci, c);
+  element_pow_zn(pk_temp, pk_temp, ci);
+  element_mul(pk, pk, pk_temp);
+  if(ct = t)
+    printf("Done\n");
+  else if(ct < t)
+    ct = ct + 1;
 }
 
-int main(){
-  char strin[100];
-  char *hash;
-  printf("Enter some string to hash : ");
-  scanf("%s", strin);
-  hash = hash_id_G1(strin);
-  printf("sds : %s : \n", hash);
-}
-
+int lambda(int nodeID, int si, int ei){
 /*
-int main(int argc, char **argv){
-  pairing_t pairing;
-  pbc_demo_pairing_init(pairing, argc, argv);
-  if(!pairing_is_symmetric(pairing)) pbc_die("Pairing must be symmetric\n");
-//gen_IBC_key 
-
-  char m[80] = {0};
-  printf("Enter the message to be encrypted : ");
-  gets(m);
-
-  size_t msglen = sizeof(m);
-
-  unsigned char hash[30];
-  SHA1(m, msglen, hash);
-
-  element_t g, h;
-  element_t public_key, private_key;
-  element_t sig;
-  element_t temp1, temp2;
-
-  element_init_G2(g, pairing);
-  element_init_G2(public_key, pairing);
-  element_init_G1(h, pairing);
-  element_init_G1(sig, pairing);
-  element_init_GT(temp1, pairing);
-  element_init_GT(temp2, pairing);
-  element_init_Zr(private_key, pairing);
-
-  element_random(g);
-  element_random(private_key);
-
-  element_pow_zn(public_key, g, private_key);
-  element_from_hash(h, hash, 30);
-  element_pow_zn(sig, h, private_key);
-
-  pairing_apply(temp1, h, public_key, pairing);
-  pairing_apply(temp2, g, sig, pairing);
-  if(!element_cmp(temp1, temp2))
-    printf("Successfully verified\n");
-  else
-    printf("Verification failed\n");
-}*/
+*/
+  int i, j;
+  nm = 1;
+  dm = 1;
+  float l = 1, r = 1;
+  i = nodeID;
+  for(j = si; j <= ei; j++){
+    if(j==i)
+      continue;
+    nm *= j;
+    dm *= j - i;
+  }
+  return 1;
+}

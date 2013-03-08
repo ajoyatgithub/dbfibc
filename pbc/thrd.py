@@ -5,7 +5,8 @@ import re
 import string
 from ctypes import *
 
-nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'
+nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
+ibc = cdll.LoadLibrary('./libibc.so.1.0.1')
 
 def read_contlist():
   """contlist contains the node contact addresses, load it into a list"""
@@ -30,7 +31,7 @@ def read_contlist():
   print jl[2]"""
 
 def read_identity():
-  """identity contains the node ID in line 1 and the user ID in line 2"""  
+  """identity contains the node ID in line 1 and the user ID in line 2"""
   fp = open("identity", "r")
   global nodeID, identity
   n = fp.readline()
@@ -38,7 +39,19 @@ def read_identity():
   i = fp.readline()
   identity = i.rstrip('\r\n')
   fp.close()
-
+  
+def read_sysparam():
+  """This function will read system.param and initialize the values for n, t, f"""
+  global sys_n, sys_t, sys_f
+  fp = open("system.param","r")
+  n = fp.readline()
+  t = fp.readline()
+  f = fp.readline()
+  fp.close()
+  sys_n = n.rstrip('\r\n')
+  sys_t = t.rstrip('\r\n')
+  sys_f = f.rstrip('\r\n')
+  
 def listen():
   """This socket will listen for IBCRequests and IBCReply messages"""
   global port, ip
@@ -59,15 +72,29 @@ def listen():
   servsock.close()
   return
 
-def ibc_request_recv(stringid, nodeid):
-  ibc = cdll.LoadLibrary('./libibc.so.1.0.1')
-  hash_id = ibc.hash_id_G1
-  hash_id.restype = c_char_p
-  c_id = (c_char * 40)()
-  c_id.value = stringid
-  ibc.hash_id_G1(c_id)
-  #ibc.keyshare(parseid.group(1))  
-
+def ibc_request_recv(stringid, nid):
+  """On receiving an IBC_REQUEST, this will use PBC to hash^share the recvd ID
+  and send it to the node from a new socket"""
+  global tempcontlist
+  #hash_id = ibc.hash_id_s
+  #c_id = (c_char * 40)()
+  #c_id.value = stringid
+  #hash_id(c_id)
+  #hsid = (c_ubyte * 20)()
+  #hsid = read from pbc file
+  #ibc.keyshare(parseid.group(1))
+  i = int(nid) - 1
+  [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
+  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  try:
+    sock.connect((c_ip, int(c_port)))
+  except Exception, e:
+    print "Unable to send : ", e, c_ip, c_port
+    return
+  msg = "IBC_REPLY:" + "hsid" + ":" + nodeID + ":END"
+  print "Sent : ", msg
+  sock.sendall(msg)
+  sock.close()
 
 def parse_msg(msgstr):
   parse = re.search("([\w]+):(.*)", msgstr)
@@ -80,9 +107,12 @@ def parse_msg(msgstr):
     else:
       print "Received : IBC request for the id ", parseid.group(1) + " from " + parseid.group(2)
       ibc_request_recv(parseid.group(1), parseid.group(2))
-
   elif parse.group(1) == "IBC_REPLY":
-    print "Received : IBC reply message"
+    parseid = re.search("([\S]+):([\S]+)(:END)", parse.group(2))
+    if parseid == None:
+      print "Received invalid IBC_REPLY"
+    else:
+      print "Received IBC_REPLY from ", parseid.group(2)
 
 def sendRequest():
   """This socket will send IBC_REQUEST messages"""
@@ -92,7 +122,6 @@ def sendRequest():
     [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
     if c_port == port:
       continue
-      
     #print "i ", nodeID, "am trying to connect to ", nodeid, "at ", c_ip, int(c_port), c_port
     try:
       sock.connect((c_ip, int(c_port)))
@@ -105,11 +134,14 @@ def sendRequest():
     sock.close()
   return
   
+def init_pbc():
+  read_contlist()
+  read_identity()
+  read_sysparam()
 
 def main():
   global port, ip, nodeID
-  read_contlist()
-  read_identity()
+  init_pbc()
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]
   port = li[2]
