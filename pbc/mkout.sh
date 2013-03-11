@@ -1,2 +1,2 @@
-cc simplepbc.c -lcrypto -lpbc -lgmp
+cc simplepbc.c -lpbc -lgmp -lcrypto
 

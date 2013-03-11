@@ -1,30 +1,43 @@
+/*
+  cc simplepbc.c -lpbc -lgmp -lcrytpo
+  '-lcrypto' used for SHA1
+  ./a.out pairing
+*/
+
 #include<stdio.h>
 #include<pbc/pbc.h>
 #include<pbc/pbc_test.h>
 #include<openssl/sha.h>
+#include<string.h>
 
-char param[1024];
+char ident[100], param[1024];
 int nm, dm;
 char hash[20];
 unsigned char hid[130];
 element_t h, g, share, pks, pk ,pk_temp;
-int n, t, f, ct = 0;
+int sys_n, sys_t, sys_f, ct = 0, q;
 pairing_t pairing;
 
-int main();
-
-void init_pairing(){
+int init_pairing(int n, int t, int f){
+/*This function will open the pairing file and initialize the pairing.*/
   FILE *fp;
   int k, lk;
+  sys_n = n;
+  sys_t = t;
+  sys_f = f;
+  printf("Sys : n t and f are %d, %d and %d\n", sys_n, sys_t, sys_f);
+  printf("Int : n t and f are %d, %d and %d\n", n, t, f);
+  q = 2 * sys_t + 1;
   fp = fopen("pairing", "r");
   size_t count = fread(param, 1, 1024, fp);
   fclose(fp);
   if(!count){
     pbc_die("input error\n");
-    return;
+    return -1;
   }
   pairing_init_set_buf(pairing, param, count);
-  return;
+  printf("Successfully initialized \n");
+  return 0;
 }
 
 int read_share(){
@@ -32,7 +45,7 @@ int read_share(){
 and store it in element share*/
   FILE *fp;
   unsigned char str[20];
-  fp = fopen("../secrets","rb");
+  fp = fopen("./secrets","rb");
   if(!fp)
     return -1;
   fread(str, 20, 1, fp);
@@ -44,14 +57,55 @@ and store it in element share*/
 void hash_id_s(char *str){
 /*This function will read the string, hash it and then map to an element in G2.
 It will then compute hash^share*/
+  printf("c0\n");
   element_init_G2(h, pairing);
+  printf("c1\n");
   element_init_G2(pks, pairing);
-  SHA1(str, sizeof(str), hash);
+  printf("c2\n");
+  SHA1(str, strlen(str), hash);
+  printf("c3\n");
   element_from_hash(h , hash, 20);
+  printf("c4\n");
   element_pow_zn(pks, h, share);
+  printf("c5\n");
+  element_to_bytes(hid, pks);
 }
 
-int lambda(int i, int ei){
+void gen_privatekey(unsigned char *str, int nodeID, int senderID){
+/*This will compute the private key from all the IBC_REPLY's received
+*/
+  int i, j;
+  float l;
+  if(ct > sys_t){
+    printf("Done\n");
+    element_printf("The key is %B\n", pk);
+    return;
+  }
+  else if(ct < sys_t)
+    ct = ct + 1;
+  printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
+  i = nodeID;
+  j = senderID;
+  lambdal(i, q);
+  element_t b, c, ci, keyshare;
+  
+  element_init_G2(keyshare, pairing);
+  element_init_G2(pk_temp, pairing);
+  element_init_G2(pk, pairing);
+  element_init_Zr(b, pairing);
+  element_init_Zr(c, pairing);
+  element_init_Zr(ci, pairing);
+
+  element_set_si(b, nm);
+  element_set_si(c, dm);
+  element_from_bytes(keyshare, str);
+  element_pow_zn(pk_temp, keyshare, b);
+  element_invert(ci, c);
+  element_pow_zn(pk_temp, pk_temp, ci);
+  element_mul(pk, pk, pk_temp);
+}
+
+int lambdal(int i, int ei){
 /*
 */
   int j;
@@ -66,56 +120,6 @@ int lambda(int i, int ei){
   return 1;
 }
 
-void gen_privatekey(unsigned char *str, int nodeID, int senderID){
-/*This will compute the private key from all the IBC_REPLY's received
-*/
-  int i, j;
-   i = 1;
-  signed long int num, dnum;
-  
-  num = (long)nm;
-  dnum = (long)dm;
-  
-  lambda(2, 1, 10);
-  element_t b, c, ci, keyshare;
-  
-  element_init_Zr(b, pairing);
-  element_init_Zr(c, pairing);
-  element_init_Zr(ci, pairing);
-
-  element_init_G2(keyshare, pairing);
-  element_init_G2(pk_temp, pairing);
-  element_init_G2(pk, pairing);
-  
-  element_set_si(b, nm);
-  element_set_si(c, dm);
-  
-  printf("num and dnum\n%li %li %d %d\n",num, dnum, nm, dm);
-
-  element_printf("b\n%B\n", b);
-  element_printf("c\n%B\n", c);
-  int asd;
-  element_from_bytes(keyshare, str);
-  asd = element_length_in_bytes(keyshare);
-  element_printf("DKG share is %d bytes\n%B\n", asd, keyshare);
-
-  element_pow_zn(pk_temp, keyshare, b);
-  asd = element_length_in_bytes(pk_temp);
-  element_printf("pk_temp is %d bytes\n%B\n", asd, pk_temp);
-
-  element_invert(ci, c);
-  asd = element_length_in_bytes(ci);
-  element_printf("ci is %d bytes\n%B\n", asd, ci);
-
-  element_pow_zn(pk_temp, pk_temp, ci);
-  asd = element_length_in_bytes(pk_temp);
-  element_printf("pk_temp is %d bytes\n%B\n", asd, pk_temp);
-  
-  element_mul(pk, pk, pk_temp);
-  asd = element_length_in_bytes(pk);
-  element_printf("pk is %d bytes\n%B\n", asd, pk);
-}
-
 int main(){
   char asd[20];
   unsigned char key[100];
@@ -125,8 +129,15 @@ int main(){
   scanf("%s", asd);
   hash_id_s(asd);
   element_printf("The string has been hashed, it is : %B\n", pks);
-  element_to_bytes(hid, key);
+  element_to_bytes(key, pks);
   gen_privatekey(key, 1, 2);
+  printf("sdf\n");
   //element_printf("The string is :\n%B\n", pk);
   return 0;
+}
+
+int genprkey(){
+    unsigned char key[100];
+    element_to_bytes(key, pks);
+    gen_privatekey(key, 1, 2);
 }

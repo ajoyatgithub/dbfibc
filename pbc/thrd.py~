@@ -148,7 +148,7 @@ def init_pbc():
   read_identity()
   read_sysparam()
   ibc.init_pairing(sys_n, sys_t, sys_f)
-  print "Py : n is ", sys_n, "t is ", sys_t, "f is ", sys_f
+  print "n is ", sys_n, "t is ", sys_t, "f is ", sys_f
   ibc.read_share()
 
 def main():

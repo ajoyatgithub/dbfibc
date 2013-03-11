@@ -51,17 +51,19 @@ It will then compute hash^share*/
   element_pow_zn(pks, h, share);
 }
 
-int lambda(int i, int ei){
+int lambda(int nodeID, int si, int ei){
 /*
 */
-  int j;
+  int i, j;
   nm = 1;
   dm = 1;
-  for(j = 1; j <= ei; j++){
+  i = nodeID;
+  for(j = si; j <= ei; j++){
     if(j==i)
       continue;
     nm *= j;
     dm *= j - i;
+    printf("nm and dm are %d and %d, j is %d and i is %d\n", nm, dm, j, i);
   }
   return 1;
 }
