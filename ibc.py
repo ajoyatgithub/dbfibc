@@ -1,17 +1,15 @@
 import threading
-import time
 import socket
 import re
-import string
 import sys
 from ctypes import *
 
 nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
-ibc = cdll.LoadLibrary('pbc/libibc.so.1.0.1')
+ibc = cdll.LoadLibrary('files/libibc.so.1.0.1')
 
 def read_contlist():
   """contlist contains the node contact addresses, load it into a list"""
-  fp = open("pbc/contlist", "r")
+  fp = open("files/contlist", "r")
   global tempcontlist, numNodes
   """reading from contlist and adding it to list tempcontlist for searching...
   tempcontlist[1] contains the contact details for node 3, and so on.
@@ -33,7 +31,7 @@ def read_contlist():
 
 def read_identity():
   """identity contains the node ID in line 1 and the user ID in line 2"""
-  fp = open("pbc/identity", "r")
+  fp = open("files/identity", "r")
   global nodeID, identity
   n = fp.readline()
   nodeID = n.rstrip('\r\n')
@@ -42,7 +40,7 @@ def read_identity():
 def read_sysparam():
   """This function will read system.param and initialize the values for n, t, f"""
   global sys_n, sys_t, sys_f
-  fp = open("pbc/system.param","r")
+  fp = open("files/system.param","r")
   n = fp.readline()
   t = fp.readline()
   f = fp.readline()
@@ -94,17 +92,17 @@ def ibc_request_recv(stringid, nid):
   """On receiving an IBC_REQUEST, this will use PBC to hash^share the recvd ID
   and send it to the node from a new socket"""
   global tempcontlist
-  print "1"
+  #print "1"
   c_id = (c_char * 40)()
-  print "2"
+  #print "2"
   c_id.value = stringid
-  print "3"
+  #print "3"
   ibc.hash_id_s(c_id)
-  print "4"
+  #print "4"
   hsid = (c_ubyte * 128).in_dll(ibc, "hid")
-  print "5"
+  #print "5"
   ibcreply = (c_char * 128).from_buffer(hsid).value
-  print "6"
+  #print "6"
   i = int(nid) - 1
   [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -168,7 +166,6 @@ def init_pbc():
   read_identity()
   read_sysparam()
   ibc.init_pairing(sys_n, sys_t, sys_f)
-  print "Py : n is ", sys_n, "t is ", sys_t, "f is ", sys_f
   ibc.read_share()
 
 def start(username):

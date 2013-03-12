@@ -26,7 +26,7 @@ int init_pairing(int n, int t, int f){
   sys_t = t;
   sys_f = f;
   q = 2 * sys_t + 1;
-  fp = fopen("pairing", "r");
+  fp = fopen("files/pairing", "r");
   size_t count = fread(param, 1, 1024, fp);
   fclose(fp);
   if(!count){
@@ -43,7 +43,7 @@ int read_share(){
   and store it in element share*/
   FILE *fp;
   unsigned char str[20];
-  fp = fopen("./secrets","rb");
+  fp = fopen("files/secrets","rb");
   if(!fp)
     return -1;
   printf("About to read from secrets\n");
@@ -119,7 +119,10 @@ int lambdal(int i, int ei){
 int main(){
   char asd[20];
   unsigned char key[100];
-  init_pairing(1, 1, 1);
+  if(init_pairing(1, 1, 1) == -1){
+    printf("Error");
+    return -1; 
+  }
   read_share();
   printf("Give a string to encrypt : ");
   scanf("%s", asd);

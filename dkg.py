@@ -7,4 +7,6 @@ def dkg():
   
 def startdkg():
   print "DKG started"
-  subprocess.call("dkg/rundkg")
+  out = subprocess.check_output(['./dkg/node', '8901', 'dkg/certs/1.pem', 'dkg/certs/1-key.pem', 'dkg/contlist', '0', '0', '0'])
+  print "DKG finishes... Out is"
+  print out
