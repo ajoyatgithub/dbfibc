@@ -6,6 +6,14 @@ import sys
 import getpass
 import sys
 
+nodeid = 0
+
+def readlist():
+  global nodeid
+  fp = open("files/identity","r")
+  i = fp.readline()
+  nodeid = i.rstrip('\r\n')
+
 def main():
   print "**************WELCOME****************\n"
   print "This is the interface for the program\n"
@@ -32,11 +40,12 @@ def main():
   
   #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is returned
   print("Please wait while the system initializes")
-  dkg.dkg()
+  global nodeid
+  dkg.dkg(nodeid)
   print("DKG completed")
   
   #Phase 3 - Generate the keys using username and the share
-  ibc.start(username)
+  ibc.start(username, nodeid)
   print("Successfully created both public as well as the private keys")
   
   #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages

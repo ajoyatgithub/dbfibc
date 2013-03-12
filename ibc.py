@@ -4,7 +4,7 @@ import re
 import sys
 from ctypes import *
 
-nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
+nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
 ibc = cdll.LoadLibrary('files/libibc.so.1.0.1')
 
 def read_contlist():
@@ -28,14 +28,6 @@ def read_contlist():
   """Easiest way to retreive from tempcontlist
   jl = tempcontlist[int(nodeID)-1]
   print jl[2]"""
-
-def read_identity():
-  """identity contains the node ID in line 1 and the user ID in line 2"""
-  fp = open("files/identity", "r")
-  global nodeID, identity
-  n = fp.readline()
-  nodeID = n.rstrip('\r\n')
-  fp.close()
   
 def read_sysparam():
   """This function will read system.param and initialize the values for n, t, f"""
@@ -91,7 +83,7 @@ def listen():
 def ibc_request_recv(stringid, nid):
   """On receiving an IBC_REQUEST, this will use PBC to hash^share the recvd ID
   and send it to the node from a new socket"""
-  global tempcontlist
+  global tempcontlist, nodeID
   #print "1"
   c_id = (c_char * 40)()
   #print "2"
@@ -117,6 +109,7 @@ def ibc_request_recv(stringid, nid):
   sock.close()
 
 def ibc_reply_recv(ibcreply, sender):
+  global nodeID
   uchar = (c_ubyte * 128)(*map(ord, ibcreply))
   ibc.gen_privatekey(uchar, nodeID, sender)
   #sys.exit()
@@ -163,14 +156,14 @@ def sendRequest():
   
 def init_pbc():
   read_contlist()
-  read_identity()
   read_sysparam()
   ibc.init_pairing(sys_n, sys_t, sys_f)
   ibc.read_share()
 
-def start(username):
+def start(username, nid):
   global port, ip, nodeID, identity
   identity = username
+  nodeID = nid
   init_pbc()
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]

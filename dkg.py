@@ -2,7 +2,11 @@ import threading
 import subprocess
 from ctypes import cdll
 
-def dkg():
+nodeid = 0
+
+def dkg(nid):
+  global nodeid
+  nodeid = nid
   threading.Thread(target=startdkg).start()
   
 def startdkg():
