@@ -15,18 +15,16 @@ int nm, dm;
 char hash[20];
 unsigned char hid[130];
 element_t h, g, share, pks, pk ,pk_temp;
-int sys_n, sys_t, sys_f, ct = 0, q;
+int sys_n = 0, sys_t = 0, sys_f = 0, ct = 0, q;
 pairing_t pairing;
 
 int init_pairing(int n, int t, int f){
-/*This function will open the pairing file and initialize the pairing.*/
+  /*This function will open the pairing file and initialize the pairing.*/
   FILE *fp;
   int k, lk;
   sys_n = n;
   sys_t = t;
   sys_f = f;
-  printf("Sys : n t and f are %d, %d and %d\n", sys_n, sys_t, sys_f);
-  printf("Int : n t and f are %d, %d and %d\n", n, t, f);
   q = 2 * sys_t + 1;
   fp = fopen("pairing", "r");
   size_t count = fread(param, 1, 1024, fp);
@@ -41,39 +39,36 @@ int init_pairing(int n, int t, int f){
 }
 
 int read_share(){
-/*This function will open secrets and read the binary data into unsigned char
-and store it in element share*/
+  /*This function will open secrets and read the binary data into unsigned char
+  and store it in element share*/
   FILE *fp;
   unsigned char str[20];
   fp = fopen("./secrets","rb");
   if(!fp)
     return -1;
-  fread(str, 20, 1, fp);
+  printf("About to read from secrets\n");
+  size_t count = fread(str, 20, 1, fp);
   fclose(fp);
+  if(!count)
+    printf("Could not read from secrets\n");
   element_init_Zr(share, pairing);
   element_from_bytes(share, str);
 }
 
 void hash_id_s(char *str){
-/*This function will read the string, hash it and then map to an element in G2.
-It will then compute hash^share*/
-  printf("c0\n");
+  /*This function will read the string, hash it and then map to an element in G2.
+  It will then compute hash^share*/
   element_init_G2(h, pairing);
-  printf("c1\n");
   element_init_G2(pks, pairing);
-  printf("c2\n");
   SHA1(str, strlen(str), hash);
-  printf("c3\n");
   element_from_hash(h , hash, 20);
-  printf("c4\n");
   element_pow_zn(pks, h, share);
-  printf("c5\n");
   element_to_bytes(hid, pks);
 }
 
 void gen_privatekey(unsigned char *str, int nodeID, int senderID){
-/*This will compute the private key from all the IBC_REPLY's received
-*/
+  /*This will compute the private key from all the IBC_REPLY's received
+  */
   int i, j;
   float l;
   if(ct > sys_t){
@@ -81,8 +76,8 @@ void gen_privatekey(unsigned char *str, int nodeID, int senderID){
     element_printf("The key is %B\n", pk);
     return;
   }
-  else if(ct < sys_t)
-    ct = ct + 1;
+  else if(ct <= sys_t)
+    ct++;
   printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
   i = nodeID;
   j = senderID;
@@ -98,6 +93,7 @@ void gen_privatekey(unsigned char *str, int nodeID, int senderID){
 
   element_set_si(b, nm);
   element_set_si(c, dm);
+  printf("nm is %d\ndm is %d\n", nm, dm);
   element_from_bytes(keyshare, str);
   element_pow_zn(pk_temp, keyshare, b);
   element_invert(ci, c);
@@ -106,8 +102,8 @@ void gen_privatekey(unsigned char *str, int nodeID, int senderID){
 }
 
 int lambdal(int i, int ei){
-/*
-*/
+  /*
+  */
   int j;
   nm = 1;
   dm = 1;
@@ -131,13 +127,5 @@ int main(){
   element_printf("The string has been hashed, it is : %B\n", pks);
   element_to_bytes(key, pks);
   gen_privatekey(key, 1, 2);
-  printf("sdf\n");
-  //element_printf("The string is :\n%B\n", pk);
   return 0;
-}
-
-int genprkey(){
-    unsigned char key[100];
-    element_to_bytes(key, pks);
-    gen_privatekey(key, 1, 2);
 }

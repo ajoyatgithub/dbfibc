@@ -62,7 +62,7 @@ def auth(username, password, auth_type):
     except Exception, e:
       result = e 
   elif auth_type == '2':
-    result = "LDAP coming soon"
+    
   else:
     result = "Invalid"
   return result

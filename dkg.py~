@@ -7,4 +7,4 @@ def dkg():
   
 def startdkg():
   print "DKG started"
-  subprocess.call("dkg/rundkg")
+  subprocess.call("./rundkg")

@@ -35,7 +35,7 @@ def main():
   #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is returned
   print("Please wait while the system initializes")
   dkg.dkg()
-  print("DKG completed")
+  print("DKG completed. ")
   
   #Phase 3 - Generate the keys using username and the share
   ibc.main(username)

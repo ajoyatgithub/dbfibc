@@ -3,6 +3,7 @@ import time
 import socket
 import re
 import string
+import sys
 from ctypes import *
 
 nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
@@ -48,10 +49,28 @@ def read_sysparam():
   t = fp.readline()
   f = fp.readline()
   fp.close()
-  sys_n = n.rstrip('\r\n')
-  sys_t = t.rstrip('\r\n')
-  sys_f = f.rstrip('\r\n')
-  
+  n = n.rstrip('\r\n')
+  t = t.rstrip('\r\n')
+  f = f.rstrip('\r\n')
+  pr = re.search("(n)\s(\d)", n)
+  if pr==None:
+    print("Corrupted system.param(n). About to quit.")
+    sys.exit()
+  else:
+    sys_n = int(pr.group(2))
+  pr = re.search("(t)\s(\d)", t)
+  if pr==None:
+    print("Corrupted system.param(t). About to quit.")
+    sys.exit()
+  else:
+    sys_t = int(pr.group(2))
+  pr = re.search("(f)\s(\d)", f)
+  if pr==None:
+    print("Corrupted system.param(t). About to quit.")
+    sys.exit()
+  else:
+    sys_f = int(pr.group(2))
+    
 def listen():
   """This socket will listen for IBCRequests and IBCReply messages"""
   global port, ip
@@ -66,8 +85,9 @@ def listen():
     conn, address = servsock.accept()
     #print "connection from ", address
     #print "Waiting for message"
-    msg = conn.recv(1024)
+    msg = conn.recv(2048)
     parse_msg(msg)
+    print "Length of message received is ", len(msg)
   conn.close()
   servsock.close()
   return
@@ -96,13 +116,14 @@ def ibc_request_recv(stringid, nid):
     print "Unable to send : ", e, c_ip, c_port
     return
   msg = "IBC_REPLY:" + ibcreply + ":" + nodeID + ":END"
-  print "Sent : ", msg
+  print "Sent (", len(msg), " bytes) : ", msg
   sock.sendall(msg)
   sock.close()
 
 def ibc_reply_recv(ibcreply, sender):
   uchar = (c_ubyte * 128)(*map(ord, ibcreply))
   ibc.gen_privatekey(uchar, nodeID, sender)
+  #sys.exit()
   
 def parse_msg(msgstr):
   parse = re.search("([\w]+):(.*)", msgstr)
@@ -118,7 +139,8 @@ def parse_msg(msgstr):
   elif parse.group(1) == "IBC_REPLY":
     parseid = re.search("([\S]+):([\S]+)(:END)", parse.group(2))
     if parseid == None:
-      print "Received invalid IBC_REPLY : "
+      print "Received invalid IBC_REPLY : ", parse.group(2)
+      #sys.exit()
     else:
       print "Received IBC_REPLY from ", parseid.group(2)
       ibc_reply_recv(parseid.group(1), parseid.group(2))
@@ -148,7 +170,7 @@ def init_pbc():
   read_identity()
   read_sysparam()
   ibc.init_pairing(sys_n, sys_t, sys_f)
-  print "n is ", sys_n, "t is ", sys_t, "f is ", sys_f
+  print "Py : n is ", sys_n, "t is ", sys_t, "f is ", sys_f
   ibc.read_share()
 
 def main():

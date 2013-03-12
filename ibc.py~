@@ -7,11 +7,11 @@ import sys
 from ctypes import *
 
 nodeID = 1; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1
-ibc = cdll.LoadLibrary('./libibc.so.1.0.1')
+ibc = cdll.LoadLibrary('pbc/libibc.so.1.0.1')
 
 def read_contlist():
   """contlist contains the node contact addresses, load it into a list"""
-  fp = open("contlist", "r")
+  fp = open("pbc/contlist", "r")
   global tempcontlist, numNodes
   """reading from contlist and adding it to list tempcontlist for searching...
   tempcontlist[1] contains the contact details for node 3, and so on.
@@ -33,18 +33,16 @@ def read_contlist():
 
 def read_identity():
   """identity contains the node ID in line 1 and the user ID in line 2"""
-  fp = open("identity", "r")
+  fp = open("pbc/identity", "r")
   global nodeID, identity
   n = fp.readline()
   nodeID = n.rstrip('\r\n')
-  i = fp.readline()
-  #identity = i.rstrip('\r\n')
   fp.close()
   
 def read_sysparam():
   """This function will read system.param and initialize the values for n, t, f"""
   global sys_n, sys_t, sys_f
-  fp = open("system.param","r")
+  fp = open("pbc/system.param","r")
   n = fp.readline()
   t = fp.readline()
   f = fp.readline()
@@ -173,10 +171,9 @@ def init_pbc():
   print "Py : n is ", sys_n, "t is ", sys_t, "f is ", sys_f
   ibc.read_share()
 
-def main(userid):
-  global port, ip, nodeID, identity
+def main():
+  global port, ip, nodeID
   init_pbc()
-  identity = userid
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]
   port = li[2]
