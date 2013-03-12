@@ -1,13 +1,10 @@
 #!/usr/bin/env python
-import argparse
-import string
-import md5
 import auth
 import dkg
 import ibc
-import app
 import sys
 import getpass
+import sys
 
 def main():
   print "**************WELCOME****************\n"
@@ -21,6 +18,7 @@ def main():
     auth_str = "LDAP username"
   else:
     print "Invalid input"
+    sys.exit()
   print "Please enter the " + auth_str + " that you want to use as your identity : "
   username = raw_input(auth_str + " : ")
   password = getpass.getpass("Please enter the password for your " + auth_str + " '" + username + "' : ")
@@ -57,7 +55,7 @@ class NullWriter:
     def write(self, s):
         pass
           
-#sys.stderr = NullWriter()
+sys.stderr = NullWriter()
 
 if __name__ == "__main__":
   main()
