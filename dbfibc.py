@@ -38,7 +38,7 @@ def main():
   print("DKG completed")
   
   #Phase 3 - Generate the keys using username and the share
-  ibc.main(username)
+  ibc.start(username)
   print("Successfully created both public as well as the private keys")
   
   #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages

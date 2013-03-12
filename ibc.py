@@ -171,9 +171,22 @@ def init_pbc():
   print "Py : n is ", sys_n, "t is ", sys_t, "f is ", sys_f
   ibc.read_share()
 
-def main(username):
+def start(username):
   global port, ip, nodeID, identity
   identity = username
+  init_pbc()
+  li = tempcontlist[int(nodeID) - 1]
+  ip = li[1]
+  port = li[2]
+  threading.Thread(target=listen).start()
+  option = input("Enter 1 to send request : ")
+
+  if option == 1:
+    threading.Thread(target=sendRequest).start()
+
+def main():
+  global port, ip, nodeID, identity
+  #identity = username
   init_pbc()
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]
