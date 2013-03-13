@@ -1344,6 +1344,7 @@ void Node::completeDKG(){
 	// Get performance measurements
 	measure_now();
 	msgLog.close();	
+	exit(0);
 }
 
 void Node::sendLeaderChangeMessage(NodeID nextLeader){

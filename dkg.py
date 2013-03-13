@@ -26,7 +26,6 @@ def startdkg():
   fp.write(ltr)
   fp.close()
   #ltr = "../dkg/node %d ../dkg/certs/%d.pem ../dkg/certs/%d-key.pem ../dkg/contlist 0 0 0" % (int(c_port), int(nid), int(nid))
-  print ltr
+  #print ltr
   os.chdir("dkg/")
-  subprocess.call('ls', shell=True)
   subprocess.call(ltr, shell=True)
