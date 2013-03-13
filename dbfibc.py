@@ -13,6 +13,7 @@ def readlist():
   fp = open("files/identity","r")
   i = fp.readline()
   nodeid = i.rstrip('\r\n')
+  fp.close()
 
 def main():
   print "**************WELCOME****************\n"
