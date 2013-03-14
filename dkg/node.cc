@@ -1334,7 +1334,7 @@ void Node::completeDKG(){
 	cout<<"DKG_COMPLETE * for " <<buddyset.get_leader()<< " RS from " << selfID << " to * at "
 				<< now.tv_sec << "." << setw(6) << now.tv_usec << " :)" <<endl;
 	FILE *fp;
-	fp = fopen("./secrets","wb");
+	fp = fopen("../files/secrets","wb");
   result.share.dump(stderr,(char*)"Share is",10);
 	result.share.dumpfile(fp);
 	fclose(fp);
@@ -1402,7 +1402,7 @@ int main(int argc, char **argv)
   int non_responsive_leader_number = atoi(argv[7]);
 
   gnutls_global_init();
-  Node node("pairing.param", "system.param", INADDR_ANY, portnum, 
+  Node node("../files/pairing", "../files/system.param", INADDR_ANY, portnum, 
 			certfile, keyfile, contactlist, ph, type, non_responsive_leader_number);
   return node.run();
 }

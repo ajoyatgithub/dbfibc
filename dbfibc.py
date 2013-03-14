@@ -39,13 +39,13 @@ def main():
     print auth_result
     return
   
-  #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is returned
+  #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is written to a file
   print("Please wait while the system initializes")
   global nodeid
   dkg.dkg(nodeid)
   print("DKG completed")
   
-  #Phase 3 - Generate the keys using username and the share
+  #Phase 3 - Generate the keys using username and the share, the keys are stored in the loaded ibc library
   ibc.start(username, nodeid)
   print("Successfully created both public as well as the private keys")
   
