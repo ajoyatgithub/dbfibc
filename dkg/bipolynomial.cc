@@ -181,7 +181,7 @@ const Zr BiPolynomial::getCoeff(unsigned int i, unsigned int j) const
 const Polynomial BiPolynomial::apply(const Zr &x) const
 {
     Polynomial result;
-  	Polynomial polyx = Polynomial(vector<Zr>(1,x));
+	Polynomial polyx = Polynomial(vector<Zr>(1,x));
 
     size_t size = coeffs.size();
     while(size > 0){
