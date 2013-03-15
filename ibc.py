@@ -66,7 +66,7 @@ def listen():
   try:
     servsock.bind(('', int(port)))
   except Exception, e:
-    print "Error : ", e
+    print "Error : ", e, port
   servsock.listen(5)
   while True:
     #print "Waiting for connection"
@@ -98,6 +98,8 @@ def ibc_request_recv(stringid, nid):
   i = int(nid) - 1
   [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
   sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  c_port = int(c_port)
+  c_port = c_port + 10
   try:
     sock.connect((c_ip, int(c_port)))
   except Exception, e:
@@ -140,6 +142,8 @@ def sendRequest():
   for i in range(numNodes):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
+    c_port = int(c_port)
+    c_port = c_port + 10
     if c_port == port:
       continue
     #print "i ", nodeID, "am trying to connect to ", nodeid, "at ", c_ip, int(c_port), c_port
@@ -156,7 +160,9 @@ def sendRequest():
   
 def init_pbc():
   read_contlist()
+  print "IBC : Read contlist......"
   read_sysparam()
+  print "IBC : Read sys param......"
   ibc.init_pairing(sys_n, sys_t, sys_f)
   ibc.read_share()
 
@@ -164,10 +170,14 @@ def start(username, nid):
   global port, ip, nodeID, identity
   identity = username
   nodeID = nid
+  print "IBC : Starting......"
   init_pbc()
+  print "IBC : Initialized......"
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]
   port = li[2]
+  port = int(port)
+  port = port + 10
   threading.Thread(target=listen).start()
   option = input("Enter 1 to send request : ")
 
@@ -181,6 +191,8 @@ def main():
   li = tempcontlist[int(nodeID) - 1]
   ip = li[1]
   port = li[2]
+  port = int(port)
+  port = port + 10
   threading.Thread(target=listen).start()
   option = input("Enter 1 to send request : ")
 

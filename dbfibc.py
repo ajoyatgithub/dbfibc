@@ -13,11 +13,13 @@ def readlist():
   fp = open("files/identity","r")
   i = fp.readline()
   nodeid = i.rstrip('\r\n')
+  print "Read nodeid just now. nodeid =", nodeid
   fp.close()
 
 def main():
   print "**************WELCOME****************\n"
   print "This is the interface for the program\n"
+  readlist()
   #Phase 1 - Authenticating the identity. The following code will retreive the username and password and send it to the module auth.py
   
   auth_type = raw_input("Please select the type of authentication(Enter the number and press enter) \n\t1. Email\n\t2. LDAP\n\t\t:")
@@ -32,6 +34,7 @@ def main():
   username = raw_input(auth_str + " : ")
   password = getpass.getpass("Please enter the password for your " + auth_str + " '" + username + "' : ")
   auth_result = auth.auth(username, password, auth_type)
+  auth_result = "S"
   if  auth_result is "S":
     print("Hello, " + username + ". Authentication has been successful. You can now use your username as your Identity\n")
   else:
@@ -42,6 +45,7 @@ def main():
   #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is written to a file
   print("Please wait while the system initializes")
   global nodeid
+  #print "Calling DKG, node id is ", nodeid
   dkg.dkg(nodeid)
   print("DKG completed")
   
@@ -65,7 +69,7 @@ class NullWriter:
     def write(self, s):
         pass
           
-sys.stderr = NullWriter()
+#sys.stderr = NullWriter()
 
 if __name__ == "__main__":
   main()

@@ -1,12 +1,36 @@
--Run node 10 starting at 1363233439.081658 with version 8.0
--Function node 10 starting at 1363233439.081762
-LEADER_CHANGE 1 for * SENT from 10 to 1 at 1363233439.082703 standard 1
-VSS_HELP 3 for * SENT from 10 to 1 at 1363233439.082747
-VSS_HELP 4 for * SENT from 10 to 2 at 1363233439.082801
-VSS_HELP 5 for * SENT from 10 to 3 at 1363233439.082852
-VSS_HELP 6 for * SENT from 10 to 4 at 1363233439.082900
-VSS_HELP 7 for * SENT from 10 to 5 at 1363233439.082955
-VSS_HELP 8 for * SENT from 10 to 6 at 1363233439.083101
-VSS_HELP 9 for * SENT from 10 to 7 at 1363233439.083298
-VSS_HELP 10 for * SENT from 10 to 8 at 1363233439.083413
-VSS_HELP 11 for * SENT from 10 to 9 at 1363233439.083474
+-Run node 2 starting at 1363276754.080062 with version 8.0
+-Function node 2 starting at 1363276754.080155
+LEADER_CHANGE 1 for * SENT from 2 to 1 at 1363276754.081189 standard 1
+COMPUTE_BI * for * RS from 2 to * at 1363276754.081642
+COMPUTE_CM * for * RS from 2 to * at 1363276754.082875
+VSS_SEND 3 for * SENT from 2 to 1 at 1363276754.344807 standard 1
+VSS_SEND 4 for * SENT from 2 to 2 at 1363276754.344987 standard 1
+VSS_SEND 5 for * SENT from 2 to 3 at 1363276754.345175 standard 1
+VSS_SEND 6 for * SENT from 2 to 4 at 1363276754.345341 standard 1
+VSS_SEND 7 for * SENT from 2 to 5 at 1363276754.345481 standard 1
+VSS_SEND 8 for * SENT from 2 to 6 at 1363276754.345619 standard 1
+VSS_SEND 9 for * SENT from 2 to 7 at 1363276754.345723 standard 1
+VSS_SEND 10 for * SENT from 2 to 8 at 1363276754.345821 standard 1
+VSS_SEND 11 for * SENT from 2 to 9 at 1363276754.345956 standard 1
+VSS_SEND 12 for * SENT from 2 to 10 at 1363276754.346059 standard 1
+VSS_HELP 13 for * SENT from 2 to 1 at 1363276754.346095
+VSS_HELP 14 for * SENT from 2 to 3 at 1363276754.346110
+VSS_HELP 15 for * SENT from 2 to 4 at 1363276754.346122
+VSS_HELP 16 for * SENT from 2 to 5 at 1363276754.346134
+VSS_HELP 17 for * SENT from 2 to 6 at 1363276754.346145
+VSS_HELP 18 for * SENT from 2 to 7 at 1363276754.346157
+VSS_HELP 19 for * SENT from 2 to 8 at 1363276754.346169
+VSS_HELP 20 for * SENT from 2 to 9 at 1363276754.346191
+VSS_HELP 21 for * SENT from 2 to 10 at 1363276754.346203
+VSS_SEND 4 for * RECEIVED from 2 to 2 at 1363276754.347331
+VSS_ECHO 23 for 2 SENT from 2 to 1 at 1363276754.351619 standard 1
+VSS_ECHO 24 for 2 SENT from 2 to 2 at 1363276754.351712 standard 1
+VSS_ECHO 25 for 2 SENT from 2 to 3 at 1363276754.351788 standard 1
+VSS_ECHO 26 for 2 SENT from 2 to 4 at 1363276754.351844 standard 1
+VSS_ECHO 27 for 2 SENT from 2 to 5 at 1363276754.351887 standard 1
+VSS_ECHO 28 for 2 SENT from 2 to 6 at 1363276754.351934 standard 1
+VSS_ECHO 29 for 2 SENT from 2 to 7 at 1363276754.351973 standard 1
+VSS_ECHO 30 for 2 SENT from 2 to 8 at 1363276754.352012 standard 1
+VSS_ECHO 31 for 2 SENT from 2 to 9 at 1363276754.352051 standard 1
+VSS_ECHO 32 for 2 SENT from 2 to 10 at 1363276754.352090 standard 1
+VSS_ECHO 24 for 2 RECEIVED from 2 to 2 at 1363276754.352767

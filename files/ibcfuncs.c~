@@ -1,5 +1,5 @@
 /*
-  cc simplepbc.c -lpbc -lgmp -lcrytpo
+  cc ibcfuncts.c -lpbc -lgmp -lcrytpo
   '-lcrypto' used for SHA1
   ./a.out pairing
 */
@@ -76,29 +76,30 @@ void gen_privatekey(unsigned char *str, int nodeID, int senderID){
     element_printf("The key is %B\n", pk);
     return;
   }
-  else if(ct <= sys_t)
+  else if(ct <= sys_t){
     ct++;
-  printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
-  i = nodeID;
-  j = senderID;
-  lambdal(i, q);
-  element_t b, c, ci, keyshare;
-  
-  element_init_G2(keyshare, pairing);
-  element_init_G2(pk_temp, pairing);
-  element_init_G2(pk, pairing);
-  element_init_Zr(b, pairing);
-  element_init_Zr(c, pairing);
-  element_init_Zr(ci, pairing);
+    printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
+    i = nodeID;
+    j = senderID;
+    lambdal(i, q);
+    element_t b, c, ci, keyshare;
+    
+    element_init_G2(keyshare, pairing);
+    element_init_G2(pk_temp, pairing);
+    element_init_G2(pk, pairing);
+    element_init_Zr(b, pairing);
+    element_init_Zr(c, pairing);
+    element_init_Zr(ci, pairing);
 
-  element_set_si(b, nm);
-  element_set_si(c, dm);
-  printf("nm is %d\ndm is %d\n", nm, dm);
-  element_from_bytes(keyshare, str);
-  element_pow_zn(pk_temp, keyshare, b);
-  element_invert(ci, c);
-  element_pow_zn(pk_temp, pk_temp, ci);
-  element_mul(pk, pk, pk_temp);
+    element_set_si(b, nm);
+    element_set_si(c, dm);
+    printf("nm is %d\ndm is %d\n", nm, dm);
+    element_from_bytes(keyshare, str);
+    element_pow_zn(pk_temp, keyshare, b);
+    element_invert(ci, c);
+    element_pow_zn(pk_temp, pk_temp, ci);
+    element_mul(pk, pk, pk_temp);
+  }
 }
 
 int lambdal(int i, int ei){
