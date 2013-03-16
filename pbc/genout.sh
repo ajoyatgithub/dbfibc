@@ -1,1 +1,1 @@
-cc test.c -lpbc -lgmp -lcrypto
+cc -g test.c -lpbc -lgmp -lcrypto

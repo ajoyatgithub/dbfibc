@@ -29,7 +29,7 @@ void hash1(char * b){
 void hash2(){
   unsigned char temp[200];
   element_to_bytes(temp, h2gt);
-  SHA1(temp, sizeof(temp), h2bl);
+  SHA1(hsh2, sizeof(hsh2), hashh2);
 }
 
 int init_pairing(int n, int t, int f){
