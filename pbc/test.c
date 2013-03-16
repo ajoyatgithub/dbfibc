@@ -57,7 +57,12 @@ void hash3(unsigned char * b1, unsigned char * b2){
 }
 
 void hash4(unsigned char * b){
-  
+  /* Mathematically,
+   * H4 : {0,1}^l -> {0,1}^l
+   * This function will take a 20 byte string, and return its hash in a 
+   * global variable h4bl.
+   */
+  SHA1(b, sizeof(b), h4bl);
 }
 
 int init_pairing(int n, int t, int f){
