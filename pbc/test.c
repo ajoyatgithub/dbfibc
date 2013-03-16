@@ -21,16 +21,29 @@ int sys_n = 0, sys_t = 0, sys_f = 0, ct = 0, q;
 pairing_t pairing;
 
 void hash1(char * b){
+  /* Mathematically
+     H1 : {0,1}* -> G2*
+     This function will take an input as char, hash it and 
+     convert it into a element in G2.
+     
+  */
   unsigned char h[20];
   SHA1(b, sizeof(b), h);
   element_from_hash(h1, h, 20);
 }
 
 void hash2(){
+  /* Mathematically,
+     H2 : GT -> {0,1}^l, l = 20
+     This function will take a GT value stored in an element h2gt
+     and store a 20 byte hash in a unsigned char h2bl
+  */
   unsigned char temp[200];
   element_to_bytes(temp, h2gt);
   SHA1(temp, sizeof(temp), h2bl);
 }
+
+void hash3
 
 int init_pairing(int n, int t, int f){
   /*This function will open the pairing file and initialize the pairing.*/
