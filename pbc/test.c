@@ -13,7 +13,7 @@
 char ident[100], param[1024];
 int nm, dm;
 char hash[20];
-unsigned char hid[130], h2bl[20];
+unsigned char hid[130], h2bl[20], h4bl[20];
 element_t h, g, share, pks, pk ,pk_temp;
 
 element_t h1, h2gt, h3zr;
@@ -24,7 +24,7 @@ void hash1(char * b){
   /* Mathematically
    * H1 : {0,1}* -> G2*
    * This function will take an input as char, hash it and
-   * convert it into a element in G2.
+   * convert it into a element h1 in G2.
    */
   unsigned char h[20];
   SHA1(b, sizeof(b), h);
@@ -54,6 +54,10 @@ void hash3(unsigned char * b1, unsigned char * b2){
     rnd[i] = b1[i] ^ b2[i];
   }
   element_from_bytes(h3zr, rnd);
+}
+
+void hash4(unsigned char * b){
+  
 }
 
 int init_pairing(int n, int t, int f){
