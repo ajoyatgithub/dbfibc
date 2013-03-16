@@ -65,6 +65,16 @@ void hash4(unsigned char * b){
   SHA1(b, sizeof(b), h4bl);
 }
 
+void init_hashes(){
+  element_init_G2(h1, pairing);
+  element_init_GT(h2gt, pairing);
+  element_init_Zr(h3zr, pairing);
+}
+
+void encrypt(char * message){
+  unsigned char v[];
+}
+
 int init_pairing(int n, int t, int f){
   /*This function will open the pairing file and initialize the pairing.*/
   FILE *fp;
@@ -171,10 +181,8 @@ int main(){
   printf("Please enter a hex string to hash using H1 : ");
   gets(asd);
   init_pairing(5, 1, 0);
+  init_hashes();
   hash1(asd);
-  hash2();
-  //hash_id_s(asd);
-  element_printf("\nThe H1 of the string is : %B\n and H2 is %s\nasd\n", h1, hashh2);
-  
+  element_printf("The H1 of the string is : %B\n", h1);
   return 0;
 }
