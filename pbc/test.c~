@@ -13,7 +13,7 @@
 char ident[100], param[1024];
 int nm, dm;
 char hash[20];
-unsigned char hid[130], h2bl[20], h4bl[20];
+unsigned char hid[130], h4bl[20];
 element_t h, g, share, pks, pk ,pk_temp;
 
 element_t h1, h2gt, h3zr;
@@ -31,15 +31,15 @@ void hash1(char * b){
   element_from_hash(h1, h, 20);
 }
 
-void hash2(){
+void hash2(unsigned char *b){
   /* Mathematically,
    * H2 : GT -> {0,1}^l, l = 20
    * This function will take a GT value stored in an element h2gt
-   * and store a 20 byte hash in a unsigned char h2bl
+   * and store a 20 byte hash in the unsigned char b
    */
-  unsigned char temp[200];
+  unsigned char temp[128];
   element_to_bytes(temp, h2gt);
-  SHA1(temp, sizeof(temp), h2bl);
+  SHA1(temp, sizeof(temp), b);
 }
 
 void hash3(unsigned char * b1, unsigned char * b2){
@@ -71,8 +71,15 @@ void init_hashes(){
   element_init_Zr(h3zr, pairing);
 }
 
-void encrypt(char * message){
-  unsigned char v[];
+void encrypt20(char * message){
+  unsigned char u[128], v[20], w[20];
+  unsigned char sig[20], r[20];
+  
+  element_random(h2gt);
+  hash2(sig);  //sig now has a random number 
+  
+  
+  
 }
 
 int init_pairing(int n, int t, int f){
@@ -116,11 +123,8 @@ int read_share(){
 void hash_id_s(char *str){
   /*This function will read the string, hash it and then map to an element in G2.
   It will then compute hash^share*/
-  //element_init_G2(h, pairing);
-  element_init_G2(pks, pairing);
   SHA1(str, strlen(str), hash);
   hash1(hash);
-  //element_from_hash(h , hash, 20);
   element_pow_zn(pks, h1, share);
   element_to_bytes(hid, pks);
 }
@@ -177,11 +181,32 @@ int lambdal(int i, int ei){
 
 int main(){
   char asd[20];
+  int d;
   //unsigned char key[100];
   printf("Please enter a hex string to hash using H1 : ");
   gets(asd);
   init_pairing(5, 1, 0);
   init_hashes();
   hash1(asd);
+  element_printf("The H1 of %d the string is : %B\n", element_length_in_bytes(h1), h1);
+
+    
+  unsigned char qwe[20];
+  
+  element_random(h2gt);
+  hash2(qwe);
+  element_printf("\n\nThe H2 of\n%B is\n%s\n", h2gt, qwe);
+  
+  hash3(qwe, asd);
+  element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
+
+  hash3(qwe, asd);
+  element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
+
+  hash4(qwe);
+  printf("The hash of\n%s\nis\n\t%s\n", qwe, h4bl);
+  
+  hash4(qwe);
+  printf("The hash of\n%s\nis\n\t%s\n", qwe, h4bl);
   return 0;
 }
