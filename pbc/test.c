@@ -130,12 +130,11 @@ void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
   element_random(g);
   
   element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
-  
-  if (!element_cmp(gpub, U))
-    printf("signature verifies\n");
+                                        // TODO Replace the g with the system global value
+  if (!element_cmp(gpub, U))            //if g^r != u, reject
+    printf("Message is %s\n", m);
   else
-    printf("signature does not verify\n");
-
+    printf("Invalid message.\n");
 }
 
 int init_pairing(int n, int t, int f){

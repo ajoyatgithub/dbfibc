@@ -71,8 +71,8 @@ void init_hashes(){
   element_init_Zr(h3zr, pairing);
 }
 
-//void encrypt20(unsigned char * message, char * rid);
-//void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w);
+void encrypt20(unsigned char * message, char * rid);
+void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w);
 
 void encrypt20(unsigned char * message, char * rid){
   unsigned char u[128], v[20], w[20], tv[20], tw[20];
@@ -131,11 +131,10 @@ void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
   
   element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
   
-  if (!element_cmp(gpub, U))
-    printf("signature verifies\n");
+  if (!element_cmp(gpub, U))            //if g^r != u, reject
+    printf("Message is %s\n", m);
   else
-    printf("signature does not verify\n");
-
+    printf("Invalid message.\n");
 }
 
 int init_pairing(int n, int t, int f){
