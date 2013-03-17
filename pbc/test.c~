@@ -13,7 +13,7 @@
 char ident[100], param[1024];
 int nm, dm;
 char hash[20];
-unsigned char hid[130], h4bl[20];
+unsigned char hid[130];
 element_t h, g, share, pks, pk ,pk_temp;
 
 element_t h1, h2gt, h3zr;
@@ -56,13 +56,13 @@ void hash3(unsigned char * b1, unsigned char * b2){
   element_from_bytes(h3zr, rnd);
 }
 
-void hash4(unsigned char * b){
+void hash4(unsigned char * b, unsigned char * hb){
   /* Mathematically,
    * H4 : {0,1}^l -> {0,1}^l
-   * This function will take a 20 byte string, and return its hash in a 
-   * global variable h4bl.
+   * This function will take a 20 byte string, and return its hash
+   * back to hb.
    */
-  SHA1(b, sizeof(b), h4bl);
+  SHA1(b, sizeof(b), hb);
 }
 
 void init_hashes(){
@@ -71,15 +71,37 @@ void init_hashes(){
   element_init_Zr(h3zr, pairing);
 }
 
-void encrypt20(char * message){
-  unsigned char u[128], v[20], w[20];
+void encrypt20(unsigned char * message, char * rid){
+  unsigned char u[128], v[20], w[20], tv[20], tw[20];
   unsigned char sig[20], r[20];
+  int i;
+  element_t temp1;
   
   element_random(h2gt);
-  hash2(sig);  //sig now has a random number 
+  hash2(sig);                           //    sig now has a random number 
+                                        //sig = {0,1}l
+  hash3(sig, message);                  //    h3zr ~ r
+                                        //r = H3(sig, M)
+  hash1(rid);                           //hid = H1(ID) ~ ~ h1 = H1(rid)
   
+  element_init_G1(g, pairing);
+  element_random(g);                    // TODO Remove after getting the global 
+                                        // function  
+  element_t U;
+  element_init_G1(U, pairing);
+  element_pow_zn(U, g, h3zr);           //U = g ^ r, then u = U
   
-  
+  element_init_GT(temp1, pairing);
+  pairing_apply(temp1, U, h1, pairing); //temp1 = e(U, h1) = e(g^r,hid)
+  element_pow_zn(h2gt, temp1, h3zr);    //h2gt = temp1^h3zr ~~ h2gt=temp1^r
+  hash2(tv);                            //tv = H2(h3zr) ~ H2(e(g^r,hid)^r)
+  for(i=0;i<20;i++){
+    v[i] = sig[i]^tv[i];
+  }                                     //v = sig XOR tv
+  hash4(sig, tw);                       //tw = H4(sig)
+  for(i=0;i<20;i++){
+    w[i] = message[i]^tw[i];
+  }                                     //w = message XOR tw
 }
 
 int init_pairing(int n, int t, int f){
@@ -191,7 +213,7 @@ int main(){
   element_printf("The H1 of %d the string is : %B\n", element_length_in_bytes(h1), h1);
 
     
-  unsigned char qwe[20];
+  unsigned char qwe[20], qwer[20];
   
   element_random(h2gt);
   hash2(qwe);
@@ -203,10 +225,10 @@ int main(){
   hash3(qwe, asd);
   element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
 
-  hash4(qwe);
-  printf("The hash of\n%s\nis\n\t%s\n", qwe, h4bl);
+  hash4(qwe, qwer);
+  printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
   
-  hash4(qwe);
-  printf("The hash of\n%s\nis\n\t%s\n", qwe, h4bl);
+  hash4(qwe, qwer);
+  printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
   return 0;
 }
