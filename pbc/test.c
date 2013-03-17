@@ -71,6 +71,9 @@ void init_hashes(){
   element_init_Zr(h3zr, pairing);
 }
 
+void encrypt20(unsigned char * message, char * rid);
+void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w);
+
 void encrypt20(unsigned char * message, char * rid){
   unsigned char u[128], v[20], w[20], tv[20], tw[20];
   unsigned char sig[20], r[20];
@@ -86,7 +89,7 @@ void encrypt20(unsigned char * message, char * rid){
   
   element_init_G1(g, pairing);
   element_random(g);                    // TODO Remove after getting the global 
-                                        // function  
+                                        // function. Replace with g^s
   element_t U;
   element_init_G1(U, pairing);
   element_pow_zn(U, g, h3zr);           //U = g ^ r, then u = U
@@ -103,6 +106,36 @@ void encrypt20(unsigned char * message, char * rid){
     w[i] = message[i]^tw[i];
   }                                     //w = message XOR tw
   element_to_bytes(u, U);
+}
+
+void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
+  int i;
+  unsigned char sig[20], tsig[20], hsig[20], m[20];
+  element_t U, temp1, g, gpub;
+  element_from_bytes(U, u);
+  
+  element_init_GT(temp1, pairing);
+  pairing_apply(temp1, U, pk, pairing); //temp1 = e(U, pk) ~ e(u, did)
+  hash2(tsig);                          //tsig = H2(e(u, did))
+  for(i=0;i<20;i++){
+    sig[i] = v[i] ^ tsig[i];            //sig = v XOR H2(e(u, did))
+  }
+  hash4(sig, hsig);                     //hsig = H4(sig)
+  for(i=0;i<20;i++){
+    m[i] = w[i] ^ hsig[i];              //m = w XOR H4(sig)
+  }
+  hash3(sig, m);                        //r = H3(sig, m), r = h3zr
+  element_init_G1(g, pairing);
+  element_init_G1(gpub, pairing);
+  element_random(g);
+  
+  element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
+  
+  if (!element_cmp(gpub, U))
+    printf("signature verifies\n");
+  else
+    printf("signature does not verify\n");
+
 }
 
 int init_pairing(int n, int t, int f){
