@@ -14,6 +14,8 @@ char ident[100], param[1024];
 int nm, dm;
 char hash[20];
 unsigned char hid[130];
+unsigned char u[128], v[20], w[20];
+
 element_t h, g, share, pks, pk ,pk_temp;
 
 element_t h1, h2gt, h3zr;
@@ -75,7 +77,7 @@ void encrypt20(unsigned char * message, char * rid);
 void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w);
 
 void encrypt20(unsigned char * message, char * rid){
-  unsigned char u[128], v[20], w[20], tv[20], tw[20];
+  unsigned char tv[20], tw[20];
   unsigned char sig[20], r[20];
   int i;
   element_t temp1;
@@ -86,10 +88,6 @@ void encrypt20(unsigned char * message, char * rid){
   hash3(sig, message);                  //    h3zr ~ r
                                         //r = H3(sig, M)
   hash1(rid);                           //hid = H1(ID) ~ ~ h1 = H1(rid)
-  
-  element_init_G1(g, pairing);
-  element_random(g);                    // TODO Remove after getting the global 
-                                        // function. Replace with g^s
   element_t U;
   element_init_G1(U, pairing);
   element_pow_zn(U, g, h3zr);           //U = g ^ r, then u = U
@@ -106,12 +104,14 @@ void encrypt20(unsigned char * message, char * rid){
     w[i] = message[i]^tw[i];
   }                                     //w = message XOR tw
   element_to_bytes(u, U);
+  printf("The encryption of %s is :\nu = %s\nv = %s\nw = %s\n", message, u, v, w);
 }
 
 void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
   int i;
   unsigned char sig[20], tsig[20], hsig[20], m[20];
-  element_t U, temp1, g, gpub;
+  element_t U, temp1, gpub;
+  element_init_G1(U, pairing);
   element_from_bytes(U, u);
   
   element_init_GT(temp1, pairing);
@@ -125,16 +125,13 @@ void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
     m[i] = w[i] ^ hsig[i];              //m = w XOR H4(sig)
   }
   hash3(sig, m);                        //r = H3(sig, m), r = h3zr
-  element_init_G1(g, pairing);
   element_init_G1(gpub, pairing);
-  element_random(g);
   
   element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
-                                        // TODO Replace the g with the system global value
   if (!element_cmp(gpub, U))            //if g^r != u, reject
     printf("Message is %s\n", m);
   else
-    printf("Invalid message.\n");
+    printf("Invalid message. M is %s\n", m);
 }
 
 int init_pairing(int n, int t, int f){
@@ -235,24 +232,22 @@ int lambdal(int i, int ei){
   return 1;
 }
 
-int readg(char * f){
-  
-}
-
 void readg(char * s){
   element_init_G1(g, pairing);
   element_set_str(g, s, 10);
-  element_printf("The value U has been read. It is : %B\n", g);
 }
 
-int main(){
-  char asd[20];
+void main(){
+  unsigned char asd[20];
+  char id[20];
   int d;
-  //unsigned char key[100];
-  printf("Please enter a hex string to hash using H1 : ");
-  gets(asd);
   init_pairing(5, 1, 0);
   init_hashes();
+  //unsigned char key[100];
+  /*
+  printf("Please enter a hex string to hash using H1 : ");
+  gets(asd);
+
   hash1(asd);
   element_printf("The H1 of %d the string is : %B\n", element_length_in_bytes(h1), h1);
 
@@ -275,4 +270,12 @@ int main(){
   hash4(qwe, qwer);
   printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
   return 0;
+  */
+  char u[] = "[154421937288869892795189093810921235122476463839375326073591971056365930434602470186742385706265523539972032311143735573288479871818380689794065934739646,1053224359509564021923111819691635700583676517250934330501551578364631046844652405820767801196558009238591149557814028743651030702748906271871797495725636]";
+  readg(u);
+  printf("Enter in the following order : Message, ID,  ");
+  scanf("%s", asd);
+  scanf("%s", id);
+  encrypt20(asd, id);
+  decrypt20(u, v, w);
 }
