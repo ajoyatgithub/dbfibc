@@ -155,6 +155,7 @@ int init_pairing(int n, int t, int f){
   pairing_init_set_buf(pairing, param, count);
   printf("Initialized pairing in ibc.c\n");
   element_init_G2(h1, pairing);
+  
   return 0;
 }
 
@@ -232,6 +233,16 @@ int lambdal(int i, int ei){
     dm *= j - i;
   }
   return 1;
+}
+
+int readg(char * f){
+  
+}
+
+void readg(char * s){
+  element_init_G1(g, pairing);
+  element_set_str(g, s, 10);
+  element_printf("The value U has been read. It is : %B\n", g);
 }
 
 int main(){
