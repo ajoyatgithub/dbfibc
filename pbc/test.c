@@ -121,9 +121,8 @@ void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
     sig[i] = v[i] ^ tsig[i];            //sig = v XOR H2(e(u, did))
   }
   hash4(sig, hsig);                     //hsig = H4(sig)
-  for(i=0;i<20;i++){
+  for(i=0;i<20;i++)
     m[i] = w[i] ^ hsig[i];              //m = w XOR H4(sig)
-  }
   hash3(sig, m);                        //r = H3(sig, m), r = h3zr
   element_init_G1(gpub, pairing);
   

@@ -9,8 +9,8 @@ tempcontlist = []
 def dkg(nid):
   global nodeid
   nodeid = nid
-  #threading.Thread(target=startdkg).start()
-  startdkg()
+  threading.Thread(target=startdkg).start()
+  #startdkg()
   
 def startdkg():
   fp = open("files/contlist","r")

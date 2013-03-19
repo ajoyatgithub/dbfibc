@@ -111,6 +111,7 @@ void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
   int i;
   unsigned char sig[20], tsig[20], hsig[20], m[20];
   element_t U, temp1, gpub;
+  element_init_G1(U, pairing);
   element_from_bytes(U, u);
   
   element_init_GT(temp1, pairing);
