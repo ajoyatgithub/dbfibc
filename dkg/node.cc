@@ -1343,8 +1343,7 @@ void Node::completeDKG(){
 	//fstream logFStream("dkg.log",ios::out); logFStream <<selfID<<" "<<buddyset.get_leader()<<" ";logFStream.close();
 	// Get performance measurements
 	measure_now();
-	msgLog.close();	
-	exit(0);
+	msgLog.close();
 }
 
 void Node::sendLeaderChangeMessage(NodeID nextLeader){

@@ -4,7 +4,7 @@ import re
 import sys
 from ctypes import *
 
-nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1; sys_u
+nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1; sys_u = 0
 ibc = cdll.LoadLibrary('files/libibc.so.1.0.1')
 
 def read_contlist():
@@ -148,8 +148,8 @@ def contactsretname(nid):
     if pr==None:
       return "None"
     else:
-      if pr.group(4) == name:
-        return pr.group(2)
+      if pr.group(2) == nid:
+        return pr.group(4)
   
 def ibc_reply_recv(ibcreply, sender):
   global nodeID

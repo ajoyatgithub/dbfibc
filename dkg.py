@@ -2,14 +2,29 @@
 import subprocess
 import os
 import re
+import threading
+import pyinotify
 
 nodeid = 0
 tempcontlist = []
+status = "Not Started"
 
+def onChange(ev):
+  status = "sharegen"
+
+def watch_secrets():
+  wm = pyinotify.WatchManager()
+  wm.add_watch('project/dbfibc/files/secret', pyinotify.IN_CLOSE_WRITE, onChange)
+  notifier = pyinotify.Notifier(wm)
+  notifier.loop()
+  
 def dkg(nid):
   global nodeid
   nodeid = nid
+  #print "DKG starting...."
   threading.Thread(target=startdkg).start()
+  threading.Thread(target=watch_secrets).start()
+  #print "DKG started...."
   #startdkg()
   
 def startdkg():

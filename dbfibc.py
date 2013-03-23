@@ -44,18 +44,21 @@ def main():
   print("Please wait while the system initializes")
   global nodeid
   dkg.dkg(nodeid)
-  print("DKG completed")
+  while 1:
+    if dkg.status == "sharegen":
+      break
+      
+  print "Share Generated"
   
   #Phase 3 - Generate the keys using username and the share, the keys are stored in the loaded ibc library
   ibc.start(username, nodeid)
-  print("Successfully created both public as well as the private keys")
   
   #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages
   option = raw_input("Select what you would like to do : \n1. Encrypt\t2. Decrypt\n\t: ")
   if option == '1':
-  	ibc.encrypt()
+    ibc.encrypt()
   elif option == '2':
-  	ibc.decrypt()
+  	  ibc.decrypt()
   else:
     print("Incorrect option")
     return
@@ -63,10 +66,10 @@ def main():
   return
 
 class NullWriter:
-    def write(self, s):
-        pass
+  def write(self, s):
+    pass
           
-sys.stderr = NullWriter()
+#sys.stderr = NullWriter()
 
 if __name__ == "__main__":
   main()

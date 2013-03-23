@@ -4,7 +4,7 @@ import re
 import sys
 from ctypes import *
 
-nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1; sys_u
+nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1; sys_u = 0
 ibc = cdll.LoadLibrary('files/libibc.so.1.0.1')
 
 def read_contlist():
@@ -259,7 +259,6 @@ def main():
   port = li[2]
   threading.Thread(target=listen).start()
   option = input("Enter 1 to send request : ")
-
   if option == 1:
     threading.Thread(target=sendRequest).start()
 
