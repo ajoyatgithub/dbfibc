@@ -3,6 +3,7 @@ import socket
 import re
 import sys
 from ctypes import *
+from datetime import datetime
 
 nodeID = 0; identity = ""; tempcontlist = []; port = 1000; numNodes = 0;ip = '127.0.0.1'; sys_n = 1; sys_t = 1; sys_f = 1; sys_u = 0
 ibc = cdll.LoadLibrary('files/libibc.so.1.0.1')
@@ -89,15 +90,14 @@ def listen():
   return
 
 def decrmsg(msg, nid):
-  eu = msg
-  u = (c_ubyte * 128)(*map(ord, eu))
-  ev = msg
-  v = (c_ubyte * 20)(*map(ord, eu))
-  ew = msg
-  w = (c_ubyte * 20)(*map(ord, eu))
-  #ibc.decrypt20(u, v, w)
+  euvw = msg
+  uvw = (c_ubyte * 168)(*map(ord, euvw))
+  ibc.decompose(uvw)
+  ibc.dirdecrypt()
+  dmsg = (c_ubyte * 20).in_dll(ibc, "m")
+  fmsg = (c_char * 20).from_buffer(dmsg).value
   fp = open("messages", "a")
-  fp.write("From : ", nid, " Message : ", msg, "\n")
+  fp.write("From:", nid, ":Message:", msg, ":Time:", datetime.now(), "\n")
   fp.close()
   
 def ibc_request_recv(stringid, nid):
@@ -259,7 +259,6 @@ def main():
   port = li[2]
   threading.Thread(target=listen).start()
   option = input("Enter 1 to send request : ")
-
   if option == 1:
     threading.Thread(target=sendRequest).start()
 

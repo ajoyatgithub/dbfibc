@@ -14,7 +14,7 @@ char ident[100], param[1024];
 int nm, dm;
 char hash[20];
 unsigned char hid[130];
-unsigned char u[128], v[20], w[20];
+unsigned char u[128], v[20], w[20], m[20];
 
 element_t h, g, share, pks, pk ,pk_temp;
 
@@ -67,6 +67,15 @@ void hash4(unsigned char * b, unsigned char * hb){
   SHA1(b, sizeof(b), hb);
 }
 
+void decompose(unsigned char *uvw){
+  for(i=0;i<128;i++)
+    u[i] = uvw[i];
+  for(i=128;i<148;i++)
+    v[i] = uvw[i];
+  for(i=148;i<168;i++)
+    w[i] = uvw[i];
+}
+
 void init_hashes(){
   element_init_G2(h1, pairing);
   element_init_GT(h2gt, pairing);
@@ -107,9 +116,13 @@ void encrypt20(unsigned char * message, char * rid){
   printf("The encryption of %s is :\nu = %s\nv = %s\nw = %s\n", message, u, v, w);
 }
 
+void dirdecrypt(){
+  decrypt20(u, v, w);
+}
+
 void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
   int i;
-  unsigned char sig[20], tsig[20], hsig[20], m[20];
+  unsigned char sig[20], tsig[20], hsig[20];
   element_t U, temp1, gpub;
   element_init_G1(U, pairing);
   element_from_bytes(U, u);

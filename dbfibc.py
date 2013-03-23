@@ -54,7 +54,7 @@ def main():
   ibc.start(username, nodeid)
   
   #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages
-  option = raw_input("Select what you would like to do : \n1. Encrypt\t2. Decrypt\n\t: ")
+  option = raw_input("Select what you would like to do : \n1. Send a Message\t2. View Inbox\n\t: ")
   if option == '1':
     ibc.encrypt()
   elif option == '2':
