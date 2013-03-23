@@ -97,7 +97,7 @@ def decrmsg(msg, nid):
   dmsg = (c_ubyte * 20).in_dll(ibc, "m")
   fmsg = (c_char * 20).from_buffer(dmsg).value
   fp = open("messages", "a")
-  fp.write("From:", nid, ":Message:", msg, ":Time:", datetime.now(), "\n")
+  fp.write("From:", nid, ":Message:", fmsg, ":Time:", datetime.now(), "\n")
   fp.close()
   
 def ibc_request_recv(stringid, nid):
@@ -150,6 +150,18 @@ def contactsretname(nid):
     else:
       if pr.group(2) == nid:
         return pr.group(4)
+  
+def printallcontacts():
+  fp = open("contacts", "r")
+  while 1:
+    line = fp.readline()
+    if not line:
+      break
+    pr = re.search("(ID:)([\d]+)(:name:)([\S]+)\s", line)
+    if pr==None:
+      return "None"
+    else:
+      print pr.group(2), " ", pr.group()
   
 def ibc_reply_recv(ibcreply, sender):
   global nodeID

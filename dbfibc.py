@@ -56,7 +56,11 @@ def main():
   #Phase 4 - Applications. the generated keys can be used to encrypt as well as decrypt messages
   option = raw_input("Select what you would like to do : \n1. Send a Message\t2. View Inbox\n\t: ")
   if option == '1':
-    ibc.encrypt()
+    msg = raw_input("Enter the message to encrypt : ")
+    print "Enter the name of the user you want to send to from this list :"
+    ibc.printallcontacts()
+    rnode = raw_input("Enter the name :")
+    ibc.sendencrmsg(msg, rnode, nodeid)
   elif option == '2':
   	  ibc.decrypt()
   else:

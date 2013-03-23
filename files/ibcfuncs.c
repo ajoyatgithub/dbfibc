@@ -68,6 +68,7 @@ void hash4(unsigned char * b, unsigned char * hb){
 }
 
 void decompose(unsigned char *uvw){
+  int i;
   for(i=0;i<128;i++)
     u[i] = uvw[i];
   for(i=128;i<148;i++)

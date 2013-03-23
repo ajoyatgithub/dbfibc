@@ -151,6 +151,18 @@ def contactsretname(nid):
       if pr.group(2) == nid:
         return pr.group(4)
   
+def printallcontacts():
+  fp = open("contacts", "r")
+  while 1:
+    line = fp.readline()
+    if not line:
+      break
+    pr = re.search("(ID:)([\d]+)(:name:)([\S]+)\s", line)
+    if pr==None:
+      return "None"
+    else:
+      print pr.group(2), " ", pr.group(4)
+  
 def ibc_reply_recv(ibcreply, sender):
   global nodeID
   uchar = (c_ubyte * 128)(*map(ord, ibcreply))
