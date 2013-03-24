@@ -97,7 +97,7 @@ def decrmsg(msg, nid):
   dmsg = (c_ubyte * 20).in_dll(ibc, "m")
   fmsg = (c_char * 20).from_buffer(dmsg).value
   fp = open("messages", "a")
-  fp.write("From:", nid, ":Message:", fmsg, ":Time:", datetime.now(), "\n")
+  fp.write("From:", nid, ":Message:", fmsg, ":Time:", datetime.now(), ":END\n")
   fp.close()
   
 def ibc_request_recv(stringid, nid):
@@ -161,7 +161,7 @@ def printallcontacts():
     if pr==None:
       return "None"
     else:
-      print pr.group(2), " ", pr.group()
+      print pr.group(2), " ", pr.group(4)
   
 def ibc_reply_recv(ibcreply, sender):
   global nodeID
@@ -219,7 +219,23 @@ def sendencrmsg(msg, strid, nid):
   msg = "Message:", tmsg, ":ID:", nodeID, ":END"
   sock.sendall(msg)
   sock.close()
-  
+
+def inbox():
+  count = 0
+  fp = open("messages","r")
+  print "No\tName\t\tTime\tMessage"
+  while 1:
+    line = fp.readline
+    if not line:
+      break
+    count += 1
+    pr = re.search("(From:)([\d]+)(:Message:)([\S]+)(:Time:)([\S]+)(:END\S)", line)
+    if pr = None:
+      print "Invalid line :", line
+    else:
+      name = contactsretname(pr.group(2))
+      print count, "\t", name, "\t\t", pr.group(4)
+
 def sendRequest():
   """This socket will send IBC_REQUEST messages"""
   global tempcontlist, numNodes, nodeID, port
