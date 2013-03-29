@@ -230,7 +230,7 @@ def inbox():
       break
     count += 1
     pr = re.search("(From:)([\d]+)(:Message:)([\S]+)(:Time:)([\S]+)(:END\S)", line)
-    if pr = None:
+    if pr == None:
       print "Invalid line :", line
     else:
       name = contactsretname(pr.group(2))
@@ -262,7 +262,7 @@ def init_pbc():
   ibc.init_pairing(sys_n, sys_t, sys_f)
   ibc.read_share()
   gu = (c_char * 310)()
-  gu.value = sys_u
+  gu.value = str(sys_u)
   ibc.readg(gu)
 
 def start(username, nid):

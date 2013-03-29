@@ -174,7 +174,7 @@ int read_share(){
   and store it in element share*/
   FILE *fp;
   unsigned char str[20];
-  fp = fopen("files/secrets","rb");
+  fp = fopen("../files/secrets","rb");
   if(!fp)
     return -1;
   printf("About to read from secrets\n");

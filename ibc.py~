@@ -230,11 +230,11 @@ def inbox():
       break
     count += 1
     pr = re.search("(From:)([\d]+)(:Message:)([\S]+)(:Time:)([\S]+)(:END\S)", line)
-    if pr = None:
+    if pr == None:
       print "Invalid line :", line
     else:
       name = contactsretname(pr.group(2))
-      print count, "\t", name, "\t\t", pr.group(4)
+      print count, "\t", name, "\t\t", pr.group(6), "\t", pr.group(4)
 
 def sendRequest():
   """This socket will send IBC_REQUEST messages"""

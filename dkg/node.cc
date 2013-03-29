@@ -1401,7 +1401,7 @@ int main(int argc, char **argv)
   int non_responsive_leader_number = atoi(argv[7]);
 
   gnutls_global_init();
-  Node node("../files/pairing", "../files/system.param", INADDR_ANY, portnum, 
+  Node node("files/pairing", "files/system.param", INADDR_ANY, portnum, 
 			certfile, keyfile, contactlist, ph, type, non_responsive_leader_number);
   return node.run();
 }
