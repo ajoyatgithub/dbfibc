@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import auth
-import dkg
+#import dkg
 import ibc
 import sys
 import getpass
@@ -42,6 +42,7 @@ def main():
     print auth_result
     return
   
+'''
   #Phase 2 - The DKG protocol can now start. It will run in a different thread. As soon as DKG completes, the share is written to a file
   print("Please wait while the system initializes")
   readlist()
@@ -55,6 +56,7 @@ def main():
       pass
       
   print "Share Generated"
+'''
   
   #Phase 3 - Generate the keys using username and the share, the keys are stored in the loaded ibc library
   ibc.start(username, nodeid)

@@ -46,4 +46,4 @@ def startdkg():
   #ltr = "../dkg/node %d ../dkg/certs/%d.pem ../dkg/certs/%d-key.pem ../dkg/contlist 0 0 0" % (int(c_port), int(nid), int(nid))
   #print ltr
   #os.chdir("dkg/")
-  subprocess.call(ltr,shell=True)
+  subprocess.call(ltr)

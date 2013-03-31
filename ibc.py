@@ -255,6 +255,26 @@ def sendRequest():
     sock.sendall(msg)
     sock.close()
   return
+
+def sendReady():
+  """This socket will send IBC_READY messages"""
+  global tempcontlist, numNodes, nodeID, port
+  for i in range(numNodes):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    [nodeid, c_ip, c_port, cert_file, l] = tempcontlist[i]
+    if c_port == port:
+      continue
+    #print "i ", nodeID, "am trying to connect to ", nodeid, "at ", c_ip, int(c_port), c_port
+    try:
+      sock.connect((c_ip, int(c_port)))
+    except Exception, e:
+      print "Unable to send : ", e, c_ip, c_port
+      continue;
+    msg = "IBC_REQUEST:" + identity + ":" + nodeID + ":END"
+    print "Sent : ", msg
+    sock.sendall(msg)
+    sock.close()
+  return
   
 def init_pbc():
   read_contlist()
