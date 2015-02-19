@@ -188,7 +188,7 @@ const Zr Polynomial::operator()(const Zr &x) const
 
 void Polynomial::dump(FILE *f, char *label, unsigned short base) const
 {
-    if (label) fprintf(f, "%s: ", label);
+    if (label) fprintf(f, "%sajoy: ", label);
     fprintf(f, "[ ");
     vector<Zr>::const_iterator iter;
     for(iter = coeffs.begin(); iter != coeffs.end(); iter++) {

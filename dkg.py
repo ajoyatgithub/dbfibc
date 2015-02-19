@@ -1,31 +1,49 @@
-import random
+#import threading
+import subprocess
+import os
+import re
 import threading
-from ctypes import cdll
+import pyinotify
 
-secretshare = 683425
+nodeid = 0
+tempcontlist = []
+status = "nosecret"
 
-def dkg():
-  #Loading the library containing the DKG node
-  
-  #libnode = cdll.LoadLibrary('./so/libnode.so.1.0')
-  
-  #main is the main function in node.cc. To prevent errors, the library was created without BLSclient.o
-  
-  #libnode.main()
-  #libnode.main(5, "./node 6401 ../src/certs/1.pem ../src/certs/1-key.pem contlist")
-  secretshare = random.random()
-  
-def share():
-  f = open('dkg/secrets','r+')
-  line = f.readline()
-  secretshare = random.random()
-  return line
-  
+def onChange(ev):
+  global status
+  status = "sharegen"
 
-class MyThread ( threading.Thread ):
-   def run ( self ):
-      print 'Insert some thread stuff here.'
-      print "It'll be executed...yeah...."
-      print "There's not much to it."
-
-#MyThread().start()
+def watch_secrets():
+  wm = pyinotify.WatchManager()
+  wm.add_watch('files/secrets', pyinotify.IN_CLOSE_WRITE, onChange)
+  notifier = pyinotify.Notifier(wm)
+  notifier.loop()
+  
+def dkg(nid):
+  global nodeid
+  #print "DKG starting...."
+  threading.Thread(target=startdkg).start()
+  threading.Thread(target=watch_secrets).start()
+  #print "DKG started...."
+  #startdkg()
+  
+def startdkg():
+  global nodeid
+  fp = open("files/contlist","r")
+  while 1:
+    line = fp.readline()
+    if not line:
+      break
+    parse = re.search("([\S]+)\s([\S]+)\s([\S]+)\s([\S]+)\s([L]*)", line)
+    tempcontlist.append([parse.group(1), parse.group(2), parse.group(3), parse.group(4), parse.group(5)])
+  fp.close()
+  [nid, c_ip, c_port, cert_file, l] = tempcontlist[int(nodeid)-1]
+  ltr = "./dkg/node %d certs/%d.pem certs/%d-key.pem files/contlist 0 0 0" % (int(c_port), int(nid), int(nid))
+  print nodeid, ltr
+  #fp = open("dkg/rundkg","w")
+  #fp.write(ltr)
+  #fp.close()
+  #ltr = "../dkg/node %d ../dkg/certs/%d.pem ../dkg/certs/%d-key.pem ../dkg/contlist 0 0 0" % (int(c_port), int(nid), int(nid))
+  #print ltr
+  #os.chdir("dkg/")
+  subprocess.call(ltr)

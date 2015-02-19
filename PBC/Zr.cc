@@ -270,7 +270,7 @@ string Zr::toString() const {
 // Dump the element to stdout
 void Zr::dump(FILE *f, const char *label, 
 			  unsigned short base) const{
- if (label) fprintf(f, "%s: ", label);
+ if (label) fprintf(f, "%s : ", label);
  //fprintf(f, "[ ");
   if(elementPresent)
 	element_out_str(f, base,*(element_t*)&r);
@@ -278,4 +278,12 @@ void Zr::dump(FILE *f, const char *label,
 	fprintf(f,"Element not defined.");
   // fprintf(f, "]\n");
   fprintf(f, "\n");
-}	
+}
+
+void Zr::dumpfile(FILE *f)const{
+  unsigned char sharedump[20];
+  int bt;
+  bt = element_length_in_bytes(*(element_t*)&r);
+  element_to_bytes(sharedump, *(element_t*)&r);
+  fwrite(sharedump, bt, 1, f);
+}

@@ -1,0 +1,26 @@
+-Run node 1 starting at 1364384140.234959 with version 8.0
+-Function node 1 starting at 1364384140.235019
+LEADER_CHANGE 1 for * SENT from 1 to 1 at 1364384140.245936 standard 1
+COMPUTE_BI * for * RS from 1 to * at 1364384140.246941
+COMPUTE_CM * for * RS from 1 to * at 1364384140.248184
+VSS_SEND 3 for * SENT from 1 to 1 at 1364384140.511613 standard 1
+VSS_SEND 4 for * SENT from 1 to 2 at 1364384140.511790 standard 1
+VSS_SEND 5 for * SENT from 1 to 3 at 1364384140.511923 standard 1
+VSS_SEND 6 for * SENT from 1 to 4 at 1364384140.512056 standard 1
+VSS_SEND 7 for * SENT from 1 to 5 at 1364384140.512188 standard 1
+VSS_SEND 8 for * SENT from 1 to 6 at 1364384140.512317 standard 1
+VSS_SEND 9 for * SENT from 1 to 7 at 1364384140.512445 standard 1
+VSS_SEND 10 for * SENT from 1 to 8 at 1364384140.512559 standard 1
+VSS_SEND 11 for * SENT from 1 to 9 at 1364384140.512672 standard 1
+VSS_SEND 12 for * SENT from 1 to 10 at 1364384140.512779 standard 1
+* I am ready to receive at 1364384140.512824
+VSS_HELP 13 for * SENT from 1 to 2 at 1364384140.512849
+VSS_HELP 14 for * SENT from 1 to 3 at 1364384140.512885
+VSS_HELP 15 for * SENT from 1 to 4 at 1364384140.512907
+VSS_HELP 16 for * SENT from 1 to 5 at 1364384140.512942
+VSS_HELP 17 for * SENT from 1 to 6 at 1364384140.512963
+VSS_HELP 18 for * SENT from 1 to 7 at 1364384140.513000
+VSS_HELP 19 for * SENT from 1 to 8 at 1364384140.513021
+VSS_HELP 20 for * SENT from 1 to 9 at 1364384140.513057
+VSS_HELP 21 for * SENT from 1 to 10 at 1364384140.513078
+* I started to receive at 1364384140.513114

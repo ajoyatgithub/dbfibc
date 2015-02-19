@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<pbc/pbc.h>
+#include<pbc/pbc_test.h>
+
+pairing_t pairing;
+char param[1024];
+int sys_n = 0, sys_t = 0, sys_f = 0;
+
+int init_pairing(int n, int t, int f){
+  /*This function will open the pairing file and initialize the pairing.*/
+  FILE *fp;
+  int k, lk, q;
+  sys_n = n;
+  sys_t = t;
+  sys_f = f;
+  q = 2 * sys_t + 1;
+  fp = fopen("pairing", "r");
+  size_t count = fread(param, 1, 1024, fp);
+  fclose(fp);
+  if(!count){
+    pbc_die("input error\n");
+    return -1;
+  }
+  pairing_init_set_buf(pairing, param, count);
+  printf("Initialized pairing in ibc.c\n");
+  //element_init_G2(h1, pairing);
+  return 0;
+}
+
+void readg(char * s){
+printf("Entered rg\n");
+element_t g;
+element_init_G1(g, pairing);
+element_set_str(g, s, 10);
+element_printf("The value U has been read. It is : %B\n", g);
+}
+
+void main(){
+  char asd[310];
+  init_pairing(5, 1, 0);
+  printf("Enter the U : ");
+  gets(asd);
+  printf("Asd is      : %s\n", asd);
+  readg(asd);
+  //printf("Length of the string is %d\n", sizeof(asd));
+/*element_t g;
+  element_init_G1(g, pairing);
+  element_set_str(g, asd, 10);
+  element_printf("The U has been read.\nValue of U  : %B\n", g);
+  */
+}
