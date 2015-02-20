@@ -23,288 +23,287 @@ int sys_n = 0, sys_t = 0, sys_f = 0, ct = 0, q;
 pairing_t pairing;
 
 void hash1(char * b){
-  /* Mathematically
-   * H1 : {0,1}* -> G2*
-   * This function will take an input as char, hash it and
-   * convert it into a element h1 in G2.
-   */
-  unsigned char h[20];
-  SHA1(b, sizeof(b), h);
-  element_from_hash(h1, h, 20);
+    /* Mathematically
+     * H1 : {0,1}* -> G2*
+     * This function will take an input as char, hash it and
+     * convert it into a element h1 in G2.
+     */
+    unsigned char h[20];
+    SHA1(b, sizeof(b), h);
+    element_from_hash(h1, h, 20);
 }
 
 void hash2(unsigned char *b){
-  /* Mathematically,
-   * H2 : GT -> {0,1}^l, l = 20
-   * This function will take a GT value stored in an element h2gt
-   * and store a 20 byte hash in the unsigned char b
-   */
-  unsigned char temp[128];
-  element_to_bytes(temp, h2gt);
-  SHA1(temp, sizeof(temp), b);
+    /* Mathematically,
+     * H2 : GT -> {0,1}^l, l = 20
+     * This function will take a GT value stored in an element h2gt
+     * and store a 20 byte hash in the unsigned char b
+     */
+    unsigned char temp[128];
+    element_to_bytes(temp, h2gt);
+    SHA1(temp, sizeof(temp), b);
 }
 
 void hash3(unsigned char * b1, unsigned char * b2){
-  /* Mathematically,
-   * H3 : {0,1}^l X {0,1}^l -> Zp
-   * This function will take two binary strings and generate an element
-   * of Zr and store it in h3zr
-   */
-  int i;
-  unsigned char rnd[20];
-  for(i=0; i<20; i++){
-    rnd[i] = b1[i] ^ b2[i];
-  }
-  element_from_bytes(h3zr, rnd);
+    /* Mathematically,
+     * H3 : {0,1}^l X {0,1}^l -> Zp
+     * This function will take two binary strings and generate an element
+     * of Zr and store it in h3zr
+     */
+    int i;
+    unsigned char rnd[20];
+    for(i=0; i<20; i++){
+        rnd[i] = b1[i] ^ b2[i];
+    }
+    element_from_bytes(h3zr, rnd);
 }
 
 void hash4(unsigned char * b, unsigned char * hb){
-  /* Mathematically,
-   * H4 : {0,1}^l -> {0,1}^l
-   * This function will take a 20 byte string, and return its hash
-   * back to hb.
-   */
-  SHA1(b, sizeof(b), hb);
+    /* Mathematically,
+     * H4 : {0,1}^l -> {0,1}^l
+     * This function will take a 20 byte string, and return its hash
+     * back to hb.
+     */
+    SHA1(b, sizeof(b), hb);
 }
 
 void decompose(unsigned char *uvw){
-  int i;
-  for(i=0;i<128;i++)
-    u[i] = uvw[i];
-  for(i=128;i<148;i++)
-    v[i] = uvw[i];
-  for(i=148;i<168;i++)
-    w[i] = uvw[i];
+    int i;
+    for(i=0;i<128;i++)
+        u[i] = uvw[i];
+    for(i=128;i<148;i++)
+        v[i] = uvw[i];
+    for(i=148;i<168;i++)
+        w[i] = uvw[i];
 }
 
 void init_hashes(){
-  element_init_G2(h1, pairing);
-  element_init_GT(h2gt, pairing);
-  element_init_Zr(h3zr, pairing);
+    element_init_G2(h1, pairing);
+    element_init_GT(h2gt, pairing);
+    element_init_Zr(h3zr, pairing);
 }
 
 void encrypt20(unsigned char * message, char * rid);
 void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w);
 
 void encrypt20(unsigned char * message, char * rid){
-  unsigned char tv[20], tw[20];
-  unsigned char sig[20], r[20];
-  int i;
-  element_t temp1;
-  
-  element_random(h2gt);
-  hash2(sig);                           //    sig now has a random number 
-                                        //sig = {0,1}l
-  hash3(sig, message);                  //    h3zr ~ r
-                                        //r = H3(sig, M)
-  hash1(rid);                           //hid = H1(ID) ~ ~ h1 = H1(rid)
-  element_t U;
-  element_init_G1(U, pairing);
-  element_pow_zn(U, g, h3zr);           //U = g ^ r, then u = U
-  
-  element_init_GT(temp1, pairing);
-  pairing_apply(temp1, U, h1, pairing); //temp1 = e(U, h1) = e(g^r,hid)
-  element_pow_zn(h2gt, temp1, h3zr);    //h2gt = temp1^h3zr ~~ h2gt=temp1^r
-  hash2(tv);                            //tv = H2(h3zr) ~ H2(e(g^r,hid)^r)
-  for(i=0;i<20;i++){
-    v[i] = sig[i]^tv[i];
-  }                                     //v = sig XOR tv
-  hash4(sig, tw);                       //tw = H4(sig)
-  for(i=0;i<20;i++){
-    w[i] = message[i]^tw[i];
-  }                                     //w = message XOR tw
-  element_to_bytes(u, U);
-  printf("The encryption of %s is :\nu = %s\nv = %s\nw = %s\n", message, u, v, w);
+    unsigned char tv[20], tw[20];
+    unsigned char sig[20], r[20];
+    int i;
+    element_t temp1;
+
+    element_random(h2gt);
+    hash2(sig);                           //    sig now has a random number
+    //sig = {0,1}l
+    hash3(sig, message);                  //    h3zr ~ r
+    //r = H3(sig, M)
+    hash1(rid);                           //hid = H1(ID) ~ ~ h1 = H1(rid)
+    element_t U;
+    element_init_G1(U, pairing);
+    element_pow_zn(U, g, h3zr);           //U = g ^ r, then u = U
+
+    element_init_GT(temp1, pairing);
+    pairing_apply(temp1, U, h1, pairing); //temp1 = e(U, h1) = e(g^r,hid)
+    element_pow_zn(h2gt, temp1, h3zr);    //h2gt = temp1^h3zr ~~ h2gt=temp1^r
+    hash2(tv);                            //tv = H2(h3zr) ~ H2(e(g^r,hid)^r)
+    for(i=0;i<20;i++){
+        v[i] = sig[i]^tv[i];
+    }                                     //v = sig XOR tv
+    hash4(sig, tw);                       //tw = H4(sig)
+    for(i=0;i<20;i++){
+        w[i] = message[i]^tw[i];
+    }                                     //w = message XOR tw
+    element_to_bytes(u, U);
+    printf("The encryption of %s is :\nu = %s\nv = %s\nw = %s\n", message, u, v, w);
 }
 
 void dirdecrypt(){
-  decrypt20(u, v, w);
+    decrypt20(u, v, w);
 }
 
 void decrypt20(unsigned char * u, unsigned char * v, unsigned char * w){
-  int i;
-  unsigned char sig[20], tsig[20], hsig[20];
-  element_t U, temp1, gpub;
-  element_init_G1(U, pairing);
-  element_from_bytes(U, u);
-  
-  element_init_GT(temp1, pairing);
-  pairing_apply(temp1, U, pk, pairing); //temp1 = e(U, pk) ~ e(u, did)
-  hash2(tsig);                          //tsig = H2(e(u, did))
-  for(i=0;i<20;i++){
-    sig[i] = v[i] ^ tsig[i];            //sig = v XOR H2(e(u, did))
-  }
-  hash4(sig, hsig);                     //hsig = H4(sig)
-  for(i=0;i<20;i++)
-    m[i] = w[i] ^ hsig[i];              //m = w XOR H4(sig)
-  hash3(sig, m);                        //r = H3(sig, m), r = h3zr
-  element_init_G1(gpub, pairing);
-  
-  element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
-  if (!element_cmp(gpub, U))            //if g^r != u, reject
-    printf("Message is %s\n", m);
-  else
-    printf("Invalid message. M is %s\n", m);
+    int i;
+    unsigned char sig[20], tsig[20], hsig[20];
+    element_t U, temp1, gpub;
+    element_init_G1(U, pairing);
+    element_from_bytes(U, u);
+
+    element_init_GT(temp1, pairing);
+    pairing_apply(temp1, U, pk, pairing); //temp1 = e(U, pk) ~ e(u, did)
+    hash2(tsig);                          //tsig = H2(e(u, did))
+    for(i=0;i<20;i++){
+        sig[i] = v[i] ^ tsig[i];            //sig = v XOR H2(e(u, did))
+    }
+    hash4(sig, hsig);                     //hsig = H4(sig)
+    for(i=0;i<20;i++)
+        m[i] = w[i] ^ hsig[i];              //m = w XOR H4(sig)
+    hash3(sig, m);                        //r = H3(sig, m), r = h3zr
+    element_init_G1(gpub, pairing);
+
+    element_pow_zn(gpub, g, h3zr);        //gpub = g ^ h3zr <==> g^r
+    if (!element_cmp(gpub, U))            //if g^r != u, reject
+        printf("Message is %s\n", m);
+    else
+        printf("Invalid message. M is %s\n", m);
 }
 
 int init_pairing(int n, int t, int f){
-  /*This function will open the pairing file and initialize the pairing.*/
-  FILE *fp;
-  int k, lk;
-  sys_n = n;
-  sys_t = t;
-  sys_f = f;
-  q = 2 * sys_t + 1;
-  fp = fopen("files/pairing", "r");
-  size_t count = fread(param, 1, 1024, fp);
-  fclose(fp);
-  if(!count){
-    pbc_die("input error\n");
-    return -1;
-  }
-  pairing_init_set_buf(pairing, param, count);
-  printf("Initialized pairing in ibc.c\n");
-  element_init_G2(h1, pairing);
-  
-  return 0;
+    /*This function will open the pairing file and initialize the pairing.*/
+    FILE *fp;
+    int k, lk;
+    sys_n = n;
+    sys_t = t;
+    sys_f = f;
+    q = 2 * sys_t + 1;
+    fp = fopen("files/pairing", "r");
+    size_t count = fread(param, 1, 1024, fp);
+    fclose(fp);
+    if(!count){
+        pbc_die("input error\n");
+        return -1;
+    }
+    pairing_init_set_buf(pairing, param, count);
+    printf("Initialized pairing in ibc.c\n");
+    element_init_G2(h1, pairing);
+    return 0;
 }
 
 int read_share(){
-  /*This function will open secrets and read the binary data into unsigned char
-  and store it in element share*/
-  FILE *fp;
-  unsigned char str[20];
-  fp = fopen("files/secrets","rb");
-  if(!fp)
-    return -1;
-  printf("About to read from secrets\n");
-  size_t count = fread(str, 20, 1, fp);
-  fclose(fp);
-  if(!count)
-    printf("Could not read from secrets\n");
-  element_init_Zr(share, pairing);
-  element_from_bytes(share, str);
+    /*This function will open secrets and read the binary data into unsigned char
+    and store it in element share*/
+    FILE *fp;
+    unsigned char str[20];
+    fp = fopen("files/secrets","rb");
+    if(!fp)
+        return -1;
+    printf("About to read from secrets\n");
+    size_t count = fread(str, 20, 1, fp);
+    fclose(fp);
+    if(!count)
+        printf("Could not read from secrets\n");
+    element_init_Zr(share, pairing);
+    element_from_bytes(share, str);
 }
 
 void hash_id_s(char *str){
-  /*This function will read the string, hash it and then map to an element in G2.
-  It will then compute hash^share*/
-  SHA1(str, strlen(str), hash);
-  hash1(hash);
-  element_pow_zn(pks, h1, share);
-  element_to_bytes(hid, pks);
+    /*This function will read the string, hash it and then map to an element in G2.
+    It will then compute hash^share*/
+    SHA1(str, strlen(str), hash);
+    hash1(hash);
+    element_pow_zn(pks, h1, share);
+    element_to_bytes(hid, pks);
 }
 
 void gen_privatekey(unsigned char *str, int nodeID, int senderID){
-  /*This will compute the private key from all the IBC_REPLY's received
-  */
-  int i, j;
-  float l;
-  if(ct > sys_t){
-    printf("Done\n");
-    element_printf("The key is %B\n", pk);
-    return;
-  }
-  else if(ct <= sys_t)
-    ct++;
-  printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
-  i = nodeID;
-  j = senderID;
-  lambdal(i, q);
-  element_t b, c, ci, keyshare;
-  
-  element_init_G2(keyshare, pairing);
-  element_init_G2(pk_temp, pairing);
-  element_init_G2(pk, pairing);
-  element_init_Zr(b, pairing);
-  element_init_Zr(c, pairing);
-  element_init_Zr(ci, pairing);
+    /*This will compute the private key from all the IBC_REPLY's received
+    */
+    int i, j;
+    float l;
+    if(ct > sys_t){
+        printf("Done\n");
+        element_printf("The key is %B\n", pk);
+        return;
+    }
+    else if(ct <= sys_t)
+        ct++;
+    printf("Value of sys_t and ct is %d and %d\n", sys_t, ct);
+    i = nodeID;
+    j = senderID;
+    lambdal(i, q);
+    element_t b, c, ci, keyshare;
 
-  element_set_si(b, nm);
-  element_set_si(c, dm);
-  printf("nm is %d\ndm is %d\n", nm, dm);
-  element_from_bytes(keyshare, str);
-  element_pow_zn(pk_temp, keyshare, b);
-  element_invert(ci, c);
-  element_pow_zn(pk_temp, pk_temp, ci);
-  element_mul(pk, pk, pk_temp);
+    element_init_G2(keyshare, pairing);
+    element_init_G2(pk_temp, pairing);
+    element_init_G2(pk, pairing);
+    element_init_Zr(b, pairing);
+    element_init_Zr(c, pairing);
+    element_init_Zr(ci, pairing);
+
+    element_set_si(b, nm);
+    element_set_si(c, dm);
+    printf("nm is %d\ndm is %d\n", nm, dm);
+    element_from_bytes(keyshare, str);
+    element_pow_zn(pk_temp, keyshare, b);
+    element_invert(ci, c);
+    element_pow_zn(pk_temp, pk_temp, ci);
+    element_mul(pk, pk, pk_temp);
 }
 
 int lambdal(int i, int ei){
-  /*
-  */
-  int j;
-  nm = 1;
-  dm = 1;
-  for(j = 1; j <= ei; j++){
-    if(j==i)
-      continue;
-    nm *= j;
-    dm *= j - i;
-  }
-  return 1;
+    /*
+    */
+    int j;
+    nm = 1;
+    dm = 1;
+    for(j = 1; j <= ei; j++){
+        if(j==i)
+            continue;
+        nm *= j;
+        dm *= j - i;
+    }
+    return 1;
 }
 
 void readg(char * s){
-  element_init_G1(g, pairing);
-  element_set_str(g, s, 10);
+    element_init_G1(g, pairing);
+    element_set_str(g, s, 10);
 }
 
 void main(){
-  unsigned char asd[20];
-  char id[20];
-  int d;
-  init_pairing(5, 1, 0);
-  init_hashes();
-  //unsigned char key[100];
-  /*
-  printf("Please enter a hex string to hash using H1 : ");
-  gets(asd);
+    unsigned char asd[20];
+    char id[20];
+    int d;
+    init_pairing(5, 1, 0);
+    init_hashes();
+    //unsigned char key[100];
+    /*
+    printf("Please enter a hex string to hash using H1 : ");
+    gets(asd);
 
-  hash1(asd);
-  element_printf("The H1 of %d the string is : %B\n", element_length_in_bytes(h1), h1);
+    hash1(asd);
+    element_printf("The H1 of %d the string is : %B\n", element_length_in_bytes(h1), h1);
 
-    
-  unsigned char qwe[20], qwer[20];
-  
-  element_random(h2gt);
-  hash2(qwe);
-  element_printf("\n\nThe H2 of\n%B is\n%s\n", h2gt, qwe);
-  
-  hash3(qwe, asd);
-  element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
 
-  hash3(qwe, asd);
-  element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
+    unsigned char qwe[20], qwer[20];
 
-  hash4(qwe, qwer);
-  printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
-  
-  hash4(qwe, qwer);
-  printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
-  return 0;
-  */
-  /*
-  char asd[20];
-  unsigned char key[100];
-  if(init_pairing(1, 1, 1) == -1){
-    printf("Error");
-    return -1; 
-  }
-  read_share();
-  printf("Give a string to encrypt : ");
-  scanf("%s", asd);
-  hash_id_s(asd);
-  element_printf("The string has been hashed, it is : %B\n", pks);
-  element_to_bytes(key, pks);
-  gen_privatekey(key, 1, 2);
-   */
-  
-  char u[] = "[154421937288869892795189093810921235122476463839375326073591971056365930434602470186742385706265523539972032311143735573288479871818380689794065934739646,1053224359509564021923111819691635700583676517250934330501551578364631046844652405820767801196558009238591149557814028743651030702748906271871797495725636]";
-  readg(u);
-  printf("Enter in the following order : Message, ID,  ");
-  scanf("%s", asd);
-  scanf("%s", id);
-  encrypt20(asd, id);
-  decrypt20(u, v, w);
+    element_random(h2gt);
+    hash2(qwe);
+    element_printf("\n\nThe H2 of\n%B is\n%s\n", h2gt, qwe);
+
+    hash3(qwe, asd);
+    element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
+
+    hash3(qwe, asd);
+    element_printf("\n\nThe H3 of \n%s\nand\n%s\nis\n%B\n", qwe, asd, h3zr);
+
+    hash4(qwe, qwer);
+    printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
+
+    hash4(qwe, qwer);
+    printf("The hash of\n%s\nis\n\t%s\n", qwe, qwer);
+    return 0;
+    */
+    /*
+    char asd[20];
+    unsigned char key[100];
+    if(init_pairing(1, 1, 1) == -1){
+      printf("Error");
+      return -1;
+    }
+    read_share();
+    printf("Give a string to encrypt : ");
+    scanf("%s", asd);
+    hash_id_s(asd);
+    element_printf("The string has been hashed, it is : %B\n", pks);
+    element_to_bytes(key, pks);
+    gen_privatekey(key, 1, 2);
+     */
+
+    char u[] = "[154421937288869892795189093810921235122476463839375326073591971056365930434602470186742385706265523539972032311143735573288479871818380689794065934739646,1053224359509564021923111819691635700583676517250934330501551578364631046844652405820767801196558009238591149557814028743651030702748906271871797495725636]";
+    readg(u);
+    printf("Enter in the following order : Message, ID,  ");
+    scanf("%s", asd);
+    scanf("%s", id);
+    encrypt20(asd, id);
+    decrypt20(u, v, w);
 }
